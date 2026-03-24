@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0e0d;
+      --cream: #f5f0e8;
+      --gold: #c9a84c;
+      --sage: #3a5a40;
+      --sage-light: #eef3ef;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(ellipse 70% 70% at 10% 90%, rgba(58,90,64,0.10) 0%, transparent 60%),
+                        radial-gradient(ellipse 60% 60% at 90% 10%, rgba(201,168,76,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .back-link {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+      z-index: 10;
+    }
+    .back-link:hover { color: var(--ink); }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 920px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Left panel — decorative */
+    .side-panel {
+      background: var(--sage);
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .side-panel::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,240,232,0.12);
+      top: -80px; right: -80px;
+    }
+    .side-panel::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,240,232,0.08);
+      bottom: 40px; left: -60px;
+    }
+
+    .side-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+    }
+
+    .side-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .side-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .side-tab-row {
+      display: flex;
+      gap: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .side-tab {
+      padding: 0.55rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border: 1.5px solid rgba(245,240,232,0.25);
+      color: rgba(245,240,232,0.5);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .side-tab.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+    .side-tab:not(.active):hover {
+      border-color: rgba(245,240,232,0.5);
+      color: var(--cream);
+    }
+
+    /* Right panel — form */
+    .form-panel {
+      background: #fff;
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-view { display: none; flex-direction: column; gap: 1.25rem; }
+    .form-view.active { display: flex; animation: slideIn 0.35s ease; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(12px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .form-view h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .form-view .hint {
+      font-size: 0.82rem;
+      color: #aaa;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid #e0dcd6;
+      background: #fafaf8;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input::placeholder { color: #bbb; }
+    input:focus { border-color: var(--sage); background: #fff; }
+
+    button[type="submit"] {
+      padding: 0.9rem;
+      background: var(--sage);
+      color: var(--cream);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+    }
+    button[type="submit"]:hover { background: #2d4630; transform: translateY(-1px); }
+
+    .switch-text {
+      font-size: 0.8rem;
+      color: #aaa;
+      text-align: center;
+      margin-top: -0.25rem;
+    }
+    .switch-text span {
+      color: var(--sage);
+      cursor: pointer;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    @media (max-width: 680px) {
+      .wrapper { grid-template-columns: 1fr; }
+      .side-panel { padding: 2rem; }
+      .side-title { font-size: 2rem; }
+      .form-panel { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="login.html" class="back-link">← Back</a>
+
+  <div class="wrapper">
+    <div class="side-panel">
+      <div class="side-label">🎓 Student Portal</div>
+      <div class="side-title">Learn.<br/>Grow.<br/><em>Excel.</em></div>
+      <div class="side-tab-row">
+        <button class="side-tab active" onclick="showTab('login', this)">Login</button>
+        <button class="side-tab" onclick="showTab('register', this)">Register</button>
+      </div>
+    </div>
+
+    <div class="form-panel">
+
+      <div class="form-view active" id="form-login">
+        <h2>Welcome back</h2>
+        <p class="hint">Sign in to your student account</p>
+        <form id="studentLoginForm" onsubmit="return false;">
+          <input type="email" placeholder="Email address" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit">Login</button>
+        </form>
+        <p class="switch-text">No account yet? <span onclick="showTabByName('register')">Register here</span></p>
+      </div>
+
+      <div class="form-view" id="form-register">
+        <h2>Create account</h2>
+        <p class="hint">Join the student portal today</p>
+        <form id="studentRegisterForm" onsubmit="return false;">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email address" required />
+          <input type="password" placeholder="Create password" required />
+          <button type="submit">Register</button>
+        </form>
+        <p class="switch-text">Already registered? <span onclick="showTabByName('login')">Login here</span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function showTab(name, btn) {
+      document.querySelectorAll('.form-view').forEach(f => f.classList.remove('active'));
+      document.getElementById('form-' + name).classList.add('active');
+      document.querySelectorAll('.side-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    function showTabByName(name) {
+      const btn = [...document.querySelectorAll('.side-tab')].find(b => b.textContent.toLowerCase() === name);
+      if (btn) showTab(name, btn);
+    }
+  </script>
+
+</body>
+</html>

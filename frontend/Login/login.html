@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome — Login Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0e0d;
+      --cream: #f5f0e8;
+      --gold: #c9a84c;
+      --rust: #c94c2e;
+      --sage: #3a5a40;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(201,168,76,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(58,90,64,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Decorative lines */
+    .deco-line {
+      position: fixed;
+      background: var(--ink);
+      opacity: 0.06;
+    }
+    .deco-line.h { height: 1px; width: 100%; top: 15%; left: 0; }
+    .deco-line.h2 { height: 1px; width: 100%; bottom: 15%; left: 0; }
+    .deco-line.v { width: 1px; height: 100%; left: 12%; top: 0; }
+    .deco-line.v2 { width: 1px; height: 100%; right: 12%; top: 0; }
+
+    .portal {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--sage);
+      font-style: italic;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #6b6560;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-bottom: 3.5rem;
+    }
+
+    .choice-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .choice-card {
+      position: relative;
+      width: 220px;
+      padding: 2.5rem 2rem;
+      border: 1.5px solid rgba(15,14,13,0.15);
+      background: rgba(245,240,232,0.6);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--ink);
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      overflow: hidden;
+    }
+
+    .choice-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--ink);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 0;
+    }
+
+    .choice-card:hover::before { transform: scaleY(1); }
+    .choice-card:hover { border-color: var(--ink); transform: translateY(-6px); }
+    .choice-card:hover .card-icon,
+    .choice-card:hover .card-title,
+    .choice-card:hover .card-desc { color: var(--cream); }
+    .choice-card:hover .card-arrow { color: var(--gold); }
+
+    .card-icon, .card-title, .card-desc, .card-arrow { position: relative; z-index: 1; transition: color 0.35s ease; }
+
+    .card-icon {
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: #888;
+      font-weight: 300;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .card-arrow {
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+      transition: transform 0.3s ease, color 0.35s ease;
+    }
+    .choice-card:hover .card-arrow { transform: translateX(4px); }
+
+    /* admin accent */
+    .choice-card.admin-card:hover::before { background: var(--rust); }
+
+    .footer-note {
+      margin-top: 3rem;
+      font-size: 0.72rem;
+      color: #aaa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deco-line h"></div>
+  <div class="deco-line h2"></div>
+  <div class="deco-line v"></div>
+  <div class="deco-line v2"></div>
+
+  <div class="portal">
+    <p class="eyebrow">Welcome to the Portal</p>
+    <h1>Who are<span>you?</span></h1>
+    <p class="subtitle">Select your role to continue to the login portal</p>
+
+    <div class="choice-row">
+      <a href="student.html" class="choice-card">
+        <div class="card-icon">🎓</div>
+        <div class="card-title">Student</div>
+        <div class="card-desc">Access your courses, grades, and student dashboard</div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="admin.html" class="choice-card admin-card">
+        <div class="card-icon">🔐</div>
+        <div class="card-title">Admin</div>
+        <div class="card-desc">Restricted access for authorized personnel only</div>
+        <div class="card-arrow">→</div>
+      </a>
+    </div>
+
+    <p class="footer-note">Secure Portal &nbsp;·&nbsp; All rights reserved</p>
+  </div>
+
+</body>
+</html>

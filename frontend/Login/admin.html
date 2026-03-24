@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0e0d;
+      --cream: #f5f0e8;
+      --gold: #c9a84c;
+      --rust: #c94c2e;
+      --rust-dark: #9e3a21;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #100e0c;
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Atmospheric background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 50% 60% at 50% 100%, rgba(201,76,46,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 0%, rgba(201,168,76,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Grid lines */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .back-link {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.3);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+      z-index: 10;
+    }
+    .back-link:hover { color: rgba(245,240,232,0.7); }
+
+    .admin-box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 440px;
+      padding: 3.5rem;
+      border: 1px solid rgba(245,240,232,0.08);
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(20px);
+      animation: fadeUp 0.8s ease both;
+      text-align: center;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .shield-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.25rem;
+      display: block;
+      filter: drop-shadow(0 0 20px rgba(201,76,46,0.4));
+    }
+
+    .eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .subtitle {
+      font-size: 0.82rem;
+      color: rgba(245,240,232,0.35);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--rust);
+      margin: 0 auto 2.5rem;
+      opacity: 0.6;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+
+    .input-wrap { position: relative; }
+
+    .input-label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.35);
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(245,240,232,0.1);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    input[type="password"]::placeholder { color: rgba(245,240,232,0.2); letter-spacing: 0.05em; font-size: 0.85rem; }
+    input[type="password"]:focus {
+      border-color: rgba(201,76,46,0.5);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.95rem;
+      background: var(--rust);
+      color: var(--cream);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: var(--rust-dark); transform: translateY(-1px); }
+
+    .warning {
+      margin-top: 2rem;
+      padding: 0.9rem;
+      border: 1px solid rgba(201,76,46,0.2);
+      background: rgba(201,76,46,0.06);
+      font-size: 0.72rem;
+      color: rgba(245,240,232,0.3);
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+    }
+    .warning strong { color: var(--rust); }
+  </style>
+</head>
+<body>
+
+  <a href="login.html" class="back-link">← Back</a>
+
+  <div class="admin-box">
+    <span class="shield-icon">🛡️</span>
+    <p class="eyebrow">Restricted Access</p>
+    <h1>Admin<br/>Portal</h1>
+    <div class="divider"></div>
+    <p class="subtitle">This area is reserved for authorized administrators only.<br/>Unauthorized access attempts are logged.</p>
+
+    <form id="adminLoginForm" onsubmit="return false;">
+      <div class="form-group">
+        <div class="input-wrap">
+          <label class="input-label">Secret Password</label>
+          <input type="password" placeholder="Enter admin password" required />
+        </div>
+        <button type="submit" class="submit-btn">Authenticate</button>
+      </div>
+    </form>
+
+    <div class="warning">
+      <strong>⚠ Warning:</strong> This portal is for authorized personnel only. All login attempts are monitored and recorded.
+    </div>
+  </div>
+
+</body>
+</html>
