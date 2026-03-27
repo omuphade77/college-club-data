@@ -139,12 +139,17 @@ nav {
 /* ── Sections ── */
 section {
   display: none;
-  padding: 3.5rem 0 4rem;
-  animation: fadeIn 0.45s ease;
 }
 
 section.active {
   display: block;
+}
+
+/* Special layout for home */
+#home.active {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
 }
 
 @keyframes fadeIn {
@@ -174,9 +179,6 @@ section h1::after {
 }
 
 /* ── Home — Committee Grid ── */
-#home {
-  display: block;
-}
 
 /* Grid: exactly 3 per row */
 
@@ -190,9 +192,7 @@ section h1::after {
 /* Override: wrap with implicit grid using display:contents parent trick.
    We'll handle via a flex + width approach so it works without JS. */
 
-#home {
-  padding: 3.5rem 0 4rem;
-}
+
 
 
 
@@ -246,13 +246,7 @@ section h1::after {
 
 
 /* ── Make the section itself a grid for committee boxes ── */
-#home {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: auto;
-  gap: 1.75rem;
-  align-items: start;
-}
+
 
 /* But h1 should span full width */
 #home h1 {
@@ -560,4 +554,92 @@ section h1::after {
   .container {
     padding: 0 1rem;
   }
+}
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: #111;
+  color: white;
+  padding: 20px;
+  transition: 0.3s;
+  z-index: 1000;
+}
+.sidebar.active {
+  left: 0;
+}
+
+.overlay.active {
+  display: block;
+}
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar ul li:hover {
+  background: #333;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 900;
+}
+
+/* Issue Modal */
+.issue-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+
+.issue-box {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.issue-box input,
+.issue-box textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.issue-box button {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+}
+
+.close-btn {
+  background: red;
+  color: white;
 }

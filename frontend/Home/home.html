@@ -10,6 +10,29 @@
     <script src="home.js"></script>
     <!-- Navigation Bar -->
     <nav>
+      <!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+  <h2>Menu</h2>
+  <ul>
+    <li onclick="openIssueForm()">⚠️ Raise an Issue</li>
+  </ul>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+
+<!-- Issue Form Modal -->
+<div id="issueModal" class="issue-modal">
+  <div class="issue-box">
+    <h2>Raise an Issue</h2>
+
+    <input type="text" id="issueTitle" placeholder="Issue Title" />
+    <textarea id="issueDesc" placeholder="Describe your issue..."></textarea>
+
+    <button onclick="submitIssue()">Submit</button>
+    <button class="close-btn" onclick="closeIssueForm()">Cancel</button>
+  </div>
+</div>
       <div class="nav-container">
         <div class="logo">CommitteHub</div>
         <div class="hamburger" onclick="toggleMenu()">
@@ -44,7 +67,7 @@
             />
           </div>
           <div class="committee-name">Technovanza</div>
-          <div class="committee-description">Budget & Resources</div>
+          <div class="committee-description">Innovation & Technology</div>
         </div>
         <div class="committee-box">
           <div class="image-wrapper">
@@ -55,7 +78,7 @@
             />
           </div>
           <div class="committee-name">Rangwardhan</div>
-          <div class="committee-description">Budget & Resources</div>
+          <div class="committee-description">Arts & Cultural Expression</div>
         </div>
         <div class="committee-box">
           <div class="image-wrapper">
@@ -66,7 +89,7 @@
             />
           </div>
           <div class="committee-name">Enthusia</div>
-          <div class="committee-description">Budget & Resources</div>
+          <div class="committee-description">Sports & Athletics</div>
         </div>
         <div class="committee-box">
           <div class="image-wrapper">
@@ -127,7 +150,7 @@
             />
           </div>
           <div class="committee-name">Digital Literary Activities</div>
-          <div class="committee-description">Budget & Resources</div>
+          <div class="committee-description">Digital publishing and literary events</div>
         </div>
       </section>
 
@@ -235,8 +258,6 @@
           </div>
         </div>
       </section>
-        <!-- Your Match Section -->
-     
 
    <!-- Your Match Section -->
 <section id="match">
@@ -269,9 +290,6 @@
       </div>
       <div class="interest-tag" onclick="toggleInterest(this)">
         <div>📱 Social Media</div>
-      </div>
-      <div class="interest-tag" onclick="toggleInterest(this)">
-        <div>🤝 Networking</div>
       </div>
       <div class="interest-tag" onclick="toggleInterest(this)">
         <div>🌍 Environment</div>
