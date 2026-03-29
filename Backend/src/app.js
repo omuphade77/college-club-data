@@ -1,8 +1,18 @@
-
 const express = require("express");
-
 const app = express();
 
+//middleware
+app.use(express.json());
+
+// Import routes
+const issueRoutes = require("./routes/issue.routes");
+const adminRoutes = require("./routes/admin.routes");
+const committeeRoutes = require("./routes/committee.routes");
+
+// Use routes
+app.use("/api/issues", issueRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/committees", committeeRoutes);
 
 
 module.exports = app;
