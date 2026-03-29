@@ -106,12 +106,25 @@
 </div>
 
 <div id="events" class="tab-content">
-    <h2>Upcoming Events</h2>
-    <ul>
-        <li>Event 1: Team meeting - 5th April 2026</li>
-        <li>Event 2: Product Launch - 15th April 2026</li>
-        <li>Event 3: Hackathon - 25th April 2026</li>
-    </ul>
+    <h2>Post an upcoming event</h2>
+
+    <!-- Committee Dropdown -->
+    <label for="event-committee">Select Committee:</label>
+    <select id="event-committee">
+        <option value="all">All</option>
+        <option value="pratibimb">Pratibimb</option>
+        <option value="rangawardhan">Rangawardhan</option>
+        <option value="swachh_vjti">Swachh VJTI</option>
+        <option value="enthusia">Enthusia</option>
+        <option value="technovanza">Technovanza</option>
+        <option value="digital_literary_activities">Digital Literary Activities</option>
+        <option value="digital_vjti">Digital VJTI</option>
+        <option value="community_of_coders">Community of Coders</option>
+    </select>
+
+    <!-- Event Textarea -->
+    <textarea placeholder="Write your event details here..."></textarea>
+    <button class="submit-btn">Post Event</button>
 </div>
 
 <script>
@@ -127,6 +140,19 @@
             document.getElementById(tab.dataset.tab).classList.add('active');
         });
     });
+   document.querySelectorAll('.submit-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const container = btn.closest('.tab-content');
+        const textarea = container.querySelector('textarea');
+
+        if (!textarea.value.trim()) {
+            alert("Please enter some text!");
+            return;
+        }
+
+        alert("Submitted successfully!");
+    });
+});
 </script>
 
 </body>
