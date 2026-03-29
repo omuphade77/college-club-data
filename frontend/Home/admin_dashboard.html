@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        background-color: #34495e;
+    }
+    nav button {
+        background: none;
+        border: none;
+        color: white;
+        padding: 15px 25px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    nav button.active {
+        background-color: #1abc9c;
+    }
+    .tab-content {
+        display: none;
+        padding: 20px;
+        background-color: white;
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .tab-content.active {
+        display: block;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    button.submit-btn {
+        background-color: #1abc9c;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Admin Dashboard</h1>
+</header>
+
+<nav>
+    <button class="tab-btn active" data-tab="announcement">Announcement</button>
+    <button class="tab-btn" data-tab="issues">Issues</button>
+    <button class="tab-btn" data-tab="events">Upcoming Events</button>
+</nav>
+
+<div id="announcement" class="tab-content active">
+    <h2>Make an Announcement</h2>
+    <textarea placeholder="Write your announcement here..."></textarea>
+    <button class="submit-btn">Post Announcement</button>
+</div>
+
+<div id="issues" class="tab-content">
+    <h2>Issues</h2>
+    <ul>
+        <li>Issue #1: Server downtime</li>
+        <li>Issue #2: Bug in login flow</li>
+        <li>Issue #3: CSS not loading on dashboard</li>
+    </ul>
+</div>
+
+<div id="events" class="tab-content">
+    <h2>Upcoming Events</h2>
+    <ul>
+        <li>Event 1: Team meeting - 5th April 2026</li>
+        <li>Event 2: Product Launch - 15th April 2026</li>
+        <li>Event 3: Hackathon - 25th April 2026</li>
+    </ul>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
