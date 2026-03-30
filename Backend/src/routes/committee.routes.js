@@ -5,6 +5,6 @@ const { fetchCommitteeByName } = require('../controllers/committee.controller');
 
 // Route to get committee by name
 // dynamic route to fetch committee by name
-router.get('/committee/:committeename', fetchCommitteeByName);
+router.get('/:committeename', fetchCommitteeByName);
 
 module.exports = router;

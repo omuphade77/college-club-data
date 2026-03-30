@@ -1,4 +1,6 @@
-   
+   function openCommittee(name) {
+    window.location.href = `../Committee/index.html?committeeName=${name}`;
+}
 //         // Navigation
 //         function showSection(sectionId) {
 //             // Hide all sections
