@@ -1,46 +1,110 @@
+:root {
+  --bg-main: #0b0f2a;
+  --bg-card: #121735;
+  --gold: #d4af37;
+  --text-light: #e6e6e6;
+  --border: rgba(255,255,255,0.1);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'DM Sans';
+  font-family: 'DM Sans', sans-serif;
+  background: radial-gradient(circle at top, #111a3a, #050816);
+  color: var(--text-light);
 }
 
-/* Back button */
-.back-btn {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--gold);
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-bottom: 1rem;
+/* NAVBAR */
+nav {
+  padding: 1rem 2rem;
 }
 
-/* Page */
-.committee-page h1 {
-  font-size: 2.5rem;
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
   font-family: 'Playfair Display';
+  font-size: 1.5rem;
+  color: var(--gold);
 }
 
-/* Card */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+/* PAGE */
+.committee-page {
+  padding: 4rem 2rem;
+}
+
+/* Title */
+.committee-page h1 {
+  font-family: 'Playfair Display';
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.committee-page h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 10px;
+}
+
+/* CARD */
 .committee-card {
-  background: var(--bg-card);
+  max-width: 500px;
+  margin: auto;
+  background: rgba(18, 23, 53, 0.7);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border);
-  padding: 2rem;
-  border-radius: 16px;
+  padding: 2.5rem;
+  border-radius: 20px;
   text-align: center;
-  margin-top: 2rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
 
-/* Image */
+/* IMAGE */
 .image-wrapper {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  overflow: hidden;
+  width: 130px;
+  height: 130px;
   margin: auto;
-  border: 2px solid var(--gold);
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  padding: 5px;
+  background: #0b0f2a;
 }
 
 .image-wrapper img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: cover;
+}
+
+/* DESCRIPTION */
+.committee-description {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #cfcfcf;
 }
