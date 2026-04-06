@@ -92,41 +92,81 @@ function findMatch() {
 
   let interests = Array.from(selected).map(el => el.innerText.trim());
 
-  let match = "";
-  let description = "";
+  // Mapping of interest → committee
+  const mapping = {
+    "Technology": {
+      committee: "Technovanza / Community of Coders",
+      desc: "Innovation, coding and tech building "
+    },
+    "Academic Excellence": {
+      committee: "Community of Coders",
+      desc: "Coding + academics "
+    },
+    "Sports": {
+      committee: "Enthusia",
+      desc: "Sports & fitness "
+    },
+    "Arts": {
+      committee: "Rangwardhan / Pratibimb",
+      desc: "Creative arts "
+    },
+    "Performance": {
+      committee: "Rangwardhan / Pratibimb",
+      desc: "Stage & performance "
+    },
+    "Environment": {
+      committee: "Swacch VJTI",
+      desc: "Sustainability "
+    },
+    "Finance": {
+      committee: "Ecell VJTI",
+      desc: "Finance & entrepreneurship "
+    },
+    "Writing": {
+      committee: "Digital Literary Activities",
+      desc: "Writing & content "
+    },
+    "Social Media": {
+      committee: "Digital VJTI",
+      desc: "Social media & outreach "
+    },
+    "Event Planning": {
+      committee: "Technovanza / Enthusia",
+      desc: "Event management "
+    },
+    "Photography": {
+      committee: "Digital VJTI",
+      desc: "Photography "
+    }
+  };
 
-  if (interests.some(i => i.includes("Technology"))) {
-    match = "Technovanza / Community of Coders";
-    description = "Perfect for tech enthusiasts who love innovation and building things!";
-  } else if (interests.some(i => i.includes("Academic Excellence"))) {
-    match = "Community of Coders";
-    description = "Perfect for tech enthusiasts who love coding and academic growth!";
-  } else if (interests.some(i => i.includes("Sports"))) {
-    match = "Enthusia";
-    description = "Great for sports lovers and fitness enthusiasts!";
-  } else if (interests.some(i => i.includes("Arts") || i.includes("Performance"))) {
-    match = "Rangwardhan / Pratibimb";
-    description = "Ideal for creative minds passionate about arts and culture!";
-  } else if (interests.some(i => i.includes("Environment"))) {
-    match = "Swacch VJTI";
-    description = "Best for those who care about sustainability and the environment!";
-  } else if (interests.some(i => i.includes("Finance"))) {
-    match = "Ecell VJTI";
-    description = "Great for managing budgets and entrepreneurship!";
-  } else if (interests.some(i => i.includes("Writing"))) {
-    match = "Digital Literary Activities";
-    description = "Perfect for writers and literature enthusiasts!";
-  } else {
-    match = "Digital VJTI";
-    description = "Perfect for networking, entrepreneurship and outreach!";
-  }
+  let resultsHTML = "";
 
-  document.getElementById("matchedCommittee").innerText = match;
-  document.getElementById("matchDescription").innerText = description;
+  interests.forEach(interest => {
+    for (let key in mapping) {
+      if (interest.includes(key)) {
+        const data = mapping[key];
+
+        resultsHTML += `
+          <div class="match-card">
+            <h4> ${interest}</h4>
+            <p><strong>Committee:</strong> ${data.committee}</p>
+            <p>${data.desc}</p>
+          </div>
+        `;
+      }
+    }
+  });
+
+  document.getElementById("matchedCommittee").innerHTML = resultsHTML;
+  document.getElementById("matchDescription").innerText = "Based on your selected interests:";
   document.getElementById("matchResult").style.display = "block";
-  document.getElementById("matchResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
 
+  document.getElementById("matchResult").scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
 function openAdminPanel() {
   window.location.href = "../Login/admin.html";
 }
