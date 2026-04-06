@@ -1,0 +1,96 @@
+/* ── Connect Modal ── */
+.connect-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+}
+
+.connect-modal.active {
+  display: flex;
+}
+
+.connect-box {
+  background: #0f1426;
+  border: 1px solid var(--border-hover);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  padding: 1.5rem;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+  animation: slideUp 0.3s ease;
+}
+
+/* Header */
+.connect-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.connect-header h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+}
+
+/* Sections */
+.connect-section {
+  margin-bottom: 1.2rem;
+}
+
+.connect-section h3 {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.connect-section p {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin: 0.3rem 0;
+}
+
+.connect-section a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.connect-section a:hover {
+  text-decoration: underline;
+}
+
+/* Social Buttons */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.social-btn {
+  padding: 0.5rem 0.9rem;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all var(--transition);
+}
+
+.social-btn:hover {
+  background: rgba(201, 168, 76, 0.2);
+  border-color: var(--gold);
+}
+
+/* Note */
+.connect-note {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--accent-teal);
+  text-align: center;
+}

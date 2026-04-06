@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+:root {
+  --bg-primary: #0b0e1a;
+  --gold: #c9a84c;
+  --border: rgba(201, 168, 76, 0.15);
+  --border-hover: rgba(201, 168, 76, 0.5);
+  --text-primary: #f0eee6;
+  --text-secondary: #9a97a0;
+  --accent-teal: #3ecfb2;
+  --transition: 0.3s ease;
+}
+
+/* ── Connect Modal ── */
+.connect-modal {
+  position: fixed;
+  inset: 0;
+  display: flex; /* 👈 IMPORTANT FOR TESTING */
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.connect-box {
+  background: #0f1426;
+  border: 1px solid var(--border-hover);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  padding: 1.5rem;
+}
+
+/* Header */
+.connect-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.connect-header h2 {
+  color: var(--gold);
+}
+
+/* Social */
+.social-btn {
+  display: inline-block;
+  margin: 5px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+  <!-- ── Connect With Us Modal ── -->
+
+<div id="connectModal" class="connect-modal">
+  <div class="connect-box">
+    
+    <div class="connect-header">
+      <h2>Connect With Us</h2>
+      <button onclick="closeConnectModal()" class="modal-close-btn">✕</button>
+    </div>
+
+    <div class="connect-content">
+
+      <!-- Contact Info -->
+      <div class="connect-section">
+        <h3>🔗 Contact Information</h3>
+        <p>📧 Email: <a href="mailto:hello@yourwebsite.com">hello@yourwebsite.com</a></p>
+        <p>📞 Phone: +91 XXXXX XXXXX</p>
+        <p>📍 Mumbai, India</p>
+      </div>
+
+      <!-- Social Links -->
+      <div class="connect-section">
+        <h3>🌐 Social Media</h3>
+        <div class="social-links">
+          <a href="#" class="social-btn">📸 Instagram</a>
+          <a href="#" class="social-btn">💼 LinkedIn</a>
+          <a href="#" class="social-btn">📘 Facebook</a>
+          <a href="#" class="social-btn">🐦 Twitter (X)</a>
+        </div>
+      </div>
+
+      <!-- Response Note -->
+      <div class="connect-note">
+        ⏱️ We usually respond within 24 hours
+      </div>
+
+    </div>
+  </div>
+</div>  
+<script>
+ function openConnectModal() {
+  document.getElementById("connectModal").classList.add("active");
+}
+
+function closeConnectModal() {
+  document.getElementById("connectModal").classList.remove("active");
+}
+</script>
+</body>
+</html>
