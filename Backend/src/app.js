@@ -13,12 +13,15 @@ const adminRoutes = require("./routes/admin.routes");
 const committeeRoutes = require("./routes/committee.routes");
 const addupcommingEventsRoutes = require("./routes/addupcommingevents.routes");
 const addAnnouncementRoutes = require("./routes/addannouncement.route");
+const roleRoutes = require("./routes/role.routes");
+
 // Use routes
 app.use("/api/issues", issueRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/committees", committeeRoutes);
 app.use("/api/events", addupcommingEventsRoutes);
 app.use("/api/announcements", addAnnouncementRoutes);
+app.use("/api/roles", roleRoutes);
 
 
 module.exports = app;

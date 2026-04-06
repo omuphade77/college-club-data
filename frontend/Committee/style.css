@@ -100,11 +100,3 @@ nav {
   border-radius: 50%;
   object-fit: cover;
 }
-
-/* DESCRIPTION */
-.committee-description {
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #cfcfcf;
-}

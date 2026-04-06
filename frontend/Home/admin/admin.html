@@ -19,6 +19,7 @@
   <button class="tab-btn active" data-tab="announcement">Announcement</button>
   <button class="tab-btn" data-tab="issues">Issues</button>
   <button class="tab-btn" data-tab="events">Events</button>
+  <button class="tab-btn" data-tab="roles">Roles</button>
 </div>
   <!-- Announcement -->
   <div id="announcement" class="tab-content active">
@@ -76,11 +77,24 @@
     <div id="eventPreview"></div>
   </div>
 
+ <!-- Roles Tab -->
+<div id="roles" class="tab-content">    
+    <h2>Role Approval Panel</h2>
+
+    <main class="main-container">
+        <h4>Pending Requests</h4>
+
+        <!-- Requests will load here -->
+        <div id="requests" class="requests-grid"></div>
+    </main>
 </div>
+
+    
 
 <script src="admin.js"></script>
 <script src="issue.js"></script>
 <script src="addevent/addevent.js"></script>
 <script src="addannouncement/addannouncement.js"></script>
+<script src="role/role.js"></script>
 </body>
 </html>

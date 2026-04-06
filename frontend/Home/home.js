@@ -130,3 +130,7 @@ function findMatch() {
 function openAdminPanel() {
   window.location.href = "../Login/admin.html";
 }
+
+function openRoleForm() {
+  window.location.href = "addrolefromuser/role.html";
+}
