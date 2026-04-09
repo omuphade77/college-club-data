@@ -1,0 +1,154 @@
+/* ── Add Role Page ── */
+
+.role-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.role-form-container {
+  background: linear-gradient(145deg, var(--bg-card) 0%, #0e1225 100%);
+  padding: 35px;
+  border-radius: 18px;
+  width: 400px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+  border: 1px solid rgba(201,168,76,0.2);
+  transition: box-shadow 0.4s ease;
+  animation: fadeUp 0.6s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.role-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.role-form-container:hover {
+  box-shadow: 0 0 30px rgba(201,168,76,0.12), 0 10px 50px rgba(0,0,0,0.6);
+}
+
+.role-form-container h1 {
+  text-align: center;
+  margin-bottom: 28px;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.role-form-container input,
+.role-form-container select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  margin: 8px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(201,168,76,0.25);
+  background: #151a2f;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  outline: none;
+  font-family: var(--font-body);
+  appearance: none;
+}
+
+.role-form-container input::placeholder {
+  color: var(--text-secondary);
+}
+
+.role-form-container input:focus,
+.role-form-container select:focus {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.05);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+}
+
+.role-form-container select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23c9a84c' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
+  padding-right: 40px;
+}
+
+.role-form-container select option {
+  background-color: #0f1426;
+  color: var(--text-primary);
+}
+
+.role-submit-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none;
+  color: #0b0e1a;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.role-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+.role-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(201,168,76,0.45);
+}
+
+.role-submit-btn:hover::before {
+  left: 100%;
+}
+
+.role-submit-btn:active {
+  transform: translateY(0);
+}
+
+.role-back-link {
+  display: block;
+  text-align: center;
+  margin-top: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  transition: color var(--transition);
+}
+
+.role-back-link:hover {
+  color: var(--gold);
+}
+
+/* ── Responsive ── */
+@media (max-width: 450px) {
+  .role-form-container {
+    width: 100%;
+    padding: 25px;
+  }
+}

@@ -1,0 +1,264 @@
+/* ── Admin Dashboard ── */
+
+.admin-dashboard {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  animation: fadeIn 0.5s ease;
+}
+
+.admin-dashboard .tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0b0e1a;
+  border-color: var(--gold);
+  font-weight: 600;
+}
+
+.tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+.tab-btn:hover:not(.active) {
+  border-color: var(--gold-dim);
+  color: var(--text-primary);
+  background: rgba(201,168,76,0.06);
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Admin Inputs ── */
+.admin-dashboard input,
+.admin-dashboard textarea,
+.admin-dashboard select {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: #0f1426;
+  border: 1px solid var(--border);
+  color: white;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.admin-dashboard input:focus,
+.admin-dashboard textarea:focus,
+.admin-dashboard select:focus {
+  border-color: var(--gold-dim);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+}
+
+.admin-dashboard select option {
+  background: #0f1426;
+  color: var(--text-primary);
+}
+
+.admin-submit-btn {
+  margin-top: 15px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #0b0e1a;
+  font-weight: 700;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: all var(--transition);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.admin-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(201, 168, 76, 0.35);
+}
+
+.admin-submit-btn:hover::before {
+  left: 100%;
+}
+
+/* ── Issue Cards ── */
+.issue-list {
+  margin-top: 20px;
+  display: grid;
+  gap: 15px;
+}
+
+.issue-item {
+  background: linear-gradient(145deg, #0f1426, #0b0e1a);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.issue-item:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.issue-item h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.issue-item p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Event Preview ── */
+.event-preview {
+  background: linear-gradient(145deg, #111622, #0c0f1a);
+  padding: 18px;
+  margin-top: 15px;
+  border-radius: 12px;
+  color: white;
+  border: 1px solid var(--border);
+  animation: fadeIn 0.3s ease;
+}
+
+.event-preview h3 {
+  font-family: var(--font-display);
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.event-preview p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin: 0.2rem 0;
+}
+
+/* ── Role Request Cards ── */
+.requests-grid {
+  display: grid;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.request-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.request-card:hover {
+  border-color: var(--gold-dim);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.request-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.request-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.2rem 0;
+}
+
+.request-card .actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.request-card .actions button {
+  padding: 0.5rem 1.15rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  transition: all var(--transition);
+}
+
+.request-card .actions button:first-child:hover {
+  border-color: var(--accent-teal);
+  background: rgba(62, 207, 178, 0.08);
+  color: var(--accent-teal);
+}
+
+.request-card .actions button:last-child:hover {
+  border-color: var(--accent-rose);
+  background: rgba(232, 85, 122, 0.08);
+  color: var(--accent-rose);
+}
+
+.admin-pending-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
