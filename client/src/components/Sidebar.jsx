@@ -25,8 +25,15 @@ export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
               <Link to="/add-role" onClick={onClose}>🎯 Add your Role</Link>
             </li>
             <li>
-              <Link to="/admin-login" onClick={onClose}>🛡️ Admin Panel</Link>
-            </li>
+  <a
+    href="/admin-login"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={onClose}
+  >
+    🛡️ Admin Panel
+  </a>
+</li>
             <li>
               <Link to="/connect" onClick={onClose}>📞 Connect with us</Link>
             </li>
