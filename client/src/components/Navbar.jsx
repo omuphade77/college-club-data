@@ -10,17 +10,6 @@ export default function Navbar({ onToggleSidebar, sidebarOpen }) {
       <div className="nav-container">
         <Link to="/" className="logo">CommitteHub</Link>
 
-        <button
-          className={`hamburger ${sidebarOpen ? 'open' : ''}`}
-          onClick={onToggleSidebar}
-          aria-label="Toggle menu"
-          aria-expanded={sidebarOpen}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
         {isHome && (
           <ul className="nav-links">
             <li><Link to="/" className="active">Home</Link></li>
@@ -35,6 +24,17 @@ export default function Navbar({ onToggleSidebar, sidebarOpen }) {
             <li><Link to="/">Home</Link></li>
           </ul>
         )}
+
+        <button
+          className={`hamburger ${sidebarOpen ? 'open' : ''}`}
+          onClick={onToggleSidebar}
+          aria-label="Toggle menu"
+          aria-expanded={sidebarOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
   );

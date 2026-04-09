@@ -4,7 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(11, 14, 26, 0.88);
+  background: rgba(0, 51, 102, 0.75);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   border-bottom: 1px solid var(--border);
@@ -24,7 +24,7 @@
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -67,7 +67,7 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background: var(--gold);
+  background: var(--accent-cyan);
   transition: width var(--transition), left var(--transition);
   border-radius: 1px;
 }
@@ -81,8 +81,8 @@
 .nav-links li a:hover,
 .nav-links li a.active,
 .nav-links li button:hover {
-  color: var(--gold);
-  background: rgba(201, 168, 76, 0.08);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* ── Hamburger ── */
@@ -102,14 +102,14 @@
 }
 
 .hamburger:hover {
-  background: rgba(201, 168, 76, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .hamburger span {
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--gold);
+  background: var(--text-primary);
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
@@ -134,7 +134,7 @@
     top: 68px;
     left: 0;
     right: 0;
-    background: rgba(11, 14, 26, 0.98);
+    background: rgba(0, 51, 102, 0.98);
     padding: 1rem;
     flex-direction: column;
     border-bottom: 1px solid var(--border);

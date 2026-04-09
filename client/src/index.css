@@ -3,32 +3,27 @@
    Aesthetic: Dark editorial with gold accents
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700;800&display=swap');
 
 /* ── CSS Variables ── */
 :root {
-  --bg-primary:     #0b0e1a;
-  --bg-card:        #12162a;
-  --bg-card-hover:  #171c34;
-  --gold:           #c9a84c;
-  --gold-light:     #e8c97a;
-  --gold-dim:       #7a6030;
-  --text-primary:   #f0eee6;
-  --text-secondary: #9a97a0;
-  --text-muted:     #5a5868;
-  --accent-teal:    #3ecfb2;
-  --accent-rose:    #e8557a;
-  --rust:           #c94c2e;
-  --rust-dark:      #9e3a21;
-  --border:         rgba(201, 168, 76, 0.15);
-  --border-hover:   rgba(201, 168, 76, 0.5);
-  --shadow-card:    0 8px 40px rgba(0,0,0,0.5);
-  --shadow-glow:    0 0 30px rgba(201, 168, 76, 0.12);
-  --radius:         14px;
-  --radius-sm:      8px;
-  --transition:     0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font-display:   'Playfair Display', serif;
-  --font-body:      'DM Sans', sans-serif;
+  --bg-gradient:    linear-gradient(135deg, #003366, #35424A, #6C5B7F);
+  --bg-card:        rgba(255, 255, 255, 0.1);
+  --bg-card-hover:  rgba(255, 255, 255, 0.15);
+  --text-primary:   #ffffff;
+  --text-secondary: #D9D9D9;
+  --text-muted:     #A4A4A4;
+  --accent-cyan:    #F8B400;
+  --accent-blue:    #B3C7E6;
+  --border:         rgba(255, 255, 255, 0.2);
+  --border-hover:   rgba(255, 255, 255, 0.3);
+  --shadow-card:    0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-glow:    0 0 20px rgba(255, 255, 255, 0.2);
+  --radius:         18px;
+  --radius-sm:      10px;
+  --transition:     0.3s ease;
+  --font-display:   'Poppins', sans-serif;
+  --font-body:      'Inter', sans-serif;
 }
 
 /* ── Reset & Base ── */
@@ -44,7 +39,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--bg-primary);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
@@ -74,9 +70,9 @@ img {
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.5); }
 
 /* ── Global Animations ── */
 @keyframes fadeIn {
@@ -105,8 +101,8 @@ img {
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.08); }
-  50%      { box-shadow: 0 0 35px rgba(201,168,76,0.18); }
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.08); }
+  50%      { box-shadow: 0 0 35px rgba(255, 255, 255, 0.18); }
 }
 
 @keyframes gradientShift {
@@ -142,7 +138,7 @@ img {
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--gold), transparent);
+  background: linear-gradient(90deg, var(--accent-cyan), transparent);
   border-radius: 2px;
 }
 
@@ -212,9 +208,9 @@ img {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--gold-dim);
-  background: rgba(201, 168, 76, 0.04);
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08);
+  border-color: var(--accent-cyan);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 3px rgba(248, 180, 0, 0.15);
 }
 
 .form-group select {
