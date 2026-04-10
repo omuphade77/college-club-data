@@ -4,7 +4,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(0, 51, 102, 0.75);
+  background: var(--bg-card);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   border-bottom: 1px solid var(--border);
@@ -140,7 +140,7 @@
     top: 68px;
     left: 0;
     right: 0;
-    background: rgba(0, 51, 102, 0.98);
+    background: var(--bg-card);
     padding: 1rem;
     flex-direction: column;
     border-bottom: 1px solid var(--border);

@@ -91,6 +91,7 @@ export default function MatchPage() {
         {results && (
           <div className="match-result" ref={resultRef}>
             <h3>Your Perfect Match!</h3>
+            <p className="match-result-desc">Based on your selected interests:</p>
             <div>
               {results.map((r, i) => (
                 <div key={i} className="match-card">
@@ -100,7 +101,6 @@ export default function MatchPage() {
                 </div>
               ))}
             </div>
-            <p className="match-result-desc">Based on your selected interests:</p>
           </div>
         )}
       </div>

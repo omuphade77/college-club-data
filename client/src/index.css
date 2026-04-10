@@ -7,18 +7,25 @@
 
 /* ── CSS Variables ── */
 :root {
-  --bg-gradient:    #003366;
-  --bg-card:        rgba(179, 199, 230, 0.1);
-  --bg-card-hover:  rgba(179, 199, 230, 0.2);
-  --text-primary:   #FFFFFF;
-  --text-secondary: #D9D9D9;
-  --text-muted:     #A4A4A4;
-  --accent-cyan:    #B3C7E6;
-  --accent-blue:    #B3C7E6;
-  --border:         rgba(217, 217, 217, 0.2);
-  --border-hover:   rgba(217, 217, 217, 0.4);
+  --bg-gradient: 
+    radial-gradient(at 20% 30%, #5AC8D8 0px, transparent 50%),
+    radial-gradient(at 70% 60%, #FEE140 0px, transparent 50%),
+    radial-gradient(at 90% 10%, #FA709A 0px, transparent 50%),
+    radial-gradient(at 10% 90%, #F9D423 0px, transparent 50%),
+    radial-gradient(at 80% 90%, #4FACFE 0px, transparent 50%),
+    #F3A183;
+  --bg-card:        rgba(255, 255, 255, 0.4);
+  --bg-card-hover:  rgba(255, 255, 255, 0.6);
+  --text-primary:   #111111;
+  --text-secondary: #444444;
+  --text-muted:     #666666;
+  --accent-cyan:    #4FACFE;
+  --accent-blue:    #FA709A;
+  --border:         rgba(255, 255, 255, 0.4);
+  --border-hover:   rgba(255, 255, 255, 0.8);
   --shadow-card:    0 8px 32px rgba(0, 0, 0, 0.1);
-  --shadow-glow:    0 0 20px rgba(179, 199, 230, 0.2);
+  --shadow-glow:    0 0 20px rgba(255, 255, 255, 0.5);
+  --button-hover:   #FEE140;
   --radius:         18px;
   --radius-sm:      10px;
   --transition:     0.3s ease;
@@ -188,7 +195,7 @@ img {
 .form-group select,
 .form-group textarea {
   width: 100%;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.4);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 0.75rem 1rem;
@@ -209,20 +216,20 @@ img {
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--accent-cyan);
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 0 0 3px rgba(248, 180, 0, 0.15);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 .form-group select {
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23A4A4A4' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23444444' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;
 }
 
 .form-group select option {
-  background: #003366;
+  background: #FFFFFF;
   color: var(--text-primary);
 }
 

@@ -56,7 +56,7 @@
   border-radius: 12px;
   border: 1px solid rgba(201,168,76,0.25);
   background: #151a2f;
-  color: var(--text-primary);
+  color: #FFFFFF;
   font-size: 0.95rem;
   transition: all 0.3s;
   outline: none;
@@ -65,7 +65,7 @@
 }
 
 .role-form-container input::placeholder {
-  color: var(--text-secondary);
+  color: #FFFFFF;
 }
 
 .role-form-container input:focus,
@@ -86,7 +86,7 @@
 
 .role-form-container select option {
   background-color: #0f1426;
-  color: var(--text-primary);
+  color: #FFFFFF;
 }
 
 .role-submit-btn {

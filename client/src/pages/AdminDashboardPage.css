@@ -96,7 +96,7 @@
 
 .admin-dashboard select option {
   background: #0f1426;
-  color: var(--text-primary);
+  color: #FFFFFF;
 }
 
 .admin-submit-btn {
@@ -161,13 +161,13 @@
 .issue-item h3 {
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #FFFFFF;
   margin-bottom: 6px;
 }
 
 .issue-item p {
   font-size: 0.88rem;
-  color: var(--text-secondary);
+  color: #FFFFFF;
   line-height: 1.5;
 }
 
