@@ -99,14 +99,7 @@
   margin: 0.5rem 1.5rem;
 }
 
-.sidebar-nav .issue-btn {
-  color: #f4a261 !important;
-}
 
-.sidebar-nav .issue-btn:hover {
-  background: rgba(244, 162, 97, 0.08) !important;
-  border-left-color: #f4a261 !important;
-}
 
 .sidebar-link-inner {
   color: inherit;
