@@ -5,6 +5,12 @@
   padding-bottom: 3rem;
 }
 
+.events-page .tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .events-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

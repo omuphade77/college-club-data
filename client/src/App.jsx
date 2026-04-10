@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import IssueModal from './components/IssueModal';
-
 import HomePage from './pages/HomePage';
 import EventsPage from './pages/EventsPage';
 import AnnouncementsPage from './pages/AnnouncementsPage';
