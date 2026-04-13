@@ -1,0 +1,372 @@
+/* ── Student Login Page ── */
+
+.student-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0f;
+}
+
+/* Animated gradient orbs */
+.student-login-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(79, 172, 254, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 20%, rgba(250, 112, 154, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(254, 225, 64, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  animation: orbFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.1) rotate(3deg); }
+}
+
+/* Subtle grid overlay */
+.student-login-page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+/* Back link */
+.student-back-link {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s, transform 0.3s;
+  z-index: 10;
+  font-family: var(--font-body);
+}
+
+.student-back-link:hover {
+  color: rgba(255, 255, 255, 0.7);
+  transform: translateX(-3px);
+}
+
+/* Login container */
+.student-login-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 24px 80px rgba(0, 0, 0, 0.4);
+  animation: fadeUp 0.8s ease both;
+}
+
+/* Glow border effect */
+.student-login-container::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, rgba(79,172,254,0.15), transparent 40%, transparent 60%, rgba(250,112,154,0.15));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.student-login-container:hover::before {
+  opacity: 1;
+}
+
+/* Header section */
+.student-login-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.student-login-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(79,172,254,0.15), rgba(250,112,154,0.15));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.6rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.student-login-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(79, 172, 254, 0.7);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.student-login-header h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #f0f0f5;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.student-login-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Divider */
+.student-login-divider {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(79,172,254,0.6), rgba(250,112,154,0.6));
+  margin: 0 auto 2rem;
+  border-radius: 2px;
+}
+
+/* Form styles */
+.student-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.student-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.student-form-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 500;
+}
+
+.student-form-input-wrapper {
+  position: relative;
+}
+
+.student-form-input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  opacity: 0.4;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.student-form-input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #f0f0f5;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.student-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.18);
+  font-size: 0.85rem;
+}
+
+.student-form-input:focus {
+  border-color: rgba(79, 172, 254, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.08);
+}
+
+.student-form-input:focus ~ .student-form-input-icon,
+.student-form-input:not(:placeholder-shown) ~ .student-form-input-icon {
+  opacity: 0.7;
+}
+
+/* Submit button */
+.student-login-btn {
+  width: 100%;
+  padding: 0.95rem;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, #4FACFE 0%, #00f2fe 100%);
+  color: #0a0a0f;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.3s;
+}
+
+.student-login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.student-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(79, 172, 254, 0.35);
+}
+
+.student-login-btn:hover::before {
+  left: 100%;
+}
+
+.student-login-btn:active {
+  transform: translateY(0);
+}
+
+.student-login-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error message */
+.student-login-error {
+  background: rgba(255, 82, 82, 0.08);
+  border: 1px solid rgba(255, 82, 82, 0.2);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #ff7b7b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Success message */
+.student-login-success {
+  background: rgba(82, 255, 168, 0.08);
+  border: 1px solid rgba(82, 255, 168, 0.2);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #7bffb7;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Footer section */
+.student-login-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.student-login-footer p {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.student-login-footer a {
+  color: #4FACFE;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.student-login-footer a:hover {
+  color: #00f2fe;
+}
+
+/* VJTI badge */
+.vjti-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+}
+
+.vjti-badge span {
+  font-size: 0.75rem;
+}
+
+/* Loading spinner */
+.student-btn-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.student-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(10, 10, 15, 0.2);
+  border-top-color: #0a0a0f;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .student-login-container {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .student-login-header h1 {
+    font-size: 1.6rem;
+  }
+}

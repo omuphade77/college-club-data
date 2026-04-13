@@ -14,7 +14,7 @@ const committeeRoutes = require("./routes/committee.routes");
 const addupcommingEventsRoutes = require("./routes/addupcommingevents.routes");
 const addAnnouncementRoutes = require("./routes/addannouncement.route");
 const roleRoutes = require("./routes/role.routes");
-
+const authRoutes = require("./routes/auth.routes");
 // Use routes
 app.use("/api/issues", issueRoutes);
 app.use("/api/admin", adminRoutes);
@@ -22,6 +22,6 @@ app.use("/api/committees", committeeRoutes);
 app.use("/api/events", addupcommingEventsRoutes);
 app.use("/api/announcements", addAnnouncementRoutes);
 app.use("/api/roles", roleRoutes);
-
+app.use("/api/auth", authRoutes);
 
 module.exports = app;

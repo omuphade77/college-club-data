@@ -8,11 +8,13 @@ const {
     rejectRequest,
     getMembers
 } = require('../controllers/role.controller');
+const { verifyStudentToken } = require('../middlewares/student.middleware');
+const { verifyAdminToken } = require('../middlewares/auth.middleware');
 
-router.post("/request", createRoleRequest);
-router.get("/pending", getPendingRequests);
-router.post("/approve/:id", approveRequest);
-router.post("/reject/:id", rejectRequest);
-router.get("/members", getMembers);
+router.post("/request", verifyStudentToken, createRoleRequest);
+router.get("/pending", verifyAdminToken, getPendingRequests);
+router.post("/approve/:id", verifyAdminToken, approveRequest);
+router.post("/reject/:id", verifyAdminToken, rejectRequest);
+router.get("/members", verifyStudentToken, getMembers);
 
 module.exports = router;

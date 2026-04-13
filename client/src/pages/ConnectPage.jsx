@@ -99,7 +99,7 @@ export default function ConnectPage() {
           )}
         </div>
 
-        <Link to="/" className="connect-back-link">← Back to Home</Link>
+        <Link to="/home" className="connect-back-link">← Back to Home</Link>
       </div>
     </div>
   );

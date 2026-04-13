@@ -18,11 +18,11 @@ export default function Navbar({ onToggleSidebar, sidebarOpen }) {
             <span></span>
             <span></span>
           </button>
-          <Link to="/" className="logo">CommitteHub</Link>
+          <Link to="/home" className="logo">CommitteHub</Link>
         </div>
 
         <ul className="nav-links">
-          <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
+          <li><Link to="/home" className={location.pathname === '/home' ? 'active' : ''}>Home</Link></li>
           <li><Link to="/announcements" className={location.pathname === '/announcements' ? 'active' : ''}>Announcements</Link></li>
           <li><Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>Events</Link></li>
           <li><Link to="/match" className={location.pathname === '/match' ? 'active' : ''}>Your Match</Link></li>

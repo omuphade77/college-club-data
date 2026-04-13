@@ -13,6 +13,8 @@ import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import AddRolePage from './pages/AddRolePage';
 import ConnectPage from './pages/ConnectPage';
+import StudentLogin from './pages/StudentLogin';
+import StudentRegister from './pages/StudentRegister';
 
 function AppContent() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -20,7 +22,7 @@ function AppContent() {
   const location = useLocation();
 
   // Pages that should NOT show navbar/sidebar
-  const hideNavPages = ['/admin-login'];
+  const hideNavPages = ['/admin-login', '/login', '/register', '/'];
   const showNav = !hideNavPages.includes(location.pathname);
 
   return (
@@ -46,7 +48,10 @@ function AppContent() {
       />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<StudentLogin />} />
+        <Route path="/login" element={<StudentLogin />} />
+        <Route path="/register" element={<StudentRegister />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/announcements" element={<AnnouncementsPage />} />
         <Route path="/match" element={<MatchPage />} />
@@ -55,6 +60,7 @@ function AppContent() {
         <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
         <Route path="/add-role" element={<AddRolePage />} />
         <Route path="/connect" element={<ConnectPage />} />
+
       </Routes>
     </>
   );

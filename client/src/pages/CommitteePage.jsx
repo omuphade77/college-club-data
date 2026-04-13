@@ -33,7 +33,7 @@ export default function CommitteePage() {
     return (
       <div className="container committee-detail">
         <div className="empty-state">
-          <p>No committee selected. <Link to="/" className="gold-link">Go back home</Link></p>
+          <p>No committee selected. <Link to="/home" className="gold-link">Go back home</Link></p>
         </div>
       </div>
     );
