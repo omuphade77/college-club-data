@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./StudentRegister.css";
 
+const API_BASE = "https://college-club-data.onrender.com/api";
+
+
 export default function StudentRegister() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -53,7 +56,7 @@ export default function StudentRegister() {
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:3000/api/auth/register", {
+      await axios.post(`${API_BASE}/auth/register`, {
         email,
         password,
       });
