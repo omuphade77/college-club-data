@@ -1,5 +1,4 @@
-const API_BASE = 'https://college-club-data.onrender.com/api';
-
+const API_BASE = import.meta.env.VITE_API_BASE;
 // Helper: get student auth headers
 const studentHeaders = () => {
   const token = localStorage.getItem('token');
