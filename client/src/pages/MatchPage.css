@@ -208,10 +208,15 @@
   box-shadow: none;
 }
 
-.clickable-card {
+.committee-link {
+  color: var(--gold);
   cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--transition), color var(--transition);
 }
 
-.clickable-card:hover {
-  border-color: var(--gold);
+.committee-link:hover {
+  text-decoration-color: var(--gold);
+  color: var(--gold-light);
 }

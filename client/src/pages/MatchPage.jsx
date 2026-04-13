@@ -75,12 +75,10 @@ export default function MatchPage() {
     <div className="container match-page">
       <div className="match-container">
         <h1 className="section-title">Find Your Committee Match</h1>
-
         <div className="match-intro">
-          <h3>🎯 Discover Your Perfect Committee</h3>
+          <h3> Discover Your Perfect Committee</h3>
           <p>Select your interests and we'll match you with the best committee for you!</p>
         </div>
-
         <div className="interests-grid">
           {interestsList.map(interest => (
             <div
@@ -97,16 +95,28 @@ export default function MatchPage() {
           <button className="match-button" onClick={findMatch}>Find My Match!</button>
           <button className="match-button clear-button" onClick={clearSelection}>Clear</button>
         </div>
-
         {results && (
           <div className="match-result" ref={resultRef}>
             <h3>Your Perfect Match!</h3>
             <p className="match-result-desc">Based on your selected interests:</p>
             <div>
               {results.map((r, i) => (
-                <div key={i} className="match-card clickable-card" onClick={() => navigate(`/committee?committeeName=${encodeURIComponent(r.committee.split(' / ')[0])}`)}>
+                <div key={i} className="match-card">
                   <h4>{r.interest}</h4>
-                  <p><strong>Committee:</strong> {r.committee}</p>
+                  <p>
+                    <strong>Committee:</strong>{' '}
+                    {r.committee.split(' / ').map((c, idx, arr) => (
+                      <span key={idx}>
+                        <span 
+                          className="committee-link" 
+                          onClick={() => navigate(`/committee?committeeName=${encodeURIComponent(c)}`)}
+                        >
+                          {c}
+                        </span>
+                        {idx < arr.length - 1 ? ' / ' : ''}
+                      </span>
+                    ))}
+                  </p>
                   <p>{r.desc}</p>
                 </div>
               ))}

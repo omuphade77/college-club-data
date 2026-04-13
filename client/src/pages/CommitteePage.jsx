@@ -58,16 +58,18 @@ export default function CommitteePage() {
         <>
           <h1 className="section-title">{committee?.committee_name || committeeName}</h1>
 
-          <div className="committee-detail-card">
-            {committee?.committee_logo_url && (
-              <div className="detail-image-wrapper">
-                <img src={committee.committee_logo_url} alt={committee.committee_name} />
-              </div>
-            )}
-            {committee?.committee_description && (
-              <div className="committee-desc-text">{committee.committee_description}</div>
-            )}
-          </div>
+          {(committee?.committee_logo_url || committee?.committee_description) && (
+            <div className="committee-detail-card">
+              {committee?.committee_logo_url && (
+                <div className="detail-image-wrapper">
+                  <img src={committee.committee_logo_url} alt={committee.committee_name} />
+                </div>
+              )}
+              {committee?.committee_description && (
+                <div className="committee-desc-text">{committee.committee_description}</div>
+              )}
+            </div>
+          )}
 
           <div className="members-title-wrapper">
             <h2 className="members-title">Members</h2>
