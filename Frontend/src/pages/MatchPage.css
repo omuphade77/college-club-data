@@ -1,222 +1,337 @@
-/* ── Match Page ── */
+/* ── Match Page: Formal Dashboard UI ── */
 
 .match-page {
-  padding-top: 2.5rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  background-color: var(--bg-body, #f4f6fa); /* Fallback light formal gray */
+  color: #1e293b;
 }
 
 .match-container {
-  max-width: 760px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.match-intro {
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,168,76,0.04) 100%);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  margin-bottom: 2rem;
+/* ── Banner Section ── */
+.dashboard-banner {
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  border-radius: 20px 20px 0 0;
+  padding: 2.5rem 3rem;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.2);
 }
 
-.match-intro::before {
+/* Abstract shapes for banner decor */
+.dashboard-banner::before {
   content: '';
   position: absolute;
   top: -50%;
-  right: -30%;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+  border-radius: 50%;
   pointer-events: none;
 }
 
-.match-intro h3 {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.match-intro p {
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-}
-
-.interests-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-bottom: 2rem;
-}
-
-.interest-tag {
-  padding: 0.55rem 1.2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-  transition: all var(--transition);
-  user-select: none;
-  position: relative;
-  overflow: hidden;
-}
-
-.interest-tag::before {
-  content: '';
+/* Subtle wave decoration inside banner */
+.banner-decor {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(201,168,76,0.15) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity var(--transition);
+  top: -30px;
+  right: 15%;
+  width: 150px;
+  height: 80px;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M0,25 Q25,0 50,25 T100,25 L100,0 L0,0 Z" fill="rgba(255,255,255,0.05)"/></svg>') no-repeat right top;
+  background-size: cover;
+  pointer-events: none;
 }
 
-.interest-tag:hover {
-  border-color: var(--gold-dim);
-  color: var(--text-primary);
+.banner-content {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-content h2 {
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.banner-content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* ── Content Section ── */
+.dashboard-content {
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.section-heading {
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: 1.25rem;
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badge {
+  background: #eef2ff;
+  color: #6366f1;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+/* ── Interests Grid ── */
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.interest-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.interest-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   transform: translateY(-2px);
 }
 
-.interest-tag:hover::before {
-  opacity: 1;
+.interest-card.selected {
+  border-color: #6c5ce7;
+  background: #f8f7ff;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.08);
 }
 
-.interest-tag.selected {
-  background: rgba(201, 168, 76, 0.12);
-  border-color: var(--gold);
-  color: var(--gold);
-  box-shadow: 0 0 15px rgba(201, 168, 76, 0.1);
+.interest-check {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
-.interest-tag.selected::before {
-  opacity: 1;
+.interest-card.selected .interest-check {
+  background: #6c5ce7;
+  border-color: #6c5ce7;
+  color: white;
 }
 
-.match-button {
-  display: inline-block;
-  padding: 0.85rem 2.5rem;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: #0b0e1a;
-  border: none;
-  border-radius: 8px;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all var(--transition);
-  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
-  position: relative;
+.interest-check svg {
+  width: 12px;
+  height: 12px;
+}
+
+.interest-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #334155;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.match-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  transition: left 0.5s ease;
+.interest-card.selected .interest-name {
+  color: #1e293b;
+  font-weight: 600;
 }
 
-.match-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 35px rgba(201, 168, 76, 0.5);
-}
-
-.match-button:hover::before {
-  left: 100%;
-}
-
-.match-button:active {
-  transform: translateY(0);
-}
-
-.match-result {
-  margin-top: 2rem;
-  padding: 1.75rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-hover);
-  border-radius: var(--radius);
-  animation: fadeIn 0.4s ease;
-}
-
-.match-result h3 {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  color: var(--gold);
-  margin-bottom: 0.75rem;
-}
-
-.match-result-desc {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-top: 1rem;
-}
-
-.match-card {
-  background: rgba(201, 168, 76, 0.05);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 0.75rem;
-  transition: border-color var(--transition), transform var(--transition);
-}
-
-.match-card:hover {
-  border-color: var(--gold-dim);
-  transform: translateX(4px);
-}
-
-.match-card h4 {
-  font-family: var(--font-display);
-  color: var(--text-primary);
-  margin-bottom: 0.3rem;
-}
-
-.match-card p {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-}
-
+/* ── Actions ── */
 .match-actions {
   display: flex;
   gap: 1rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: #6c5ce7;
+  color: white;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.25);
+}
+
+.btn-primary:hover {
+  background: #5b4dd6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.btn-secondary:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+/* ── Results List ── */
+.results-section {
+  animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.results-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Style mimics the list items under "My Colleges" in the reference image */
+.college-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.college-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+  transform: translateY(-2px);
+  border-color: #e2e8f0;
+}
+
+.card-logo-placeholder {
+  width: 48px;
+  height: 48px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #a29bfe;
+  flex-shrink: 0;
+  margin-right: 1.25rem;
 }
 
-.clear-button {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  box-shadow: none;
+.card-details {
+  flex: 1;
 }
 
-.clear-button::before {
-  display: none;
-}
-
-.clear-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-3px);
-  box-shadow: none;
+.card-details h4 {
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
 }
 
 .committee-link {
-  color: var(--gold);
+  color: inherit;
   cursor: pointer;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: text-decoration-color var(--transition), color var(--transition);
+  transition: color 0.2s;
 }
 
 .committee-link:hover {
-  text-decoration-color: var(--gold);
-  color: var(--gold-light);
+  color: #6c5ce7;
+  text-decoration: underline;
 }
+
+.card-location {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.card-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  margin-left: 1rem;
+}
+
+.status-interested {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .dashboard-banner {
+    padding: 2rem 1.5rem;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .dashboard-content {
+    padding: 1.5rem 1rem;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .interests-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .college-card {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .card-status {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .interests-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

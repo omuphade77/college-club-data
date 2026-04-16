@@ -58,22 +58,64 @@ export default function HomePage() {
 
   return (
     <div className="container home-page">
-      <h1 className="section-title">Our Committees</h1>
-      <div className="committees-grid">
-        {committees.map((c, i) => (
-          <div
-            key={c.name}
-            className="committee-box"
-            onClick={() => openCommittee(c.name)}
-            style={{ animationDelay: `${i * 0.07}s` }}
-          >
-            <div className="image-wrapper">
-              <img src={c.img} alt={c.name} />
-            </div>
-            <div className="committee-name">{c.name}</div>
-            <div className="committee-description">{c.desc}</div>
+      <div className="home-dashboard">
+        
+        {/* Banner Section */}
+        <div className="dashboard-banner">
+          <div className="banner-content">
+            <h2>Welcome to CommitteeHub</h2>
+            <p>Discover, explore, and join the best organizations on campus.</p>
           </div>
-        ))}
+          <div className="banner-decor"></div>
+        </div>
+
+        {/* Dashboard Content */}
+        <div className="dashboard-content">
+          
+          {/* Stats Row */}
+          <div className="stats-row">
+            <div className="stat-card">
+              <div className="stat-icon">🎓</div>
+              <div className="stat-info">
+                <h3>{committees.length}</h3>
+                <p>Active Committees</p>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon">✅</div>
+              <div className="stat-info">
+                <h3>Open</h3>
+                <p>Registrations</p>
+              </div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-icon">📅</div>
+              <div className="stat-info">
+                <h3>Upcoming</h3>
+                <p>Campus Events</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="section-heading">Popular Committees</h3>
+          
+          <div className="committees-grid">
+            {committees.map((c, i) => (
+              <div
+                key={c.name}
+                className="committee-card"
+                onClick={() => openCommittee(c.name)}
+                style={{ animationDelay: `${i * 0.05}s` }}
+              >
+                <div className="image-wrapper">
+                  <img src={c.img} alt={c.name} />
+                </div>
+                <h4 className="committee-name">{c.name}</h4>
+                <p className="committee-desc">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
