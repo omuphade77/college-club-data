@@ -295,6 +295,24 @@
   animation: fadeIn 0.3s ease;
 }
 
+/* Forgot password link */
+.student-forgot-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.student-forgot-link a {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  letter-spacing: 0.03em;
+}
+
+.student-forgot-link a:hover {
+  color: #4FACFE;
+}
+
 /* Footer section */
 .student-login-footer {
   text-align: center;

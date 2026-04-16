@@ -116,6 +116,10 @@ export default function StudentLogin() {
           </button>
         </form>
 
+        <div className="student-forgot-link">
+          <Link to="/forgot-password">Forgot your password?</Link>
+        </div>
+
         <div className="student-login-footer">
           <p>Don&apos;t have an account? <Link to="/register">Create one</Link></p>
           <div className="vjti-badge">

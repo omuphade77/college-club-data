@@ -15,6 +15,7 @@ const addupcommingEventsRoutes = require("./routes/addupcommingevents.routes");
 const addAnnouncementRoutes = require("./routes/addannouncement.route");
 const roleRoutes = require("./routes/role.routes");
 const authRoutes = require("./routes/auth.routes");
+
 // Use routes
 app.use("/api/issues", issueRoutes);
 app.use("/api/admin", adminRoutes);

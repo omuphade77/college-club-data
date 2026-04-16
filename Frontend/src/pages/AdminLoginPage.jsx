@@ -29,7 +29,7 @@ export default function AdminLoginPage() {
 
   return (
     <div className="admin-login-page">
-      <Link to="/" className="back-link">← Back</Link>
+      <Link to="/home" className="back-link">← Back</Link>
 
       <div className="admin-box">
         <span className="shield-icon">🛡️</span>
