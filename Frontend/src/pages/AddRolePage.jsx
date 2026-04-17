@@ -89,7 +89,7 @@ export default function AddRolePage() {
           <button type="submit" className="role-submit-btn">Submit Request</button>
         </form>
 
-        <Link to="/" className="role-back-link">← Back to Home</Link>
+        <Link to="/home" className="role-back-link">← Back to Home</Link>
       </div>
     </div>
   );

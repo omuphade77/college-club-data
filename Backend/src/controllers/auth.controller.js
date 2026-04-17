@@ -3,12 +3,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/env");
 const crypto = require("crypto");
-// 🔐 REGISTER
+//  REGISTER
 const registerStudent = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // ✅ Allow only VJTI email (any subdomain)
+    //  Allow only VJTI email (any subdomain)
     const regex = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9.-]+\.)?vjti\.ac\.in$/;
 
     if (!regex.test(email)) {

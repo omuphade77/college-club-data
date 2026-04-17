@@ -87,7 +87,7 @@ export default function HomePage() {
                 <h3>Open</h3>
                 <p>Registrations</p>
               </div>
-            </div>
+            </div> 
             <div className="stat-card">
               <div className="stat-icon">📅</div>
               <div className="stat-info">
