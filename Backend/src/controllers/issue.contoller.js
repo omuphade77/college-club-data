@@ -1,11 +1,11 @@
 const { sql } = require("../db/db");
 
 async function createIssue(req, res) {
-  const { title, description } = req.body;
+  const { title, description, committee_name } = req.body;
   try {
     const newIssue = await sql`
-            INSERT INTO issue (issue_title, issue_text)
-            VALUES (${title}, ${description})
+            INSERT INTO issue (issue_title, issue_text, committee_name)
+            VALUES (${title}, ${description}, ${committee_name || 'General'})
             RETURNING *;
         `;
     res.status(201).json(newIssue[0]);
