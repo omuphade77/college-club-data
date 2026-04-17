@@ -4,10 +4,17 @@ import './IssueModal.css';
 
 export default function IssueModal({ isOpen, onClose }) {
   const [category, setCategory] = useState('general');
+  const [committee, setCommittee] = useState('General');
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const committeeOptions = [
+    'General', 'Technovanza', 'Rangwardhan', 'Enthusia', 'Swachh VJTI',
+    'Digital vjti', 'Pratibimb', 'Ecell', 'Community of coders',
+    'Digital Literary Activities',
+  ];
 
   const handleSubmit = async () => {
     if (!title.trim() || !desc.trim()) {
@@ -17,7 +24,7 @@ export default function IssueModal({ isOpen, onClose }) {
     }
 
     try {
-      await api.createIssue(title, desc);
+      await api.createIssue(title, desc, committee);
       setSuccess(true);
       setTimeout(() => {
         handleClose();
@@ -32,6 +39,7 @@ export default function IssueModal({ isOpen, onClose }) {
     setTitle('');
     setDesc('');
     setCategory('general');
+    setCommittee('General');
     setError(false);
     setSuccess(false);
     onClose();
@@ -67,6 +75,13 @@ export default function IssueModal({ isOpen, onClose }) {
                 <option value="committee">Committee Related</option>
                 <option value="feedback">Feedback / Suggestion</option>
                 <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="issueCommittee">Committee</label>
+              <select id="issueCommittee" value={committee} onChange={(e) => setCommittee(e.target.value)}>
+                {committeeOptions.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
 

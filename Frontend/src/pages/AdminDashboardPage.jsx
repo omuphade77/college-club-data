@@ -38,6 +38,7 @@ function AnnouncementTab() {
 
 function IssuesTab() {
   const [issues, setIssues] = useState([]);
+  const [selectedCommittee, setSelectedCommittee] = useState('All');
 
   useEffect(() => {
     api.getAllIssues()
@@ -45,16 +46,38 @@ function IssuesTab() {
       .catch(err => console.error('Error:', err));
   }, []);
 
+  const filteredIssues = issues.filter(issue => 
+    selectedCommittee === 'All' 
+    || issue.committee_name === selectedCommittee 
+    || issue.committee_name === 'General'
+    || !issue.committee_name
+  );
+
   return (
     <div>
-      <h2>Reported Issues</h2>
-      {issues.length === 0 ? (
+      <div className="issues-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <h2>Reported Issues</h2>
+        <select 
+          value={selectedCommittee} 
+          onChange={(e) => setSelectedCommittee(e.target.value)}
+          style={{ padding: '8px', borderRadius: '4px', background: 'var(--card-bg)', color: 'var(--text-white)' }}
+        >
+          <option value="All">All Committees</option>
+          {committeeOptions.map(c => <option key={c} value={c}>{c}</option>)}
+        </select>
+      </div>
+      {filteredIssues.length === 0 ? (
         <div className="empty-state"><p>No issues reported.</p></div>
       ) : (
         <div className="issue-list">
-          {issues.map((issue, i) => (
+          {filteredIssues.map((issue, i) => (
             <div key={i} className="issue-item">
-              <h3>{issue.issue_title}</h3>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                <h3 style={{ margin: 0 }}>{issue.issue_title}</h3>
+                <span style={{ fontSize: '0.8rem', padding: '4px 8px', borderRadius: '12px', background: '#334155', color: '#fff' }}>
+                  {issue.committee_name || 'General'}
+                </span>
+              </div>
               <p>{issue.issue_text}</p>
             </div>
           ))}

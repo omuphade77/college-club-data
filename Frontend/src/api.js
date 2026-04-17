@@ -43,11 +43,11 @@ export const api = {
     }).then(r => r.json()),
 
   // Issues (student-protected for create, public for getAll)
-  createIssue: (title, description) =>
+  createIssue: (title, description, committee_name) =>
     fetch(`${API_BASE}/issues/create`, {
       method: 'POST',
       headers: studentHeaders(),
-      body: JSON.stringify({ title, description }),
+      body: JSON.stringify({ title, description, committee_name }),
     }).then(r => r.json()),
 
   getAllIssues: () => fetch(`${API_BASE}/issues/all`).then(r => r.json()),
