@@ -3,7 +3,12 @@ const app = express();
 const cors = require("cors");
 
 // Enable CORS for all routes
-app.use(cors());
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
+
 //middleware
 app.use(express.json());
 
@@ -15,6 +20,8 @@ const addupcommingEventsRoutes = require("./routes/addupcommingevents.routes");
 const addAnnouncementRoutes = require("./routes/addannouncement.route");
 const roleRoutes = require("./routes/role.routes");
 const authRoutes = require("./routes/auth.routes");
+const regularEventsRoutes = require("./routes/regularEvents.routes");
+
 
 // Use routes
 app.use("/api/issues", issueRoutes);
@@ -24,5 +31,6 @@ app.use("/api/events", addupcommingEventsRoutes);
 app.use("/api/announcements", addAnnouncementRoutes);
 app.use("/api/roles", roleRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/regular-events", regularEventsRoutes);
 
 module.exports = app;

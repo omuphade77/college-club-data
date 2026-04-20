@@ -1,4 +1,5 @@
 const API_BASE = import.meta.env.VITE_API_BASE;
+console.log("API_BASE:", API_BASE);
 // Helper: get student auth headers
 const studentHeaders = () => {
   const token = localStorage.getItem('token');
@@ -19,6 +20,8 @@ const adminHeaders = () => {
 
 export const api = {
   // Committees (student-protected)
+
+
   getCommittee: (name) =>
     fetch(`${API_BASE}/committees/${name}`, {
       headers: studentHeaders(),
@@ -101,4 +104,12 @@ export const api = {
       method: 'POST',
       headers: adminHeaders(),
     }),
+
+  getRegularEvents: () =>
+    fetch(`${API_BASE}/regular-events`, {
+      cache: "no-store"
+    }).then(r => r.json())
 };
+
+
+

@@ -9,6 +9,8 @@ export default function CommitteePage() {
 
   const [committee, setCommittee] = useState(null);
   const [members, setMembers] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [activeTab, setActiveTab] = useState('events');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,16 +19,15 @@ export default function CommitteePage() {
     Promise.all([
       api.getCommittee(committeeName),
       api.getMembers(),
+      api.getRegularEvents(),
     ])
-      .then(([committeeData, membersResult]) => {
+      .then(([committeeData, membersResult, eventsResult]) => {
         setCommittee(committeeData);
         setMembers(membersResult.data || []);
+        setEvents(eventsResult || []);
         setLoading(false);
       })
-      .catch(err => {
-        console.error('Error:', err);
-        setLoading(false);
-      });
+      .catch(() => setLoading(false));
   }, [committeeName]);
 
   if (!committeeName) {
@@ -39,15 +40,20 @@ export default function CommitteePage() {
     );
   }
 
-  const filtered = members.filter(m => m.committee_name === committeeName);
-
-  // Group by year
+  const filteredMembers = members.filter(
+    m => m.committee_name?.toLowerCase().trim() === committeeName?.toLowerCase().trim()
+  );
   const grouped = {};
-  filtered.forEach(m => {
+  filteredMembers.forEach(m => {
     if (!grouped[m.year]) grouped[m.year] = [];
     grouped[m.year].push(m);
   });
 
+  console.log("Committee:", committeeName);
+  console.log("Event committees:", events.map(e => e.committee_name));
+  const filteredEvents = events.filter(
+    e => e.committee_name?.toLowerCase().trim() === committeeName?.toLowerCase().trim()
+  );
   return (
     <div className="container committee-detail">
       {loading ? (
@@ -71,27 +77,68 @@ export default function CommitteePage() {
             </div>
           )}
 
-          <div className="members-title-wrapper">
-            <h2 className="members-title">Members</h2>
+          <div className="tabs">
+            <button
+              className={activeTab === 'events' ? 'tab active' : 'tab'}
+              onClick={() => setActiveTab('events')}
+            >
+              📅 Regular Events
+            </button>
+            <button
+              className={activeTab === 'members' ? 'tab active' : 'tab'}
+              onClick={() => setActiveTab('members')}
+            >
+              👥 Members
+            </button>
           </div>
 
-          {filtered.length === 0 ? (
-            <div className="empty-state"><p>No members yet</p></div>
-          ) : (
-            Object.keys(grouped).map(year => (
-              <div key={year}>
-                <h3 className="year-heading">{year} Year</h3>
-                <div className="member-grid">
-                  {grouped[year].map((m, i) => (
-                    <div key={i} className="member-card" style={{ animationDelay: `${i * 0.06}s` }}>
-                      <h4>{m.name}</h4>
-                      <p>{m.role}</p>
-                      <p>{m.branch}</p>
+          {activeTab === 'events' ? (
+            <>
+              <div className="members-title-wrapper">
+                <h2 className="members-title">Regular Events</h2>
+              </div>
+
+              {filteredEvents.length === 0 ? (
+                <div className="empty-state"><p>No events scheduled yet.</p></div>
+              ) : (
+                <div className="events-list">
+                  {filteredEvents.map((e, i) => (
+                    <div key={i} className="event-list-item">
+                      <div className="event-index">{String(i + 1).padStart(2, '0')}</div>
+                      <div className="event-info">
+                        <span className="event-name">{e.event_name}</span>
+                      </div>
+                      <div className="event-dot-line" />
                     </div>
                   ))}
                 </div>
+              )}
+            </>
+          ) : (
+            <>
+              <div className="members-title-wrapper">
+                <h2 className="members-title">Members</h2>
               </div>
-            ))
+
+              {filteredMembers.length === 0 ? (
+                <div className="empty-state"><p>No members yet</p></div>
+              ) : (
+                Object.keys(grouped).map(year => (
+                  <div key={year}>
+                    <h3 className="year-heading">{year} Year</h3>
+                    <div className="member-grid">
+                      {grouped[year].map((m, i) => (
+                        <div key={i} className="member-card">
+                          <h4>{m.name}</h4>
+                          <p>{m.role}</p>
+                          <p>{m.branch}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))
+              )}
+            </>
           )}
         </>
       )}
