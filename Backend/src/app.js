@@ -3,9 +3,19 @@ const app = express();
 const cors = require("cors");
 
 // Enable CORS for all routes
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://college-club-data.vercel.app"
+];
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
   credentials: true
 }));
 
