@@ -18,6 +18,7 @@ import StudentLogin from './pages/StudentLogin';
 import StudentRegister from './pages/StudentRegister';
 import ResetPassword from './pages/ResetPass';
 import ForgotPassword from './pages/ForgotPassword';
+import WelcomePage from './pages/WelcomePage';
 
 function AppContent() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -52,7 +53,7 @@ function AppContent() {
 
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<StudentLogin />} />
+        <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<StudentLogin />} />
         <Route path="/register" element={<StudentRegister />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
