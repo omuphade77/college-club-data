@@ -4,8 +4,8 @@ import './AdminDashboardPage.css';
 
 const committeeOptions = [
   'Technovanza', 'Rangwardhan', 'Enthusia', 'Swachh VJTI',
-  'Digital vjti', 'Pratibimb', 'Ecell', 'Community of coders',
-  'Digital Literary Activities',
+  'Digital VJTI', 'Pratibimb', 'E-Cell VJTI', 'COC (Community of Coders)',
+  'DLA',
 ];
 
 function AnnouncementTab() {

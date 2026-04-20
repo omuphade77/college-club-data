@@ -73,7 +73,7 @@ export default function AddRolePage() {
             <option value="Enthusia">Enthusia</option>
             <option value="DLA">DLA</option>
             <option value="COC (Community of Coders)">COC (Community of Coders)</option>
-            <option value="Swacch VJTI">Swacch VJTI</option>
+            <option value="Swachh VJTI">Swachh VJTI</option>
             <option value="Pratibimb">Pratibimb</option>
             <option value="Rangwardhan">Rangwardhan</option>
             <option value="E-Cell VJTI">E-Cell VJTI</option>

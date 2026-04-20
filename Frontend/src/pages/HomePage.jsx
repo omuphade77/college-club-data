@@ -23,7 +23,7 @@ const committees = [
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM7Z5zq5lsj_gZIqCTSB3jQRnT1VvqVq21Bg&s',
   },
   {
-    name: 'Swacch VJTI',
+    name: 'Swachh VJTI',
     desc: 'Sustainability & Green',
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSJkEWQRWdimj4ipAnhhw0ZSjNjKKkcoXqvQ&s',
   },
