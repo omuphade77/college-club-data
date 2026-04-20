@@ -24,14 +24,11 @@ export default function WelcomePage() {
              {/* VJTI Campus Image */}
              <div className="hero-image-overlay"></div>
              <img 
-               src="https://vjti.ac.in/wp-content/uploads/2021/08/vjti_main_building.jpg" 
-               alt="VJTI Campus" 
+               src="/images/quad.webp" 
+               alt="VJTI Quad" 
                className="hero-image"
              />
-             <div className="hero-stats-card">
-               <span className="stat-number">30+</span>
-               <span className="stat-text">Active Committees</span>
-             </div>
+
           </div>
         </section>
 
@@ -68,16 +65,16 @@ export default function WelcomePage() {
           <p className="gallery-subtitle">Experience the vibrant culture and technical excellence at VJTI.</p>
           <div className="gallery-grid">
             <div className="gallery-item">
-               <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tech Event" />
+               <img src="/images/vjtitechno.webp" alt="Tech Event" />
                <div className="gallery-overlay"><span>Technovanza</span></div>
             </div>
             <div className="gallery-item">
-               <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cultural Fest" />
+               <img src="/images/vjtienthu.webp" alt="Cultural Fest" />
                <div className="gallery-overlay"><span>Enthusia</span></div>
             </div>
             <div className="gallery-item">
-               <img src="https://images.unsplash.com/photo-1523580494112-071d44c11a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hackathon" />
-               <div className="gallery-overlay"><span>Hackathons & Coding</span></div>
+               <img src="/images/rangavjti.webp" alt="Rangawardhan Fest" />
+               <div className="gallery-overlay"><span>Rangawardhan</span></div>
             </div>
           </div>
         </section>
@@ -88,7 +85,7 @@ export default function WelcomePage() {
       <footer className="welcome-footer">
         <div className="footer-content">
            <div className="footer-brand">
-             <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/VJTI_Logo.svg/1200px-VJTI_Logo.svg.png" alt="VJTI Logo" className="footer-logo" />
+             <img src="/images/vjtilogo.jpg" alt="VJTI Logo" className="footer-logo" />
              <span>VJTI CommitteeHub © {new Date().getFullYear()}</span>
            </div>
            <div className="footer-links">
