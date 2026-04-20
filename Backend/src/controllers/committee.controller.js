@@ -1,5 +1,5 @@
 const { getCommitteeByName } = require('../services/committee.service');
-
+const {sql} = require('../db/db.js');
 const fetchCommitteeByName = async (req, res) => {
     try{
         const { committeename } = req.params;
@@ -19,6 +19,19 @@ const fetchCommitteeByName = async (req, res) => {
     
     }
 
+const getTotalMembers = async (req, res) => {
+  try {
+    const result = await sql`
+      SELECT COUNT(*) FROM committee_members;
+    `;
+
+    res.json({ totalMembers: result[0].count });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch total members" });
+  }
+};
+
     module.exports = {
-        fetchCommitteeByName
+        fetchCommitteeByName,
+        getTotalMembers
     };

@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { api } from '../api';
 import './HomePage.css';
 
 const committees = [
@@ -51,10 +53,23 @@ const committees = [
 
 export default function HomePage() {
   const navigate = useNavigate();
-
+const [totalMembers, setTotalMembers] = useState(0);
   const openCommittee = (name) => {
     navigate(`/committee?committeeName=${encodeURIComponent(name)}`);
   };
+
+  useEffect(() => {
+  const fetchMembers = async () => {
+    try {
+      const res = await api.getTotalMembers();
+      setTotalMembers(Number(res.totalMembers)); 
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchMembers();
+}, []);
 
   return (
     <div className="container home-page">
@@ -81,14 +96,16 @@ export default function HomePage() {
                 <p>Active Committees</p>
               </div>
             </div>
-            <div className="stat-card">
-              <div className="stat-icon">✅</div>
+          
+          <div className="stat-card">
+              <div className="stat-icon">👥</div>
               <div className="stat-info">
-                <h3>Open</h3>
-                <p>Registrations</p>
+                <h3>{totalMembers}</h3>
+                <p>Total Members</p>
               </div>
-            </div> 
-            <div className="stat-card">
+            </div>
+
+            <div className="stat-card" onClick={() => navigate('/events')}>
               <div className="stat-icon">📅</div>
               <div className="stat-info">
                 <h3>Upcoming</h3>

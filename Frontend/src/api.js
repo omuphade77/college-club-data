@@ -108,7 +108,12 @@ export const api = {
   getRegularEvents: () =>
     fetch(`${API_BASE}/regular-events`, {
       cache: "no-store"
-    }).then(r => r.json())
+    }).then(r => r.json()),
+
+  getTotalMembers: () =>
+    fetch(`${API_BASE}/committees/total-members`, {
+      headers: studentHeaders(),
+    }).then(r => r.json()),
 };
 
 

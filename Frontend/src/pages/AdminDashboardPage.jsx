@@ -195,8 +195,8 @@ function RolesTab() {
               <p><strong>Committee:</strong> {req.committee_name}</p>
               <p><strong>Year:</strong> {req.year}</p>
               <div className="actions">
-                <button onClick={() => approve(req.id)}>✅ Approve</button>
-                <button onClick={() => reject(req.id)}>❌ Reject</button>
+                <button onClick={() => approve(req.id)}>✓ Approve</button>
+                <button onClick={() => reject(req.id)}>✘ Reject</button>
               </div>
             </div>
           ))}
