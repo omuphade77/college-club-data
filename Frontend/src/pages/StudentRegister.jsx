@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Sparkles, AlertTriangle, Check, User, Mail, Lock, Building2 } from "lucide-react";
 import "./StudentRegister.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
@@ -78,7 +79,7 @@ export default function StudentRegister() {
 
       <div className="student-register-container">
         <div className="student-register-header">
-          <div className="student-register-icon">✨</div>
+          <div className="student-register-icon"><Sparkles size={40} className="student-icon" /></div>
           <p className="student-register-eyebrow">Join CommitteHub</p>
           <h1>Create Account</h1>
           <div className="student-register-divider"></div>
@@ -89,13 +90,13 @@ export default function StudentRegister() {
 
         {error && (
           <div className="student-register-error">
-            <span>⚠</span> {error}
+            <span><AlertTriangle size={16} /></span> {error}
           </div>
         )}
 
         {success && (
           <div className="student-register-success">
-            <span>✓</span> {success}
+            <span><Check size={16} /></span> {success}
           </div>
         )}
 
@@ -112,7 +113,7 @@ export default function StudentRegister() {
                 onChange={(e) => setName(e.target.value)}
                 autoComplete="name"
               />
-              <span className="student-register-input-icon">👤</span>
+              <span className="student-register-input-icon"><User size={18} /></span>
             </div>
           </div>
 
@@ -129,7 +130,7 @@ export default function StudentRegister() {
                 autoComplete="email"
                 required
               />
-              <span className="student-register-input-icon">✉</span>
+              <span className="student-register-input-icon"><Mail size={18} /></span>
             </div>
           </div>
 
@@ -146,7 +147,7 @@ export default function StudentRegister() {
                 autoComplete="new-password"
                 required
               />
-              <span className="student-register-input-icon">🔒</span>
+              <span className="student-register-input-icon"><Lock size={18} /></span>
             </div>
             {password && (
               <>
@@ -178,7 +179,7 @@ export default function StudentRegister() {
                 autoComplete="new-password"
                 required
               />
-              <span className="student-register-input-icon">🔐</span>
+              <span className="student-register-input-icon"><Lock size={18} /></span>
             </div>
           </div>
 
@@ -201,7 +202,7 @@ export default function StudentRegister() {
         <div className="student-register-footer">
           <p>Already have an account? <Link to="/login">Sign in</Link></p>
           <div className="vjti-register-badge">
-            <span>🏛</span> VJTI Students Only
+            <span><Building2 size={16} /></span> VJTI Students Only
           </div>
         </div>
       </div>

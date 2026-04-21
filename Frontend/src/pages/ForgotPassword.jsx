@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Check, AlertTriangle, Mail, Building2, KeyRound } from "lucide-react";
 import "./ForgotPassword.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
@@ -50,10 +51,7 @@ export default function ForgotPassword() {
 
         <div className="forgot-header">
           <div className="forgot-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-              <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
-            </svg>
+            <KeyRound size={28} />
           </div>
           <p className="forgot-eyebrow">Account Recovery</p>
           <h1>Forgot Password?</h1>
@@ -65,7 +63,7 @@ export default function ForgotPassword() {
 
         {message && (
           <div className={`forgot-alert ${isSuccess ? "forgot-alert-success" : "forgot-alert-error"}`}>
-            <span>{isSuccess ? "✓" : "⚠"}</span> {message}
+            <span>{isSuccess ? <Check size={16}/> : <AlertTriangle size={16}/>}</span> {message}
           </div>
         )}
 
@@ -86,7 +84,7 @@ export default function ForgotPassword() {
                   autoComplete="email"
                   required
                 />
-                <span className="forgot-input-icon">✉</span>
+                <span className="forgot-input-icon"><Mail size={18} /></span>
               </div>
             </div>
 
@@ -113,7 +111,7 @@ export default function ForgotPassword() {
             <Link to="/login">Sign In</Link>
           </p>
           <div className="forgot-badge">
-            <span>🏛</span> VJTI Students Only
+            <span><Building2 size={16} /></span> VJTI Students Only
           </div>
         </div>
       </div>

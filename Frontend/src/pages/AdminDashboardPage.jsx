@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { api } from '../api';
+import { Calendar, Clock, MapPin, Building2, Check, X } from 'lucide-react';
 import './AdminDashboardPage.css';
 
 const committeeOptions = [
@@ -135,9 +136,9 @@ function EventsTab() {
       {preview && (
         <div className="event-preview">
           <h3>{preview.event_name}</h3>
-          <p>📅 {preview.event_date} ⏰ {preview.event_time}</p>
-          <p>📍 {preview.event_location}</p>
-          <p>🏢 {preview.committee_name}</p>
+          <p><Calendar size={16}/> {preview.event_date} <Clock size={16}/> {preview.event_time}</p>
+          <p><MapPin size={16}/> {preview.event_location}</p>
+          <p><Building2 size={16}/> {preview.committee_name}</p>
           <p>{preview.event_description}</p>
         </div>
       )}
@@ -195,8 +196,8 @@ function RolesTab() {
               <p><strong>Committee:</strong> {req.committee_name}</p>
               <p><strong>Year:</strong> {req.year}</p>
               <div className="actions">
-                <button onClick={() => approve(req.id)}>✓ Approve</button>
-                <button onClick={() => reject(req.id)}>✘ Reject</button>
+                <button className="approve-btn" onClick={() => approve(req.id)}><Check size={16}/> Approve</button>
+                <button className="reject-btn" onClick={() => reject(req.id)}><X size={16}/> Reject</button>
               </div>
             </div>
           ))}

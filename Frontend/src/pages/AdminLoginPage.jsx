@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../api';
+import { ShieldAlert, Lock, AlertTriangle } from 'lucide-react';
 import './AdminLoginPage.css';
 
 export default function AdminLoginPage() {
@@ -32,7 +33,7 @@ export default function AdminLoginPage() {
       <Link to="/home" className="back-link">← Back</Link>
 
       <div className="admin-box">
-        <span className="shield-icon">🛡️</span>
+        <span className="shield-icon"><ShieldAlert size={48} className="admin-danger-icon" /></span>
         <p className="eyebrow">Restricted Access</p>
         <h1>Admin<br />Portal</h1>
         <div className="admin-divider"></div>
@@ -45,21 +46,24 @@ export default function AdminLoginPage() {
           <div className="admin-form-group">
             <div>
               <label className="input-label">Secret Password</label>
-              <input
-                type="password"
-                className="admin-input"
-                placeholder="Enter admin password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <div className="admin-input-wrapper">
+                <Lock size={18} className="admin-input-icon" />
+                <input
+                  type="password"
+                  className="admin-input"
+                  placeholder="Enter admin password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
             </div>
             <button type="submit" className="admin-login-btn">Authenticate</button>
           </div>
         </form>
 
         <div className="warning-box">
-          <strong>⚠ Warning:</strong> This portal is for authorized personnel only. All login attempts are monitored and recorded.
+          <strong><AlertTriangle size={16} /> Warning:</strong> This portal is for authorized personnel only. All login attempts are monitored and recorded.
         </div>
       </div>
     </div>

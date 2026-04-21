@@ -1,6 +1,7 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { KeyRound, Check, AlertTriangle, Lock, EyeOff, Eye, X } from "lucide-react";
 import "./ResetPass.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
@@ -73,9 +74,7 @@ export default function ResetPassword() {
 
         <div className="reset-header">
           <div className="reset-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
+            <KeyRound size={28}/>
           </div>
           <p className="reset-eyebrow">Secure Reset</p>
           <h1>New Password</h1>
@@ -87,7 +86,7 @@ export default function ResetPassword() {
 
         {message && (
           <div className={`reset-alert ${isSuccess ? "reset-alert-success" : "reset-alert-error"}`}>
-            <span>{isSuccess ? "✓" : "⚠"}</span> {message}
+            <span>{isSuccess ? <Check size={16}/> : <AlertTriangle size={16}/>}</span> {message}
           </div>
         )}
 
@@ -115,7 +114,7 @@ export default function ResetPassword() {
                   autoComplete="new-password"
                   required
                 />
-                <span className="reset-input-icon">🔒</span>
+                <span className="reset-input-icon"><Lock size={18} /></span>
                 <button
                   type="button"
                   className="reset-toggle-btn"
@@ -123,7 +122,7 @@ export default function ResetPassword() {
                   tabIndex={-1}
                   aria-label="Toggle password visibility"
                 >
-                  {showPassword ? "🙈" : "👁"}
+                  {showPassword ? <EyeOff size={16}/> : <Eye size={16}/>}
                 </button>
               </div>
 
@@ -163,7 +162,7 @@ export default function ResetPassword() {
                   autoComplete="new-password"
                   required
                 />
-                <span className="reset-input-icon">🔐</span>
+                <span className="reset-input-icon"><Lock size={18} /></span>
                 <button
                   type="button"
                   className="reset-toggle-btn"
@@ -171,17 +170,16 @@ export default function ResetPassword() {
                   tabIndex={-1}
                   aria-label="Toggle confirm password visibility"
                 >
-                  {showConfirm ? "🙈" : "👁"}
+                  {showConfirm ? <EyeOff size={16}/> : <Eye size={16}/>}
                 </button>
               </div>
 
-              {/* Match indicator */}
               {confirmPassword && (
                 <div className="reset-match-indicator">
                   {password === confirmPassword ? (
-                    <span className="reset-match-yes">✓ Passwords match</span>
+                    <span className="reset-match-yes"><Check size={14}/> Passwords match</span>
                   ) : (
-                    <span className="reset-match-no">✗ Passwords don&apos;t match</span>
+                    <span className="reset-match-no"><X size={14}/> Passwords don&apos;t match</span>
                   )}
                 </div>
               )}

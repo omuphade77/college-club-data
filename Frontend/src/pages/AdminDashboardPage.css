@@ -1,264 +1,316 @@
-/* ── Admin Dashboard ── */
+/* ── Admin Dashboard (Neo-Brutalist Light Theme) ── */
 
 .admin-dashboard {
-  padding: 2rem;
-  max-width: 900px;
-  margin: auto;
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
   animation: fadeIn 0.5s ease;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  color: #1e293b;
+  background-color: var(--bg-body, #f4f6fa);
+  min-height: 100vh;
 }
 
+.admin-dashboard h2 {
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  border-bottom: 4px solid #000;
+  padding-bottom: 0.5rem;
+}
+
+/* Tabs */
 .admin-dashboard .tabs {
   display: flex;
-  gap: 10px;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border);
+  gap: 12px;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  overflow-x: auto;
 }
 
 .tab-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  padding: 10px 20px;
+  background: #fff;
+  border: 2px solid #000;
+  color: #000;
+  padding: 0.8rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  transition: all var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.tab-btn::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transition: transform var(--transition);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: #0b0e1a;
-  border-color: var(--gold);
-  font-weight: 600;
-}
-
-.tab-btn.active::after {
-  transform: scaleX(1);
+  background: #ff7675; /* Eye catching active tab */
+  color: #000;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
 }
 
 .tab-btn:hover:not(.active) {
-  border-color: var(--gold-dim);
-  color: var(--text-primary);
-  background: rgba(201,168,76,0.06);
+  background: #f1f5f9;
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 #000;
+}
+
+.tab-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 #000;
 }
 
 .tab-content {
   animation: fadeIn 0.3s ease;
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 8px 8px 0 #1e293b;
 }
 
-.tab-content h2 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1.25rem;
-}
-
-/* ── Admin Inputs ── */
+/* Form Inputs */
 .admin-dashboard input,
 .admin-dashboard textarea,
 .admin-dashboard select {
   width: 100%;
   margin-top: 10px;
-  padding: 12px 14px;
-  background: #0f1426;
-  border: 1px solid var(--border);
-  color: white;
-  border-radius: 10px;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 2px solid #000;
+  color: #000;
+  border-radius: 8px;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
   outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.admin-dashboard textarea {
+  resize: vertical;
+  min-height: 120px;
 }
 
 .admin-dashboard input:focus,
 .admin-dashboard textarea:focus,
 .admin-dashboard select:focus {
-  border-color: var(--gold-dim);
-  box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
-}
-
-.admin-dashboard select option {
-  background: #0f1426;
-  color: #FFFFFF;
+  background: #fff;
+  box-shadow: 4px 4px 0 #000;
+  transform: translate(-2px, -2px);
 }
 
 .admin-submit-btn {
-  margin-top: 15px;
-  padding: 12px 28px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  border: none;
-  border-radius: 10px;
+  margin-top: 10px;
+  padding: 1rem 2rem;
+  background: #6c5ce7;
+  border: 3px solid #000;
+  border-radius: 8px;
   cursor: pointer;
-  color: #0b0e1a;
-  font-weight: 700;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  transition: all var(--transition);
-  letter-spacing: 0.03em;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
   text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-}
-
-.admin-submit-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s ease;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0 #000;
+  display: inline-block;
 }
 
 .admin-submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(201, 168, 76, 0.35);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+  background: #a29bfe;
+  color: #000;
 }
 
-.admin-submit-btn:hover::before {
-  left: 100%;
+.admin-submit-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 #000;
 }
 
-/* ── Issue Cards ── */
+/* Issues Cards */
 .issue-list {
-  margin-top: 20px;
   display: grid;
   gap: 15px;
+  margin-top: 1.5rem;
 }
 
 .issue-item {
-  background: linear-gradient(145deg, #0f1426, #0b0e1a);
-  border: 1px solid var(--border);
-  padding: 16px 20px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  background: #fff;
+  border: 2px solid #000;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.2s ease;
 }
 
 .issue-item:hover {
-  border-color: var(--gold);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+  background: #f8fafc;
 }
 
 .issue-item h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin-bottom: 6px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 0.5rem;
 }
 
 .issue-item p {
-  font-size: 0.88rem;
-  color: #FFFFFF;
+  font-size: 0.95rem;
+  color: #475569;
   line-height: 1.5;
+  font-weight: 500;
 }
 
-/* ── Event Preview ── */
+/* Event Preview */
 .event-preview {
-  background: linear-gradient(145deg, #111622, #0c0f1a);
-  padding: 18px;
-  margin-top: 15px;
-  border-radius: 12px;
-  color: white;
-  border: 1px solid var(--border);
+  background: #fdf2f8; /* light pinkish */
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+  color: #000;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000;
   animation: fadeIn 0.3s ease;
 }
 
 .event-preview h3 {
-  font-family: var(--font-display);
-  color: var(--gold);
-  margin-bottom: 0.5rem;
+  font-family: var(--font-display, 'Inter', sans-serif);
+  color: #d63031;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  border: none;
+  text-transform: none;
 }
 
 .event-preview p {
-  color: var(--text-secondary);
-  font-size: 0.88rem;
-  margin: 0.2rem 0;
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* ── Role Request Cards ── */
+/* Requests Grid */
 .requests-grid {
   display: grid;
-  gap: 15px;
-  margin-top: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .request-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.25rem 1.5rem;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.2s ease;
 }
 
 .request-card:hover {
-  border-color: var(--gold-dim);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
 }
 
 .request-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  margin-bottom: 0.6rem;
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 0.8rem;
+  border: none;
+  text-transform: none;
 }
 
 .request-card p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #475569;
+  margin: 0.3rem 0;
+  font-weight: 500;
+}
+
+.request-card p strong {
+  color: #000;
+  font-weight: 800;
 }
 
 .request-card .actions {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .request-card .actions button {
-  padding: 0.5rem 1.15rem;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-primary);
-  border-radius: 8px;
+  flex: 1;
+  padding: 0.6rem;
+  border: 2px solid #000;
+  background: #fff;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.85rem;
-  font-family: var(--font-body);
-  transition: all var(--transition);
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  box-shadow: 3px 3px 0 #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
 }
 
-.request-card .actions button:first-child:hover {
-  border-color: var(--accent-teal);
-  background: rgba(62, 207, 178, 0.08);
-  color: var(--accent-teal);
+.request-card .actions button.approve-btn {
+  background: #22c55e;
+  color: #fff;
 }
 
-.request-card .actions button:last-child:hover {
-  border-color: var(--accent-rose);
-  background: rgba(232, 85, 122, 0.08);
-  color: var(--accent-rose);
+.request-card .actions button.approve-btn:hover {
+  background: #16a34a;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.request-card .actions button.reject-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+.request-card .actions button.reject-btn:hover {
+  background: #dc2626;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.request-card .actions button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 0 0 0 #000 !important;
 }
 
 .admin-pending-subtitle {
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 2rem 1rem;
+  }
+  .tab-content {
+    padding: 1.5rem;
+  }
 }

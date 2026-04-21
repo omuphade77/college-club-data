@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { GraduationCap, Mail, Lock, AlertTriangle, Building2 } from "lucide-react";
 import "./StudentLogin.css";
 const API_BASE = "https://college-club-data.onrender.com/api";
 export default function StudentLogin() {
@@ -50,7 +51,7 @@ export default function StudentLogin() {
 
       <div className="student-login-container">
         <div className="student-login-header">
-          <div className="student-login-icon">🎓</div>
+          <div className="student-login-icon"><GraduationCap size={40} className="student-icon" /></div>
           <p className="student-login-eyebrow">Student Portal</p>
           <h1>Welcome Back</h1>
           <div className="student-login-divider"></div>
@@ -61,7 +62,7 @@ export default function StudentLogin() {
 
         {error && (
           <div className="student-login-error">
-            <span>⚠</span> {error}
+            <span><AlertTriangle size={16} /></span> {error}
           </div>
         )}
 
@@ -79,7 +80,7 @@ export default function StudentLogin() {
                 autoComplete="email"
                 required
               />
-              <span className="student-form-input-icon">✉</span>
+              <span className="student-form-input-icon"><Mail size={18} /></span>
             </div>
           </div>
 
@@ -96,7 +97,7 @@ export default function StudentLogin() {
                 autoComplete="current-password"
                 required
               />
-              <span className="student-form-input-icon">🔒</span>
+              <span className="student-form-input-icon"><Lock size={18} /></span>
             </div>
           </div>
 
@@ -123,7 +124,7 @@ export default function StudentLogin() {
         <div className="student-login-footer">
           <p>Don&apos;t have an account? <Link to="/register">Create one</Link></p>
           <div className="vjti-badge">
-            <span>🏛</span> VJTI Students Only
+            <span><Building2 size={16} /></span> VJTI Students Only
           </div>
         </div>
       </div>

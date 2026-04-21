@@ -1,4 +1,4 @@
-/* ── Student Register Page ── */
+/* ── Student Register Page (Neo-Brutalist Light Theme) ── */
 
 .student-register-page {
   min-height: 100vh;
@@ -6,148 +6,101 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
-  background: #0a0a0f;
+  background-color: var(--bg-body, #f4f6fa);
+  color: #1e293b;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  padding: 3rem 2rem;
 }
 
-/* Animated gradient orbs — shifted for register */
-.student-register-page::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(ellipse 55% 50% at 75% 85%, rgba(250, 112, 154, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 25% 15%, rgba(79, 172, 254, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 40% at 50% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
-  pointer-events: none;
-  animation: orbFloat 14s ease-in-out infinite alternate;
-}
-
-@keyframes orbFloat {
-  0% { transform: scale(1) rotate(0deg); }
-  100% { transform: scale(1.1) rotate(-3deg); }
-}
-
-/* Grid overlay */
-.student-register-page::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-}
-
-/* Register container */
+/* Register Container */
 .student-register-container {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  max-width: 460px;
-  padding: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04) inset,
-    0 24px 80px rgba(0, 0, 0, 0.4);
-  animation: fadeUp 0.8s ease both;
+  max-width: 500px;
+  background: #ffffff;
+  padding: 2.5rem;
+  border: 3px solid #000;
+  border-radius: 16px;
+  box-shadow: 8px 8px 0 #1e293b;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 1;
 }
 
-/* Glow border effect */
-.student-register-container::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, rgba(250,112,154,0.15), transparent 40%, transparent 60%, rgba(168,85,247,0.15));
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-.student-register-container:hover::before {
-  opacity: 1;
-}
-
-/* Header */
+/* Header Section */
 .student-register-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .student-register-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(250,112,154,0.15), rgba(168,85,247,0.15));
+  width: 64px;
+  height: 64px;
+  background: #ff7675; /* Pop color for register */
+  border: 3px solid #000;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.25rem;
-  font-size: 1.6rem;
-  border: 1px solid rgba(255,255,255,0.06);
-  animation: pulseGlow 4s ease-in-out infinite;
+  margin: 0 auto 1rem;
+  color: #000;
+  box-shadow: 4px 4px 0 #000;
 }
 
 .student-register-eyebrow {
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  font-weight: 800;
   text-transform: uppercase;
-  color: rgba(250, 112, 154, 0.7);
+  letter-spacing: 0.1em;
+  color: #d63031;
   margin-bottom: 0.5rem;
-  font-weight: 600;
 }
 
 .student-register-header h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-display, 'Inter', sans-serif);
   font-size: 2rem;
   font-weight: 800;
-  color: #f0f0f5;
+  color: #000;
   margin-bottom: 0.5rem;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
 }
 
 .student-register-subtitle {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.35);
-  font-weight: 300;
+  font-size: 0.9rem;
+  color: #475569;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 /* Divider */
 .student-register-divider {
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(250,112,154,0.6), rgba(168,85,247,0.6));
-  margin: 0 auto 2rem;
+  width: 60px;
+  height: 4px;
+  background: #000;
+  margin: 1.5rem auto;
   border-radius: 2px;
 }
 
-/* Form */
+/* Form Styles */
 .student-register-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .student-register-field {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .student-register-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
-  font-weight: 500;
 }
 
 .student-register-input-wrapper {
@@ -159,201 +112,185 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.9rem;
-  opacity: 0.4;
+  color: #64748b;
+  display: flex;
+  align-items: center;
   pointer-events: none;
-  transition: opacity 0.3s;
 }
 
 .student-register-input {
   width: 100%;
-  padding: 0.85rem 1rem 0.85rem 2.8rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  color: #f0f0f5;
-  font-family: var(--font-body);
-  font-size: 0.92rem;
+  padding: 0.9rem 1rem 0.9rem 2.8rem;
+  background: #f8fafc;
+  border: 2px solid #000;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 600;
+  font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+  transition: all 0.2s ease;
 }
 
 .student-register-input::placeholder {
-  color: rgba(255, 255, 255, 0.18);
-  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 500;
 }
 
 .student-register-input:focus {
-  border-color: rgba(250, 112, 154, 0.4);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 0 3px rgba(250, 112, 154, 0.08);
+  background: #fff;
+  box-shadow: 4px 4px 0 #000;
+  transform: translate(-2px, -2px);
 }
 
-.student-register-input:focus ~ .student-register-input-icon,
-.student-register-input:not(:placeholder-shown) ~ .student-register-input-icon {
-  opacity: 0.7;
+.student-register-input:focus ~ .student-register-input-icon {
+  color: #000;
 }
 
-/* Name input row */
-.student-register-name-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-/* Password strength indicator */
+/* Password Strength */
 .password-strength {
   display: flex;
-  gap: 4px;
-  margin-top: 0.35rem;
+  gap: 6px;
+  margin-top: 0.25rem;
 }
 
 .password-strength-bar {
-  height: 3px;
   flex: 1;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.08);
-  transition: background 0.3s;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  border: 1px solid #000;
+  transition: all 0.3s ease;
 }
 
-.password-strength-bar.active.weak { background: #ff5252; }
-.password-strength-bar.active.medium { background: #ffab40; }
-.password-strength-bar.active.strong { background: #69f0ae; }
+.password-strength-bar.active.weak { background: #ef4444; }
+.password-strength-bar.active.medium { background: #f59e0b; }
+.password-strength-bar.active.strong { background: #22c55e; }
 
 .password-strength-text {
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.3);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
   margin-top: 0.25rem;
-  letter-spacing: 0.05em;
 }
+.password-strength-text.weak { color: #ef4444; }
+.password-strength-text.medium { color: #f59e0b; }
+.password-strength-text.strong { color: #22c55e; }
 
-.password-strength-text.weak { color: #ff5252; }
-.password-strength-text.medium { color: #ffab40; }
-.password-strength-text.strong { color: #69f0ae; }
-
-/* Submit button */
+/* Submit Button */
 .student-register-btn {
   width: 100%;
-  padding: 0.95rem;
+  padding: 1rem;
   margin-top: 0.5rem;
-  background: linear-gradient(135deg, #FA709A 0%, #a855f7 100%);
-  color: #fff;
-  border: none;
+  background: #ff7675;
+  color: #000;
+  border: 3px solid #000;
   border-radius: 12px;
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  font-size: 1rem;
+  font-weight: 800;
   text-transform: uppercase;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s, box-shadow 0.3s;
-}
-
-.student-register-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.6s ease;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .student-register-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(250, 112, 154, 0.35);
-}
-
-.student-register-btn:hover::before {
-  left: 100%;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+  background: #fab1a0;
 }
 
 .student-register-btn:active {
-  transform: translateY(0);
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 #000;
 }
 
 .student-register-btn:disabled {
-  opacity: 0.5;
+  background: #cbd5e1;
+  color: #64748b;
   cursor: not-allowed;
+  box-shadow: 4px 4px 0 #94a3b8;
+  border-color: #94a3b8;
   transform: none;
 }
 
-/* Error message */
+/* Messages */
 .student-register-error {
-  background: rgba(255, 82, 82, 0.08);
-  border: 1px solid rgba(255, 82, 82, 0.2);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  font-size: 0.82rem;
-  color: #ff7b7b;
+  background: #fee2e2;
+  border: 2px solid #ef4444;
+  border-radius: 8px;
+  padding: 0.8rem;
+  color: #b91c1c;
+  font-weight: 600;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  animation: fadeIn 0.3s ease;
+  margin-bottom: 1.5rem;
+  box-shadow: 3px 3px 0 #ef4444;
 }
 
-/* Success message */
 .student-register-success {
-  background: rgba(82, 255, 168, 0.08);
-  border: 1px solid rgba(82, 255, 168, 0.2);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  font-size: 0.82rem;
-  color: #7bffb7;
+  background: #dcfce7;
+  border: 2px solid #22c55e;
+  border-radius: 8px;
+  padding: 0.8rem;
+  color: #15803d;
+  font-weight: 600;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  animation: fadeIn 0.3s ease;
+  margin-bottom: 1.5rem;
+  box-shadow: 3px 3px 0 #22c55e;
 }
 
-/* Footer */
+/* Links & Footer */
 .student-register-footer {
   text-align: center;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 2px dashed #cbd5e1;
 }
 
 .student-register-footer p {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
 }
 
 .student-register-footer a {
-  color: #FA709A;
+  color: #d63031;
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
+  font-weight: 800;
+  margin-left: 0.25rem;
 }
 
 .student-register-footer a:hover {
-  color: #a855f7;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
-/* VJTI badge for register */
+/* VJTI Badge */
 .vjti-register-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   margin-top: 1.5rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.3);
-  text-transform: uppercase;
-}
-
-.vjti-register-badge span {
+  padding: 0.5rem 1rem;
+  background: #f1f5f9;
+  border: 2px solid #000;
+  border-radius: 8px;
   font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #0f172a;
+  box-shadow: 3px 3px 0 #000;
 }
 
-/* Loading spinner */
+/* Spinner */
 .student-register-btn-loading {
   display: inline-flex;
   align-items: center;
@@ -361,30 +298,22 @@
 }
 
 .student-register-spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-top-color: #fff;
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #000;
   border-radius: 50%;
-  animation: spin 0.6s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-/* Responsive */
 @media (max-width: 520px) {
   .student-register-container {
-    margin: 1rem;
-    padding: 2rem 1.5rem;
-  }
-
-  .student-register-header h1 {
-    font-size: 1.6rem;
-  }
-
-  .student-register-name-row {
-    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    box-shadow: 4px 4px 0 #1e293b;
+    border-width: 2px;
   }
 }
