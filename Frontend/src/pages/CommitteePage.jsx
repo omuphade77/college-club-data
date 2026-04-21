@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { api } from '../api';
+import { Calendar, Users } from 'lucide-react';
 import './CommitteePage.css';
 
 export default function CommitteePage() {
@@ -82,13 +83,13 @@ export default function CommitteePage() {
               className={activeTab === 'events' ? 'tab active' : 'tab'}
               onClick={() => setActiveTab('events')}
             >
-              📅 Regular Events
+              <Calendar size={18} /> Regular Events
             </button>
             <button
               className={activeTab === 'members' ? 'tab active' : 'tab'}
               onClick={() => setActiveTab('members')}
             >
-              👥 Members
+              <Users size={18} /> Members
             </button>
           </div>
 
