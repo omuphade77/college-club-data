@@ -18,7 +18,10 @@ export default function Navbar({ onToggleSidebar, sidebarOpen }) {
             <span></span>
             <span></span>
           </button>
-          <Link to="/home" className="logo">CommitteHub</Link>
+          <Link to="/home" className="logo">
+            <img src="/images/logo.png" alt="Logo" className="nav-logo-image" />
+            CommitteeHub
+          </Link>
         </div>
 
         <ul className="nav-links">

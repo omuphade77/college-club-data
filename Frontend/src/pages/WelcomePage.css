@@ -1,8 +1,7 @@
 .welcome-page {
   font-family: 'Inter', 'Poppins', sans-serif;
   min-height: 100vh;
-  /* A beautiful, distinctly blue gradient background instead of white */
-  background: linear-gradient(135deg, #e0f2fe 0%, #bfdbfe 50%, #93c5fd 100%);
+  background: #dbeafe;
   color: #1e3a8a;
   display: flex;
   flex-direction: column;
@@ -226,6 +225,19 @@
 .about-icon {
   font-size: 3rem;
   margin-bottom: 1.5rem;
+}
+
+.welcome-logo-image {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.vjti-about-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 .about-content-box h2 {

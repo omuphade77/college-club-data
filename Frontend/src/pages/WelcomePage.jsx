@@ -35,7 +35,9 @@ export default function WelcomePage() {
         {/* About VJTI Section */}
         <section className="about-vjti-section">
            <div className="about-content-box">
-              <div className="about-icon">🏛️</div>
+              <div className="about-icon">
+                 <img src="/images/vjtilogo.jpg" alt="VJTI Logo" className="vjti-about-logo" />
+              </div>
               <h2>About VJTI</h2>
               <p>
                 VJTI operates as an autonomous institution under the ownership of the Maharashtra State Government. The institute offers a diverse range of programs in engineering and technology spanning diploma, undergraduate, postgraduate, and doctoral levels.
@@ -46,7 +48,9 @@ export default function WelcomePage() {
            </div>
            
            <div className="about-content-box about-platform-box">
-              <div className="about-icon">🚀</div>
+              <div className="about-icon">
+                 <img src="/images/logo.png" alt="CommitteeHub Logo" className="welcome-logo-image" />
+              </div>
               <h2>About CommitteeHub</h2>
               <p>
                  We here show about committees of the college. CommitteeHub helps streamline communication, coordinate events, and make joining clubs seamless. From tech fests to cultural galas, never miss out on what's happening on campus.
