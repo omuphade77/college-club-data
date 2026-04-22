@@ -21,12 +21,15 @@ export default function WelcomePage() {
             </div>
           </div>
           <div className="hero-image-wrapper">
-             {/* VJTI Campus Image */}
+             {/* VJTI Campus Video */}
              <div className="hero-image-overlay"></div>
-             <img 
-               src="/images/quad.webp" 
-               alt="VJTI Quad" 
+             <video 
+               src="/images/quad.mp4" 
                className="hero-image"
+               autoPlay 
+               loop 
+               muted 
+               playsInline
              />
 
           </div>

@@ -7,25 +7,33 @@
 
 /* ── CSS Variables ── */
 :root {
+  /* Color palette from image design */
+  --dark-blue:      #1e3a5f;
+  --light-beige:    #f5f2e8;
+  --medium-turquoise: #4a9d9f;
+  --light-turquoise: #7bc4c6;
+  
+  /* Updated gradient using new palette */
   --bg-gradient: 
-    radial-gradient(at 20% 30%, #5AC8D8 0px, transparent 50%),
-    radial-gradient(at 70% 60%, #FEE140 0px, transparent 50%),
-    radial-gradient(at 90% 10%, #FA709A 0px, transparent 50%),
-    radial-gradient(at 10% 90%, #F9D423 0px, transparent 50%),
-    radial-gradient(at 80% 90%, #4FACFE 0px, transparent 50%),
-    #F3A183;
-  --bg-card:        rgba(255, 255, 255, 0.4);
-  --bg-card-hover:  rgba(255, 255, 255, 0.6);
-  --text-primary:   #111111;
-  --text-secondary: #444444;
-  --text-muted:     #666666;
-  --accent-cyan:    #4FACFE;
-  --accent-blue:    #FA709A;
-  --border:         rgba(255, 255, 255, 0.4);
-  --border-hover:   rgba(255, 255, 255, 0.8);
-  --shadow-card:    0 8px 32px rgba(0, 0, 0, 0.1);
-  --shadow-glow:    0 0 20px rgba(255, 255, 255, 0.5);
-  --button-hover:   #FEE140;
+    linear-gradient(135deg, var(--dark-blue) 0%, var(--medium-turquoise) 50%, var(--light-turquoise) 100%),
+    radial-gradient(at 20% 30%, var(--light-turquoise) 0px, transparent 50%),
+    radial-gradient(at 70% 60%, var(--light-beige) 0px, transparent 50%);
+  
+  --bg-card:        rgba(245, 242, 232, 0.9);
+  --bg-card-hover:  rgba(245, 242, 232, 1);
+  --text-primary:   var(--dark-blue);
+  --text-secondary: #2c5282;
+  --text-muted:     #4a9d9f;
+  --accent-primary: var(--medium-turquoise);
+  --accent-secondary: var(--light-turquoise);
+  --accent-light:   var(--light-beige);
+  --border:         rgba(74, 157, 159, 0.2);
+  --border-hover:   rgba(74, 157, 159, 0.4);
+  --shadow-card:    0 8px 32px rgba(30, 58, 95, 0.1);
+  --shadow-glow:    0 0 20px rgba(123, 196, 198, 0.3);
+  --button-primary: var(--medium-turquoise);
+  --button-secondary: var(--dark-blue);
+  --button-hover:   var(--light-turquoise);
   --radius:         18px;
   --radius-sm:      10px;
   --transition:     0.3s ease;
@@ -133,7 +141,7 @@ img {
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-cyan), transparent);
+  background: linear-gradient(90deg, var(--accent-primary), transparent);
   border-radius: 2px;
 }
 
@@ -203,9 +211,9 @@ img {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--accent-cyan);
+  border-color: var(--accent-primary);
   background: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(123, 196, 198, 0.3);
 }
 
 .form-group select {
