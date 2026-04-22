@@ -1,21 +1,29 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { GraduationCap, Mail, Lock, AlertTriangle, Building2 } from "lucide-react";
+import {
+  GraduationCap,
+  Mail,
+  Lock,
+  AlertTriangle,
+  Building2,
+} from "lucide-react";
 import "./StudentLogin.css";
+
 const API_BASE = "https://college-club-data.onrender.com/api";
+
 export default function StudentLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
 
-    // ✅ VJTI email check
     if (!email.endsWith("vjti.ac.in")) {
       setError("Only VJTI email addresses (vjti.ac.in) are allowed.");
       return;
@@ -34,9 +42,19 @@ export default function StudentLogin() {
         password,
       });
 
+      // ✅ Check token exists
+      if (!res.data.token) {
+        setError("Login failed: No token received");
+        return;
+      }
+
       // 🎟️ Store token
       localStorage.setItem("token", res.data.token);
 
+      // 👤 Store user (IMPORTANT for future use)
+      localStorage.setItem("user", JSON.stringify(res.data.user || {}));
+
+      // 🚀 Redirect
       navigate("/home");
     } catch (err) {
       setError(err.response?.data?.error || "Login failed. Please try again.");
@@ -47,85 +65,53 @@ export default function StudentLogin() {
 
   return (
     <div className="student-login-page">
-
-
       <div className="student-login-container">
         <div className="student-login-header">
-          <div className="student-login-icon"><GraduationCap size={40} className="student-icon" /></div>
+          <div className="student-login-icon">
+            <GraduationCap size={40} className="student-icon" />
+          </div>
           <p className="student-login-eyebrow">Student Portal</p>
           <h1>Welcome Back</h1>
           <div className="student-login-divider"></div>
-          <p className="student-login-subtitle">
-            Sign in with your VJTI credentials to access club events, announcements, and more.
-          </p>
         </div>
 
         {error && (
           <div className="student-login-error">
-            <span><AlertTriangle size={16} /></span> {error}
+            <span>
+              <AlertTriangle size={16} />
+            </span>{" "}
+            {error}
           </div>
         )}
 
         <form className="student-login-form" onSubmit={handleLogin}>
-          <div className="student-form-field">
-            <label className="student-form-label" htmlFor="login-email">Email Address</label>
-            <div className="student-form-input-wrapper">
-              <input
-                id="login-email"
-                type="email"
-                className="student-form-input"
-                placeholder="yourname@vjti.ac.in"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoComplete="email"
-                required
-              />
-              <span className="student-form-input-icon"><Mail size={18} /></span>
-            </div>
-          </div>
+          <input
+            type="email"
+            className="student-form-input"
+            placeholder="yourname@vjti.ac.in"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-          <div className="student-form-field">
-            <label className="student-form-label" htmlFor="login-password">Password</label>
-            <div className="student-form-input-wrapper">
-              <input
-                id="login-password"
-                type="password"
-                className="student-form-input"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
-                required
-              />
-              <span className="student-form-input-icon"><Lock size={18} /></span>
-            </div>
-          </div>
+          <input
+            type="password"
+            className="student-form-input"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
-          <button
-            type="submit"
-            className="student-login-btn"
-            disabled={loading}
-          >
-            {loading ? (
-              <span className="student-btn-loading">
-                <span className="student-spinner"></span>
-                Signing In...
-              </span>
-            ) : (
-              "Sign In"
-            )}
+          <button type="submit" disabled={loading}>
+            {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
 
-        <div className="student-forgot-link">
-          <Link to="/forgot-password">Forgot your password?</Link>
-        </div>
-
         <div className="student-login-footer">
-          <p>Don&apos;t have an account? <Link to="/register">Create one</Link></p>
-          <div className="vjti-badge">
-            <span><Building2 size={16} /></span> VJTI Students Only
-          </div>
+          <p>
+            Don't have an account? <Link to="/register">Create one</Link>
+          </p>
         </div>
       </div>
     </div>

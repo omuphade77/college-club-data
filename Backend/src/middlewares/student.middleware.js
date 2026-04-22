@@ -5,29 +5,38 @@ const verifyStudentToken = (req, res, next) => {
     try {
         const authHeader = req.headers.authorization;
 
-        // ❌ No token
+        // ❌ No header
         if (!authHeader) {
-            return res.status(401).json({ message: "No token provided" });
+            return res.status(401).json({ message: "Authorization header missing" });
         }
 
-        // ✅ Extract token (Bearer TOKEN)
-        const token = authHeader.split(" ")[1];
-
-        // ❌ Invalid format
-        if (!token) {
+        // ❌ Wrong format
+        if (!authHeader.startsWith("Bearer ")) {
             return res.status(401).json({ message: "Invalid token format" });
         }
 
-        // ✅ Verify token
+        // ✅ Extract token
+        const token = authHeader.split(" ")[1];
+
+        if (!token) {
+            return res.status(401).json({ message: "Token missing" });
+        }
+
+        // ✅ Verify
         const decoded = jwt.verify(token, JWT_SECRET);
 
-        // ✅ Attach student info
+        // ✅ Attach user
         req.user = decoded;
 
         next();
 
     } catch (error) {
-        return res.status(401).json({ message: "Invalid or expired token" });
+        // 🔥 Better error handling
+        if (error.name === "TokenExpiredError") {
+            return res.status(401).json({ message: "Token expired" });
+        }
+
+        return res.status(401).json({ message: "Invalid token" });
     }
 };
 
