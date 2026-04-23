@@ -103,7 +103,7 @@ export default function StudentLogin() {
             required
           />
 
-          <button type="submit" disabled={loading}>
+          <button type="submit" className="admin-login-btn" disabled={loading}>
             {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
