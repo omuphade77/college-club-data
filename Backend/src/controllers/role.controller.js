@@ -2,12 +2,17 @@ const { sql } = require('../db/db');
 
 // 1. USER SUBMIT
 async function createRoleRequest(req, res) {
-    const { name, mobile, email, branch, role, committee_name, year } = req.body;
+    const { name, mobile, email, branch, role, committee_name, year, skills, profile_image } = req.body;
+
+    // Ensure skills is always stored as a proper array
+    const skillsArray = Array.isArray(skills)
+        ? skills
+        : (typeof skills === 'string' && skills.length > 0 ? [skills] : []);
 
     try {
         const result = await sql `
-            INSERT INTO role_requests (name, mobile, email, branch, role, committee_name, year)
-            VALUES (${name}, ${mobile}, ${email}, ${branch}, ${role}, ${committee_name}, ${year})
+            INSERT INTO role_requests (name, mobile, email, branch, role, committee_name, year, skills, profile_image)
+            VALUES (${name}, ${mobile}, ${email}, ${branch}, ${role}, ${committee_name}, ${year}, ${skillsArray}, ${profile_image ?? null})
             RETURNING *`;
 
         res.status(201).json({ message: 'Role request created successfully', data: result[0] });
@@ -39,10 +44,15 @@ async function approveRequest(req, res) {
 
         const user = result[0];
 
+        // Safely ensure skills is an array before inserting
+        const skillsArray = Array.isArray(user.skills)
+            ? user.skills
+            : (typeof user.skills === 'string' && user.skills.length > 0 ? [user.skills] : []);
+
         await sql `
         INSERT INTO committee_members 
-            (name, mobile, email, branch, role, committee_name, year)
-            VALUES (${user.name}, ${user.mobile}, ${user.email}, ${user.branch}, ${user.role}, ${user.committee_name}, ${user.year});
+            (name, mobile, email, branch, role, committee_name, year, skills, profile_image)
+            VALUES (${user.name}, ${user.mobile}, ${user.email}, ${user.branch}, ${user.role}, ${user.committee_name}, ${user.year}, ${skillsArray}, ${user.profile_image ?? null});
         `;
 
         await sql `

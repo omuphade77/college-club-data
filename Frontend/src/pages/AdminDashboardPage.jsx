@@ -213,6 +213,14 @@ function RolesPendingTab() {
         <div className="requests-grid">
           {requests.map(req => (
             <div key={req.id} className="request-card">
+              {/* Profile image */}
+              {req.profile_image && (
+                <img
+                  src={req.profile_image}
+                  alt={`${req.name} profile`}
+                  className="req-card-avatar"
+                />
+              )}
               <h3>{req.name}</h3>
               <p><strong>Mobile:</strong> {req.mobile}</p>
               <p><strong>Email:</strong> {req.email}</p>
@@ -220,6 +228,17 @@ function RolesPendingTab() {
               <p><strong>Role:</strong> {req.role}</p>
               <p><strong>Committee:</strong> {req.committee_name}</p>
               <p><strong>Year:</strong> {req.year}</p>
+              {/* Skills */}
+              {Array.isArray(req.skills) && req.skills.length > 0 && (
+                <div className="req-card-skills">
+                  <p><strong>Skills:</strong></p>
+                  <div className="req-skills-tags">
+                    {req.skills.map((skill, i) => (
+                      <span key={i} className="req-skill-tag">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="actions">
                 <button type="button" className="approve-btn" onClick={() => approve(req.id)}><Check size={16}/> Approve</button>
                 <button type="button" className="reject-btn" onClick={() => reject(req.id)}><X size={16}/> Reject</button>

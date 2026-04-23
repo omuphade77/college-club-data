@@ -328,3 +328,41 @@
     padding: 1.35rem;
   }
 }
+
+/* ── Role-request card: avatar + skills ── */
+
+.req-card-avatar {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--navy-deep, #1A1A7A);
+  box-shadow: 3px 3px 0 var(--teal-accent, #6BBCC7);
+  margin-bottom: 0.9rem;
+}
+
+.req-card-skills {
+  margin-top: 0.6rem;
+}
+
+.req-card-skills > p {
+  margin-bottom: 0.4rem !important;
+}
+
+.req-skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.req-skill-tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--teal-pale, #99D4DB);
+  color: var(--navy-deep, #1A1A7A);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1.5px solid var(--navy-deep, #1A1A7A);
+}

@@ -13,6 +13,7 @@ export default function CommitteePage() {
   const [events, setEvents] = useState([]);
   const [activeTab, setActiveTab] = useState('events');
   const [loading, setLoading] = useState(true);
+  const [selectedMember, setSelectedMember] = useState(null);
 
   useEffect(() => {
     if (!committeeName) return;
@@ -129,7 +130,8 @@ export default function CommitteePage() {
                     <h3 className="year-heading">{year} Year</h3>
                     <div className="member-grid">
                       {grouped[year].map((m, i) => (
-                        <div key={i} className="member-card">
+                        <div key={i} className="member-card" style={{ cursor: 'pointer' }}
+                          onClick={() => setSelectedMember(m)}>
                           <h4>{m.name}</h4>
                           <p>{m.role}</p>
                           <p>{m.branch}</p>
@@ -142,6 +144,73 @@ export default function CommitteePage() {
             </>
           )}
         </>
+      )}
+
+      {/* ── Member Detail Modal ── */}
+      {selectedMember && (
+        <div className="member-modal-backdrop" onClick={() => setSelectedMember(null)}>
+          <div className="member-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="member-modal-close"
+              onClick={() => setSelectedMember(null)}
+              aria-label="Close"
+            >✕</button>
+
+            {/* Profile image */}
+            <div className="member-modal-avatar-wrap">
+              {selectedMember.profile_image ? (
+                <img
+                  src={selectedMember.profile_image}
+                  alt={selectedMember.name}
+                  className="member-modal-avatar"
+                />
+              ) : (
+                <div className="member-modal-avatar member-modal-avatar-default">
+                  {selectedMember.name?.charAt(0).toUpperCase()}
+                </div>
+              )}
+            </div>
+
+            <h2 className="member-modal-name">{selectedMember.name}</h2>
+
+            <div className="member-modal-body">
+              <div className="member-modal-row">
+                <span className="member-modal-label">Role</span>
+                <span className="member-modal-value">{selectedMember.role}</span>
+              </div>
+              <div className="member-modal-row">
+                <span className="member-modal-label">Committee</span>
+                <span className="member-modal-value">{selectedMember.committee_name}</span>
+              </div>
+              <div className="member-modal-row">
+                <span className="member-modal-label">Branch</span>
+                <span className="member-modal-value">{selectedMember.branch}</span>
+              </div>
+              <div className="member-modal-row">
+                <span className="member-modal-label">Year</span>
+                <span className="member-modal-value">{selectedMember.year}</span>
+              </div>
+              <div className="member-modal-row">
+                <span className="member-modal-label">Mobile</span>
+                <span className="member-modal-value">{selectedMember.mobile}</span>
+              </div>
+              <div className="member-modal-row">
+                <span className="member-modal-label">Email</span>
+                <span className="member-modal-value member-modal-email">{selectedMember.email}</span>
+              </div>
+              {Array.isArray(selectedMember.skills) && selectedMember.skills.length > 0 && (
+                <div className="member-modal-row member-modal-skills-row">
+                  <span className="member-modal-label">Skills</span>
+                  <div className="member-modal-skills">
+                    {selectedMember.skills.map((s, i) => (
+                      <span key={i} className="member-modal-skill-tag">{s}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
