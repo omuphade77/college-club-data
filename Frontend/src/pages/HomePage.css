@@ -14,7 +14,7 @@
 
 /* ── Banner: brand indigo #170C79 ── */
 .dashboard-banner {
-   background: rgba(107, 188, 199, 0.25);
+   background: var(--navy-deep, #1A1A7A);
   border: 1px solid rgba(107, 188, 199, 0.4);
   box-shadow: 0 8px 25px rgba(107, 188, 199, 0.2);
   border-bottom: none;

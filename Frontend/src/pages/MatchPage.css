@@ -14,7 +14,7 @@
 
 /* ── Banner Section ── */
 .dashboard-banner {
-  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  background: var(--navy-deep, #1A1A7A);
   border-radius: 20px 20px 0 0;
   padding: 2.5rem 3rem;
   position: relative;
