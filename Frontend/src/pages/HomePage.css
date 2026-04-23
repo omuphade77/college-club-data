@@ -3,7 +3,7 @@
 .home-page {
   padding-top: 2rem;
   padding-bottom: 4rem;
-  background-color: var(--cream, #F2E8D5);
+  background-color: var(--cream, #ffffff);
   color: var(--navy-deep, #1A1A7A);
 }
 
@@ -14,14 +14,15 @@
 
 /* ── Banner: brand indigo #170C79 ── */
 .dashboard-banner {
-  background: #170C79;
-  border: 2px solid rgba(0, 0, 0, 0.12);
+   background: rgba(107, 188, 199, 0.25);
+  border: 1px solid rgba(107, 188, 199, 0.4);
+  box-shadow: 0 8px 25px rgba(107, 188, 199, 0.2);
   border-bottom: none;
   border-radius: 20px 20px 0 0;
   padding: 2.5rem 3rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 32px rgba(23, 12, 121, 0.35);
+  
 }
 
 .dashboard-banner::before {
