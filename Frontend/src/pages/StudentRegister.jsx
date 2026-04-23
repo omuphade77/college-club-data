@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { supabase } from "../supabase";
-import { Sparkles, AlertTriangle, Check, User, Mail, Lock, Building2 } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import "./StudentRegister.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
@@ -13,14 +12,29 @@ export default function StudentRegister() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [skills, setSkills] = useState("");
+  const [skills, setSkills] = useState([]);
   const [image, setImage] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const skillOptions = [
+    "Arts & Creativity",
+    "Sports & Fitness",
+    "Academic Excellence",
+    "Technology",
+    "Event Planning",
+    "Social Media",
+    "Environment",
+    "Finance & Budget",
+    "Writing",
+    "Performance",
+    "Photography"
+  ];
 
   // 🔹 Upload image
   const uploadImage = async (file) => {
@@ -73,12 +87,11 @@ export default function StudentRegister() {
         full_name: name,
         email,
         password,
-        skills,
+        skills: skills.join(", "),
         profile_image: imageUrl,
       });
 
       setSuccess("Account created! Redirecting...");
-
       setTimeout(() => navigate("/login"), 1500);
 
     } catch (err) {
@@ -93,7 +106,9 @@ export default function StudentRegister() {
       <div className="student-register-container">
 
         <div className="student-register-header">
-          <div className="student-register-icon"><Sparkles size={40} /></div>
+          <div className="student-register-icon">
+            <Sparkles size={40} />
+          </div>
           <h1>Create Account</h1>
         </div>
 
@@ -102,17 +117,73 @@ export default function StudentRegister() {
 
         <form onSubmit={handleRegister}>
 
-          <input placeholder="Full Name" value={name} onChange={(e)=>setName(e.target.value)} />
+          <input
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-          <input placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+          <input
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-          <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-          <input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
 
-          <input placeholder="Skills" value={skills} onChange={(e)=>setSkills(e.target.value)} />
+          {/* ✅ Custom Multi Select Dropdown */}
+          <div className="skills-dropdown">
 
-          <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
+            <div
+              className="dropdown-header"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {skills.length > 0
+                ? skills.join(", ")
+                : "Select Skills"}
+            </div>
+
+            {isOpen && (
+              <div className="dropdown-list">
+                {skillOptions.map((skill, index) => (
+                  <label key={index} className="dropdown-item">
+                    <input
+                      type="checkbox"
+                      value={skill}
+                      checked={skills.includes(skill)}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSkills([...skills, skill]);
+                        } else {
+                          setSkills(
+                            skills.filter((s) => s !== skill)
+                          );
+                        }
+                      }}
+                    />
+                    {skill}
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <input
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
 
           <button type="submit" disabled={loading}>
             {loading ? "Creating..." : "Create Account"}
@@ -128,4 +199,3 @@ export default function StudentRegister() {
     </div>
   );
 }
-

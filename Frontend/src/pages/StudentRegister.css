@@ -19,7 +19,39 @@
   background: linear-gradient(to top, rgba(26, 26, 122, 0.74), rgba(107, 188, 199, 0.48));
   z-index: 0;
 }
+.skills-dropdown {
+  position: relative;
+  width: 100%;
+}
 
+.dropdown-header {
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: white;
+  border-radius: 6px;
+}
+
+.dropdown-list {
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  border-radius: 6px;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
 .student-register-container {
   width: 100%;
   max-width: 440px;
