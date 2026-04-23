@@ -327,3 +327,25 @@
     padding: 1.5rem;
   }
 }
+.admin-login-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--navy-deep, #1A1A7A), var(--teal-accent, #6BBCC7));
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(26, 26, 122, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(26, 26, 122, 0.35);
+}
+
+.admin-login-btn:active {
+  transform: translateY(1px);
+}
