@@ -87,7 +87,7 @@ export default function StudentRegister() {
         full_name: name,
         email,
         password,
-        skills: skills.join(", "),
+        skills: skills,
         profile_image: imageUrl,
       });
 

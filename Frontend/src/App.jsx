@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-
+import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import IssueModal from './components/IssueModal';
-import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
 import EventsPage from './pages/EventsPage';
 import AnnouncementsPage from './pages/AnnouncementsPage';
@@ -68,7 +67,14 @@ function AppContent() {
         <Route path="/announcements" element={<ProtectedRoute><AnnouncementsPage /></ProtectedRoute>} />
         <Route path="/match" element={<ProtectedRoute><MatchPage /></ProtectedRoute>} />
         <Route path="/committee" element={<ProtectedRoute><CommitteePage /></ProtectedRoute>} />
-        <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
+        <Route
+          path="/admin-dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboardPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/add-role" element={<ProtectedRoute><AddRolePage /></ProtectedRoute>} />
         <Route path="/connect" element={<ProtectedRoute><ConnectPage /></ProtectedRoute>} />
       </Routes>
