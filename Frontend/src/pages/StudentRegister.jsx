@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { supabase } from "../supabase";
-import { Sparkles } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./StudentRegister.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
@@ -107,7 +108,7 @@ export default function StudentRegister() {
 
         <div className="student-register-header">
           <div className="student-register-icon">
-            <Sparkles size={40} />
+            <FontAwesomeIcon icon={faStar} size="2x" />
           </div>
           <h1>Create Account</h1>
         </div>

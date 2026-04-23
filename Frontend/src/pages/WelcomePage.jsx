@@ -8,7 +8,7 @@ export default function WelcomePage() {
       <main className="welcome-main">
         {/* Hero Section */}
         <section className="welcome-hero">
-          <div className="hero-content">
+          <div className="hero-content-left">
             <h1 className="hero-title">
               Welcome to <span className="highlight">VJTI CommitteeHub</span>
             </h1>
@@ -20,18 +20,15 @@ export default function WelcomePage() {
               <Link to="/admin-login" className="btn-secondary">Login as an Admin</Link>
             </div>
           </div>
-          <div className="hero-image-wrapper">
-             {/* VJTI Campus Video */}
-             <div className="hero-image-overlay"></div>
-             <video 
-               src="/images/quad.mp4" 
-               className="hero-image"
-               autoPlay 
-               loop 
-               muted 
-               playsInline
-             />
-
+          <div className="hero-content-right">
+            <video 
+              src="/images/quad.mp4" 
+              className="hero-video"
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+            />
           </div>
         </section>
 

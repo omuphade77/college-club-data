@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { GraduationCap, Users, Calendar } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGraduationCap, faUsers, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { api } from '../api';
 import './HomePage.css';
 
@@ -91,7 +92,7 @@ const [totalMembers, setTotalMembers] = useState(0);
           {/* Stats Row */}
           <div className="stats-row">
             <div className="stat-card">
-              <div className="stat-icon"><GraduationCap size={24} /></div>
+              <div className="stat-icon"><FontAwesomeIcon icon={faGraduationCap} /></div>
               <div className="stat-info">
                 <h3>{committees.length}</h3>
                 <p>Active Committees</p>
@@ -99,7 +100,7 @@ const [totalMembers, setTotalMembers] = useState(0);
             </div>
           
           <div className="stat-card">
-              <div className="stat-icon"><Users size={24} /></div>
+              <div className="stat-icon"><FontAwesomeIcon icon={faUsers} /></div>
               <div className="stat-info">
                 <h3>{totalMembers}</h3>
                 <p>Total Members</p>
@@ -107,7 +108,7 @@ const [totalMembers, setTotalMembers] = useState(0);
             </div>
 
             <div className="stat-card" onClick={() => navigate('/events')}>
-              <div className="stat-icon"><Calendar size={24} /></div>
+              <div className="stat-icon"><FontAwesomeIcon icon={faCalendarAlt} /></div>
               <div className="stat-info">
                 <h3>Upcoming</h3>
                 <p>Campus Events</p>

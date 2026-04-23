@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../api';
-import { ShieldAlert, Lock, AlertTriangle } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShieldHalved, faLock, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import './AdminLoginPage.css';
 
 export default function AdminLoginPage() {
@@ -33,7 +34,7 @@ export default function AdminLoginPage() {
       <Link to="/" className="back-link">← Back</Link>
 
       <div className="admin-box">
-        <span className="shield-icon"><ShieldAlert size={48} className="admin-danger-icon" /></span>
+        <span className="shield-icon"><FontAwesomeIcon icon={faShieldHalved} size="3x" className="admin-danger-icon" /></span>
         <p className="eyebrow">Restricted Access</p>
         <h1>Admin<br />Portal</h1>
         <div className="admin-divider"></div>
@@ -47,7 +48,7 @@ export default function AdminLoginPage() {
             <div>
               <label className="input-label">Secret Password</label>
               <div className="admin-input-wrapper">
-                <Lock size={18} className="admin-input-icon" />
+                <FontAwesomeIcon icon={faLock} className="admin-input-icon" />
                 <input
                   type="password"
                   className="admin-input"
@@ -63,7 +64,7 @@ export default function AdminLoginPage() {
         </form>
 
         <div className="warning-box">
-          <strong><AlertTriangle size={16} /> Warning:</strong> This portal is for authorized personnel only. All login attempts are monitored and recorded.
+          <strong><FontAwesomeIcon icon={faExclamationTriangle} /> Warning:</strong> This portal is for authorized personnel only. All login attempts are monitored and recorded.
         </div>
       </div>
     </div>

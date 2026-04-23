@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import './ConnectPage.css';
 
 const committeeData = {
@@ -93,7 +95,7 @@ export default function ConnectPage() {
                 <p><strong>Phone:</strong> {data.phone}</p>
               </div>
               <div className="social">
-                <a href={data.instagram} target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+                <a href={data.instagram} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} /> Instagram</a>
               </div>
             </>
           )}

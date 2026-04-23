@@ -77,45 +77,61 @@
   text-align: center;
 }
 
-/* ── Tabs: equal spacing ── */
+/* ── Tabs: matching neo-brutalist design ── */
 .tabs {
   display: flex;
   justify-content: center;
-  gap: 0;
+  gap: 1rem;
   margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 2px solid var(--border);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(26, 26, 122, 0.1);
 }
 
 .tab {
   flex: 1;
   max-width: 220px;
-  padding: 0.75rem 1rem;
-  background: transparent;
-  border: none;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  color: var(--text-secondary);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.35rem;
+  border-radius: 10px;
+  border: 2px solid var(--navy-deep, #1A1A7A);
+  background: var(--cream, #F2E8D5);
+  color: var(--navy-deep, #1A1A7A);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: color 0.2s ease, border-color 0.2s ease;
-  letter-spacing: 0.02em;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 3px 3px 0 rgba(26, 26, 122, 0.25);
 }
 
 .tab:hover {
-  color: var(--text-primary);
+  background: rgba(153, 212, 219, 0.45);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 rgba(26, 26, 122, 0.2);
+  color: var(--navy-deep, #1A1A7A);
 }
 
 .tab.active {
-  color: var(--gold);
-  border-bottom-color: var(--gold);
-  font-weight: 600;
+  background: var(--navy-deep, #1A1A7A);
+  color: #fff;
+  box-shadow: 4px 4px 0 var(--teal-accent, #6BBCC7);
+  border-color: var(--navy-deep, #1A1A7A);
+}
+
+.tab.active:hover {
+  background: #15156b;
+  color: #fff;
+}
+
+.tab:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(26, 26, 122, 0.25);
 }
 
 /* ── Events formal list ── */

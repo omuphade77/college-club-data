@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { api } from '../api';
-import { Calendar, Users } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
 import './CommitteePage.css';
 
 export default function CommitteePage() {
@@ -84,13 +85,13 @@ export default function CommitteePage() {
               className={activeTab === 'events' ? 'tab active' : 'tab'}
               onClick={() => setActiveTab('events')}
             >
-              <Calendar size={18} /> Regular Events
+              <FontAwesomeIcon icon={faCalendarAlt} /> Regular Events
             </button>
             <button
               className={activeTab === 'members' ? 'tab active' : 'tab'}
               onClick={() => setActiveTab('members')}
             >
-              <Users size={18} /> Members
+              <FontAwesomeIcon icon={faUsers} /> Members
             </button>
           </div>
 

@@ -1,13 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import {
-  GraduationCap,
-  Mail,
-  Lock,
-  AlertTriangle,
-  Building2,
-} from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import "./StudentLogin.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
@@ -68,7 +63,7 @@ export default function StudentLogin() {
       <div className="student-login-container">
         <div className="student-login-header">
           <div className="student-login-icon">
-            <GraduationCap size={40} className="student-icon" />
+            <FontAwesomeIcon icon={faGraduationCap} size="2x" className="student-icon" />
           </div>
           <p className="student-login-eyebrow">Student Portal</p>
           <h1>Welcome Back</h1>
@@ -78,7 +73,7 @@ export default function StudentLogin() {
         {error && (
           <div className="student-login-error">
             <span>
-              <AlertTriangle size={16} />
+              <FontAwesomeIcon icon={faExclamationTriangle} />
             </span>{" "}
             {error}
           </div>

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Check, AlertTriangle, Mail, Building2, KeyRound } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faExclamationTriangle, faEnvelope, faBuilding, faKey } from "@fortawesome/free-solid-svg-icons";
 import "./ForgotPassword.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
@@ -51,7 +52,7 @@ export default function ForgotPassword() {
 
         <div className="forgot-header">
           <div className="forgot-icon">
-            <KeyRound size={28} />
+            <FontAwesomeIcon icon={faKey} size="2x" />
           </div>
           <p className="forgot-eyebrow">Account Recovery</p>
           <h1>Forgot Password?</h1>
@@ -63,7 +64,7 @@ export default function ForgotPassword() {
 
         {message && (
           <div className={`forgot-alert ${isSuccess ? "forgot-alert-success" : "forgot-alert-error"}`}>
-            <span>{isSuccess ? <Check size={16}/> : <AlertTriangle size={16}/>}</span> {message}
+            <span>{isSuccess ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faExclamationTriangle} />}</span> {message}
           </div>
         )}
 
@@ -84,7 +85,7 @@ export default function ForgotPassword() {
                   autoComplete="email"
                   required
                 />
-                <span className="forgot-input-icon"><Mail size={18} /></span>
+                <span className="forgot-input-icon"><FontAwesomeIcon icon={faEnvelope} /></span>
               </div>
             </div>
 
@@ -111,7 +112,7 @@ export default function ForgotPassword() {
             <Link to="/login">Sign In</Link>
           </p>
           <div className="forgot-badge">
-            <span><Building2 size={16} /></span> VJTI Students Only
+            <span><FontAwesomeIcon icon={faBuilding} /></span> VJTI Students Only
           </div>
         </div>
       </div>

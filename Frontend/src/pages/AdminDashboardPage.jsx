@@ -1,7 +1,8 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { api } from '../api';
-import { Calendar, Clock, MapPin, Building2, Check, X, LayoutDashboard } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt, faClock, faMapMarkerAlt, faBuilding, faCheck, faTimes, faColumns } from '@fortawesome/free-solid-svg-icons';
 import './AdminDashboardPage.css';
 
 const committeeOptions = [
@@ -20,9 +21,7 @@ const VALID_TABS = new Set([
 function WelcomePanel() {
   return (
     <div className="admin-welcome">
-      <div className="admin-welcome-icon" aria-hidden>
-        <LayoutDashboard size={40} />
-      </div>
+        <FontAwesomeIcon icon={faColumns} size="2x" />
       <h2>Admin dashboard</h2>
       <p className="admin-welcome-lead">
         Use the navigation above to post announcements, manage events, review roles, or read reported issues.
@@ -161,9 +160,9 @@ function EventsTab() {
       {preview && (
         <div className="event-preview">
           <h3>{preview.event_name}</h3>
-          <p><Calendar size={16}/> {preview.event_date} <Clock size={16}/> {preview.event_time}</p>
-          <p><MapPin size={16}/> {preview.event_location}</p>
-          <p><Building2 size={16}/> {preview.committee_name}</p>
+          <p><FontAwesomeIcon icon={faCalendarAlt}/> {preview.event_date} <FontAwesomeIcon icon={faClock}/> {preview.event_time}</p>
+          <p><FontAwesomeIcon icon={faMapMarkerAlt}/> {preview.event_location}</p>
+          <p><FontAwesomeIcon icon={faBuilding}/> {preview.committee_name}</p>
           <p>{preview.event_description}</p>
         </div>
       )}
@@ -240,8 +239,8 @@ function RolesPendingTab() {
                 </div>
               )}
               <div className="actions">
-                <button type="button" className="approve-btn" onClick={() => approve(req.id)}><Check size={16}/> Approve</button>
-                <button type="button" className="reject-btn" onClick={() => reject(req.id)}><X size={16}/> Reject</button>
+                <button type="button" className="approve-btn" onClick={() => approve(req.id)}><FontAwesomeIcon icon={faCheck}/> Approve</button>
+                <button type="button" className="reject-btn" onClick={() => reject(req.id)}><FontAwesomeIcon icon={faTimes}/> Reject</button>
               </div>
             </div>
           ))}

@@ -1,9 +1,18 @@
-﻿@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --gray-50: #f9fafb;
+  --gray-900: #111827;
+}
 
-@layer base {
-  body {
-    @apply bg-gray-50 text-gray-900 font-sans min-h-screen overflow-x-hidden;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--gray-50);
+  color: var(--gray-900);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }

@@ -1,7 +1,8 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { KeyRound, Check, AlertTriangle, Lock, EyeOff, Eye, X } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faKey, faCheck, faExclamationTriangle, faLock, faEyeSlash, faEye, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./ResetPass.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
@@ -74,7 +75,7 @@ export default function ResetPassword() {
 
         <div className="reset-header">
           <div className="reset-icon">
-            <KeyRound size={28}/>
+            <FontAwesomeIcon icon={faKey} size="2x"/>
           </div>
           <p className="reset-eyebrow">Secure Reset</p>
           <h1>New Password</h1>
@@ -86,7 +87,7 @@ export default function ResetPassword() {
 
         {message && (
           <div className={`reset-alert ${isSuccess ? "reset-alert-success" : "reset-alert-error"}`}>
-            <span>{isSuccess ? <Check size={16}/> : <AlertTriangle size={16}/>}</span> {message}
+            <span>{isSuccess ? <FontAwesomeIcon icon={faCheck}/> : <FontAwesomeIcon icon={faExclamationTriangle}/>}</span> {message}
           </div>
         )}
 
@@ -114,7 +115,7 @@ export default function ResetPassword() {
                   autoComplete="new-password"
                   required
                 />
-                <span className="reset-input-icon"><Lock size={18} /></span>
+                <span className="reset-input-icon"><FontAwesomeIcon icon={faLock} /></span>
                 <button
                   type="button"
                   className="reset-toggle-btn"
@@ -122,7 +123,7 @@ export default function ResetPassword() {
                   tabIndex={-1}
                   aria-label="Toggle password visibility"
                 >
-                  {showPassword ? <EyeOff size={16}/> : <Eye size={16}/>}
+                  {showPassword ? <FontAwesomeIcon icon={faEyeSlash}/> : <FontAwesomeIcon icon={faEye}/>}
                 </button>
               </div>
 
@@ -162,7 +163,7 @@ export default function ResetPassword() {
                   autoComplete="new-password"
                   required
                 />
-                <span className="reset-input-icon"><Lock size={18} /></span>
+                <span className="reset-input-icon"><FontAwesomeIcon icon={faLock} /></span>
                 <button
                   type="button"
                   className="reset-toggle-btn"
@@ -170,16 +171,16 @@ export default function ResetPassword() {
                   tabIndex={-1}
                   aria-label="Toggle confirm password visibility"
                 >
-                  {showConfirm ? <EyeOff size={16}/> : <Eye size={16}/>}
+                  {showConfirm ? <FontAwesomeIcon icon={faEyeSlash}/> : <FontAwesomeIcon icon={faEye}/>}
                 </button>
               </div>
 
               {confirmPassword && (
                 <div className="reset-match-indicator">
                   {password === confirmPassword ? (
-                    <span className="reset-match-yes"><Check size={14}/> Passwords match</span>
+                    <span className="reset-match-yes"><FontAwesomeIcon icon={faCheck}/> Passwords match</span>
                   ) : (
-                    <span className="reset-match-no"><X size={14}/> Passwords don&apos;t match</span>
+                    <span className="reset-match-no"><FontAwesomeIcon icon={faTimes}/> Passwords don&apos;t match</span>
                   )}
                 </div>
               )}
