@@ -3,8 +3,8 @@
 .home-page {
   padding-top: 2rem;
   padding-bottom: 4rem;
-  background-color: var(--bg-body, #f4f6fa); /* Fallback light formal gray */
-  color: #1e293b;
+  background-color: var(--cream, #F2E8D5);
+  color: var(--navy-deep, #1A1A7A);
 }
 
 .home-dashboard {
@@ -12,14 +12,21 @@
   margin: 0 auto;
 }
 
-/* ── Banner Section ── */
+/* ── Banner Section (navy + cream + teal palette) ── */
 .dashboard-banner {
-  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(242, 232, 213, 0.98) 0%,
+    rgba(153, 212, 219, 0.45) 55%,
+    rgba(107, 188, 199, 0.35) 100%
+  );
+  border: 2px solid rgba(26, 26, 122, 0.12);
+  border-bottom: none;
   border-radius: 20px 20px 0 0;
   padding: 2.5rem 3rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.2);
+  box-shadow: 0 8px 28px rgba(26, 26, 122, 0.08);
 }
 
 .dashboard-banner::before {
@@ -29,7 +36,7 @@
   right: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(26, 26, 122, 0.06) 0%, transparent 60%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -40,7 +47,7 @@
   right: 15%;
   width: 150px;
   height: 80px;
-  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M0,25 Q25,0 50,25 T100,25 L100,0 L0,0 Z" fill="rgba(255,255,255,0.05)"/></svg>') no-repeat right top;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M0,25 Q25,0 50,25 T100,25 L100,0 L0,0 Z" fill="rgba(26,26,122,0.06)"/></svg>') no-repeat right top;
   background-size: cover;
   pointer-events: none;
 }
@@ -53,26 +60,28 @@
 .banner-content h2 {
   font-family: var(--font-display, 'Inter', sans-serif);
   font-size: 2.2rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  color: var(--navy-deep, #1A1A7A);
   margin-bottom: 0.5rem;
   letter-spacing: -0.5px;
 }
 
 .banner-content p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(26, 26, 122, 0.82);
   font-size: 1.05rem;
-  font-weight: 400;
+  font-weight: 500;
   max-width: 500px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ── Content Section ── */
 .dashboard-content {
   background: #ffffff;
+  border: 2px solid rgba(26, 26, 122, 0.12);
+  border-top: 1px solid rgba(26, 26, 122, 0.08);
   border-radius: 0 0 20px 20px;
   padding: 2.5rem 3rem;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+  box-shadow: 0 5px 20px rgba(26, 26, 122, 0.06);
 }
 
 .section-heading {
@@ -241,4 +250,4 @@
   .committees-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
-}
+}

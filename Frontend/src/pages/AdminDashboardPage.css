@@ -67,27 +67,6 @@
   line-height: 1.5;
 }
 
-.admin-placeholder {
-  padding: 0.5rem 0 1rem;
-}
-
-.admin-placeholder p {
-  color: var(--text-secondary);
-  font-weight: 500;
-  line-height: 1.6;
-  margin-bottom: 0.75rem;
-}
-
-.admin-placeholder-note {
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--text-muted);
-  padding: 1rem;
-  background: rgba(153, 212, 219, 0.25);
-  border-radius: 10px;
-  border: 2px dashed rgba(26, 26, 122, 0.25);
-}
-
 .tab-content {
   animation: fadeIn 0.3s ease;
   background: #fff;

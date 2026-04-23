@@ -12,25 +12,10 @@ const committeeOptions = [
 
 const VALID_TABS = new Set([
   'announcements-new',
-  'announcements-past',
   'events-new',
-  'events-past',
   'roles-pending',
-  'roles-approved',
   'issues',
 ]);
-
-function AdminPlaceholder({ title, body }) {
-  return (
-    <div className="admin-placeholder">
-      <h2>{title}</h2>
-      <p>{body}</p>
-      <p className="admin-placeholder-note">
-        Placeholder: connect your backend endpoint here to list live data.
-      </p>
-    </div>
-  );
-}
 
 function WelcomePanel() {
   return (
@@ -43,7 +28,7 @@ function WelcomePanel() {
         Use the navigation above to post announcements, manage events, review roles, or read reported issues.
       </p>
       <p className="admin-welcome-hint">
-        Choose a section from <strong>Announcements</strong>, <strong>Events</strong>, or <strong>Roles</strong>, or open <strong>Issues</strong>.
+        Open <strong>Announcements</strong>, <strong>Events</strong>, <strong>Roles</strong>, or <strong>Issues</strong> in the bar above.
       </p>
     </div>
   );
@@ -261,26 +246,8 @@ export default function AdminDashboardPage() {
       <div className="tab-content">
         {view === 'welcome' && <WelcomePanel />}
         {view === 'announcements-new' && <AnnouncementTab />}
-        {view === 'announcements-past' && (
-          <AdminPlaceholder
-            title="Past announcements"
-            body="Browse and manage announcements that were published earlier."
-          />
-        )}
         {view === 'events-new' && <EventsTab />}
-        {view === 'events-past' && (
-          <AdminPlaceholder
-            title="Past events"
-            body="Archive of completed events will appear here once the API is wired."
-          />
-        )}
         {view === 'roles-pending' && <RolesPendingTab />}
-        {view === 'roles-approved' && (
-          <AdminPlaceholder
-            title="Approved members"
-            body="A directory of approved committee roles and members will display here."
-          />
-        )}
         {view === 'issues' && <IssuesTab />}
       </div>
     </div>

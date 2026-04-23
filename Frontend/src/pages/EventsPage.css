@@ -7,8 +7,52 @@
 
 .events-page .tabs {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(26, 26, 122, 0.1);
+}
+
+.events-page .tab-btn {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.35rem;
+  border-radius: 10px;
+  border: 2px solid var(--navy-deep, #1A1A7A);
+  background: var(--cream, #F2E8D5);
+  color: var(--navy-deep, #1A1A7A);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  box-shadow: 3px 3px 0 rgba(26, 26, 122, 0.25);
+}
+
+.events-page .tab-btn:hover {
+  background: rgba(153, 212, 219, 0.45);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 rgba(26, 26, 122, 0.2);
+}
+
+.events-page .tab-btn.active {
+  background: var(--navy-deep, #1A1A7A);
+  color: #fff;
+  box-shadow: 4px 4px 0 var(--teal-accent, #6BBCC7);
+}
+
+.events-page .tab-btn.active:hover {
+  background: #15156b;
+  color: #fff;
+}
+
+.events-page .tab-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(26, 26, 122, 0.25);
 }
 
 .events-grid {

@@ -177,20 +177,20 @@
   box-shadow: 0 0 0 3px rgba(107, 188, 199, 0.22);
 }
 
-/* Submit Button */
+/* Submit Button — solid navy to match CommitteeHub actions */
 .student-login-btn {
   width: 100%;
   padding: 1rem;
   margin-top: 0.5rem;
-  background: linear-gradient(135deg, var(--navy-deep, #1A1A7A), var(--teal-accent, #6BBCC7));
+  background: var(--navy-deep, #1A1A7A);
   color: #fff;
-  border: none;
+  border: 2px solid var(--navy-deep, #1A1A7A);
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(26, 26, 122, 0.28);
-  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(26, 26, 122, 0.35);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,7 +198,9 @@
 
 .student-login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(26, 26, 122, 0.38);
+  background: #222294;
+  border-color: var(--teal-accent, #6BBCC7);
+  box-shadow: 0 10px 26px rgba(26, 26, 122, 0.4);
 }
 
 .student-login-btn:active {

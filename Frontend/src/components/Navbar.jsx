@@ -1,35 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard }) {
   const location = useLocation();
   const adminTab = new URLSearchParams(location.search).get('tab');
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const navRef = useRef(null);
-
-  useEffect(() => {
-    const close = (e) => {
-      if (navRef.current && !navRef.current.contains(e.target)) {
-        setOpenDropdown(null);
-      }
-    };
-    document.addEventListener('click', close);
-    return () => document.removeEventListener('click', close);
-  }, []);
-
-  useEffect(() => {
-    setOpenDropdown(null);
-  }, [location.pathname, location.search]);
 
   const logoTo = isAdminDashboard ? '/admin-dashboard' : '/home';
-  const toggleDropdown = (id) => {
-    setOpenDropdown((prev) => (prev === id ? null : id));
-  };
 
   if (isAdminDashboard) {
     return (
-      <nav className="navbar navbar--admin" ref={navRef}>
+      <nav className="navbar navbar--admin">
         <div className="nav-container">
           <div className="nav-left">
             <Link to={logoTo} className="logo logo--admin">
@@ -39,75 +19,30 @@ export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard 
           </div>
 
           <ul className="nav-links nav-links--admin">
-            <li className="nav-dropdown">
-              <button
-                type="button"
-                className={`nav-dropdown-trigger ${openDropdown === 'announcements' ? 'is-open' : ''}`}
-                aria-expanded={openDropdown === 'announcements'}
-                onClick={() => toggleDropdown('announcements')}
+            <li>
+              <Link
+                to="/admin-dashboard?tab=announcements-new"
+                className={adminTab === 'announcements-new' ? 'active' : ''}
               >
                 Announcements
-              </button>
-              <ul className={`nav-dropdown-menu ${openDropdown === 'announcements' ? 'is-visible' : ''}`}>
-                <li>
-                  <Link to="/admin-dashboard?tab=announcements-new" onClick={() => setOpenDropdown(null)}>
-                    New announcement
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin-dashboard?tab=announcements-past" onClick={() => setOpenDropdown(null)}>
-                    Past announcements
-                  </Link>
-                </li>
-              </ul>
+              </Link>
             </li>
-
-            <li className="nav-dropdown">
-              <button
-                type="button"
-                className={`nav-dropdown-trigger ${openDropdown === 'events' ? 'is-open' : ''}`}
-                aria-expanded={openDropdown === 'events'}
-                onClick={() => toggleDropdown('events')}
+            <li>
+              <Link
+                to="/admin-dashboard?tab=events-new"
+                className={adminTab === 'events-new' ? 'active' : ''}
               >
                 Events
-              </button>
-              <ul className={`nav-dropdown-menu ${openDropdown === 'events' ? 'is-visible' : ''}`}>
-                <li>
-                  <Link to="/admin-dashboard?tab=events-new" onClick={() => setOpenDropdown(null)}>
-                    Upload new
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin-dashboard?tab=events-past" onClick={() => setOpenDropdown(null)}>
-                    Past events
-                  </Link>
-                </li>
-              </ul>
+              </Link>
             </li>
-
-            <li className="nav-dropdown">
-              <button
-                type="button"
-                className={`nav-dropdown-trigger ${openDropdown === 'roles' ? 'is-open' : ''}`}
-                aria-expanded={openDropdown === 'roles'}
-                onClick={() => toggleDropdown('roles')}
+            <li>
+              <Link
+                to="/admin-dashboard?tab=roles-pending"
+                className={adminTab === 'roles-pending' ? 'active' : ''}
               >
                 Roles
-              </button>
-              <ul className={`nav-dropdown-menu ${openDropdown === 'roles' ? 'is-visible' : ''}`}>
-                <li>
-                  <Link to="/admin-dashboard?tab=roles-pending" onClick={() => setOpenDropdown(null)}>
-                    Pending
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin-dashboard?tab=roles-approved" onClick={() => setOpenDropdown(null)}>
-                    Approved members
-                  </Link>
-                </li>
-              </ul>
+              </Link>
             </li>
-
             <li>
               <Link
                 to="/admin-dashboard?tab=issues"
@@ -123,7 +58,7 @@ export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard 
   }
 
   return (
-    <nav className="navbar" ref={navRef}>
+    <nav className="navbar">
       <div className="nav-container">
         <div className="nav-left">
           <button
