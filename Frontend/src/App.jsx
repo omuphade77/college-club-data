@@ -24,6 +24,7 @@ function AppContent() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [issueModalOpen, setIssueModalOpen] = useState(false);
   const location = useLocation();
+  const isAdminDashboard = location.pathname === '/admin-dashboard';
 
   // Pages that should NOT show navbar/sidebar
   const hideNavPages = ['/admin-login', '/login', '/register', '/', '/forgot-password'];
@@ -35,10 +36,11 @@ function AppContent() {
         <Navbar
           onToggleSidebar={() => setSidebarOpen(prev => !prev)}
           sidebarOpen={sidebarOpen}
+          isAdminDashboard={isAdminDashboard}
         />
       )}
 
-      {showNav && (
+      {showNav && !isAdminDashboard && (
         <Sidebar
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}

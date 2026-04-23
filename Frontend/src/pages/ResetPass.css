@@ -6,23 +6,34 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: var(--bg-body, #f4f6fa);
-  color: #1e293b;
+  background: url('/images/quad.webp') center/cover no-repeat fixed;
+  color: var(--navy-deep, #1A1A7A);
   font-family: var(--font-body, 'Inter', sans-serif);
-  padding: 3rem 2rem;
+  padding: 2rem;
+}
+
+.reset-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 26, 122, 0.74), rgba(107, 188, 199, 0.48));
+  z-index: 0;
 }
 
 /* Reset Container */
 .reset-container {
   width: 100%;
   max-width: 440px;
-  background: #ffffff;
+  background: rgba(242, 232, 213, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 2.5rem;
-  border: 3px solid #000;
-  border-radius: 16px;
-  box-shadow: 8px 8px 0 #1e293b;
+  border: 1px solid rgba(107, 188, 199, 0.45);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(26, 26, 122, 0.22);
   animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   z-index: 1;
+  position: relative;
 }
 
 @keyframes popIn {

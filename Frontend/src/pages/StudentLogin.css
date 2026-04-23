@@ -7,7 +7,7 @@
   justify-content: center;
   position: relative;
   background: url('/images/quad.webp') center/cover no-repeat fixed;
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
   font-family: var(--font-body, 'Inter', sans-serif);
   padding: 2rem;
 }
@@ -16,7 +16,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(27, 27, 135, 0.7), rgba(93, 180, 200, 0.5));
+  background: linear-gradient(to top, rgba(26, 26, 122, 0.74), rgba(107, 188, 199, 0.48));
   z-index: 0;
 }
 
@@ -51,13 +51,13 @@
 .student-login-container {
   width: 100%;
   max-width: 440px;
-  background: rgba(239, 226, 204, 0.85); /* Beige with opacity */
+  background: rgba(242, 232, 213, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 2.5rem;
-  border: 1px solid rgba(93, 180, 200, 0.4);
+  border: 1px solid rgba(107, 188, 199, 0.45);
   border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(27, 27, 135, 0.2);
+  box-shadow: 0 20px 40px rgba(26, 26, 122, 0.22);
   animation: popIn 0.5s ease forwards;
   z-index: 1;
 }
@@ -76,14 +76,14 @@
 .student-login-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, #5db4c8, #8fcbce);
+  background: linear-gradient(135deg, var(--teal-accent, #6BBCC7), var(--teal-pale, #99D4DB));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
   color: #fff;
-  box-shadow: 0 8px 16px rgba(93, 180, 200, 0.3);
+  box-shadow: 0 8px 16px rgba(107, 188, 199, 0.35);
 }
 
 .student-login-eyebrow {
@@ -91,20 +91,20 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #5db4c8;
+  color: var(--teal-accent, #6BBCC7);
   margin-bottom: 0.5rem;
 }
 
 .student-login-header h1 {
   font-size: 2rem;
   font-weight: 800;
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
   margin-bottom: 0.5rem;
 }
 
 .student-login-subtitle {
   font-size: 0.95rem;
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
   opacity: 0.8;
   line-height: 1.5;
   font-weight: 500;
@@ -114,7 +114,7 @@
 .student-login-divider {
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #1b1b87, #5db4c8);
+  background: linear-gradient(90deg, var(--navy-deep, #1A1A7A), var(--teal-accent, #6BBCC7));
   margin: 1.5rem auto;
   border-radius: 2px;
 }
@@ -135,7 +135,7 @@
 .student-form-label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
 }
 
 .student-form-input-wrapper {
@@ -147,7 +147,7 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #5db4c8;
+  color: var(--teal-accent, #6BBCC7);
   display: flex;
   align-items: center;
   pointer-events: none;
@@ -157,9 +157,9 @@
   width: 100%;
   padding: 0.9rem 1rem 0.9rem 2.8rem;
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(93, 180, 200, 0.3);
+  border: 1px solid rgba(107, 188, 199, 0.35);
   border-radius: 12px;
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
   font-weight: 500;
   font-size: 0.95rem;
   outline: none;
@@ -167,14 +167,14 @@
 }
 
 .student-form-input::placeholder {
-  color: #8fcbce;
+  color: var(--teal-pale, #99D4DB);
   font-weight: 400;
 }
 
 .student-form-input:focus {
   background: rgba(255, 255, 255, 0.95);
-  border-color: #5db4c8;
-  box-shadow: 0 0 0 3px rgba(93, 180, 200, 0.2);
+  border-color: var(--teal-accent, #6BBCC7);
+  box-shadow: 0 0 0 3px rgba(107, 188, 199, 0.22);
 }
 
 /* Submit Button */
@@ -182,14 +182,14 @@
   width: 100%;
   padding: 1rem;
   margin-top: 0.5rem;
-  background: linear-gradient(135deg, #1b1b87, #5db4c8);
+  background: linear-gradient(135deg, var(--navy-deep, #1A1A7A), var(--teal-accent, #6BBCC7));
   color: #fff;
   border: none;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(27, 27, 135, 0.3);
+  box-shadow: 0 8px 20px rgba(26, 26, 122, 0.28);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -198,7 +198,7 @@
 
 .student-login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(27, 27, 135, 0.4);
+  box-shadow: 0 12px 25px rgba(26, 26, 122, 0.38);
 }
 
 .student-login-btn:active {
@@ -251,13 +251,13 @@
 .student-forgot-link a {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #5db4c8;
+  color: var(--teal-accent, #6BBCC7);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .student-forgot-link a:hover {
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
   text-decoration: underline;
 }
 
@@ -265,24 +265,24 @@
   text-align: center;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(93, 180, 200, 0.3);
+  border-top: 1px solid rgba(107, 188, 199, 0.35);
 }
 
 .student-login-footer p {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
 }
 
 .student-login-footer a {
-  color: #5db4c8;
+  color: var(--teal-accent, #6BBCC7);
   text-decoration: none;
   font-weight: 700;
   margin-left: 0.25rem;
 }
 
 .student-login-footer a:hover {
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
   text-decoration: underline;
 }
 
@@ -294,12 +294,12 @@
   margin-top: 1.5rem;
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(93, 180, 200, 0.3);
+  border: 1px solid rgba(107, 188, 199, 0.35);
   border-radius: 8px;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #1b1b87;
+  color: var(--navy-deep, #1A1A7A);
 }
 
 /* Spinner */

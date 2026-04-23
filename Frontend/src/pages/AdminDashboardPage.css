@@ -1,91 +1,122 @@
-/* ── Admin Dashboard (Neo-Brutalist Light Theme) ── */
+/* ── Admin Dashboard — navy / cream / teal palette ── */
 
 .admin-dashboard {
-  padding: 3rem 2rem;
+  padding: 2rem 1.5rem 3rem;
   max-width: 1000px;
   margin: 0 auto;
   animation: fadeIn 0.5s ease;
   font-family: var(--font-body, 'Inter', sans-serif);
-  color: #1e293b;
-  background-color: var(--bg-body, #f4f6fa);
-  min-height: 100vh;
+  color: var(--navy-deep);
+  background-color: var(--cream);
+  min-height: calc(100vh - 68px);
 }
 
 .admin-dashboard h2 {
   font-family: var(--font-display, 'Inter', sans-serif);
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #000;
-  margin-bottom: 1.5rem;
+  color: var(--navy-deep);
+  margin-bottom: 1.25rem;
   display: inline-block;
-  border-bottom: 4px solid #000;
-  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--teal-accent);
+  padding-bottom: 0.35rem;
 }
 
-/* Tabs */
-.admin-dashboard .tabs {
+.admin-welcome {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.admin-welcome-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.25rem;
   display: flex;
-  gap: 12px;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  overflow-x: auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--teal-accent), var(--teal-pale));
+  color: var(--navy-deep);
+  border: 3px solid var(--navy-deep);
+  box-shadow: 5px 5px 0 var(--navy-deep);
 }
 
-.tab-btn {
-  background: #fff;
-  border: 2px solid #000;
-  color: #000;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: var(--font-body, 'Inter', sans-serif);
+.admin-welcome h2 {
+  border: none;
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.admin-welcome-lead {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--navy-deep);
+  opacity: 0.92;
+  max-width: 520px;
+  margin: 0 auto 1rem;
+  font-weight: 500;
+}
+
+.admin-welcome-hint {
   font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  box-shadow: 4px 4px 0 #000;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
-.tab-btn.active {
-  background: #ff7675; /* Eye catching active tab */
-  color: #000;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
+.admin-placeholder {
+  padding: 0.5rem 0 1rem;
 }
 
-.tab-btn:hover:not(.active) {
-  background: #f1f5f9;
-  transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0 #000;
+.admin-placeholder p {
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
 }
 
-.tab-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0 0 0 #000;
+.admin-placeholder-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+  padding: 1rem;
+  background: rgba(153, 212, 219, 0.25);
+  border-radius: 10px;
+  border: 2px dashed rgba(26, 26, 122, 0.25);
 }
 
 .tab-content {
   animation: fadeIn 0.3s ease;
   background: #fff;
-  border: 3px solid #000;
-  border-radius: 12px;
+  border: 3px solid var(--navy-deep);
+  border-radius: 14px;
   padding: 2rem;
-  box-shadow: 8px 8px 0 #1e293b;
+  box-shadow: 8px 8px 0 var(--teal-accent);
 }
 
-/* Form Inputs */
+.admin-inline-select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 2px solid var(--navy-deep);
+  background: var(--cream);
+  color: var(--navy-deep);
+  font-weight: 600;
+}
+
+/* Form inputs */
 .admin-dashboard input,
 .admin-dashboard textarea,
 .admin-dashboard select {
   width: 100%;
   margin-top: 10px;
   padding: 1rem;
-  background: #f8fafc;
-  border: 2px solid #000;
-  color: #000;
-  border-radius: 8px;
+  background: rgba(242, 232, 213, 0.5);
+  border: 2px solid var(--navy-deep);
+  color: var(--navy-deep);
+  border-radius: 10px;
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 0.95rem;
   font-weight: 600;
@@ -103,39 +134,36 @@
 .admin-dashboard textarea:focus,
 .admin-dashboard select:focus {
   background: #fff;
-  box-shadow: 4px 4px 0 #000;
+  box-shadow: 4px 4px 0 var(--teal-pale);
   transform: translate(-2px, -2px);
 }
 
 .admin-submit-btn {
   margin-top: 10px;
   padding: 1rem 2rem;
-  background: #6c5ce7;
-  border: 3px solid #000;
-  border-radius: 8px;
+  background: linear-gradient(135deg, var(--navy-deep), var(--teal-accent));
+  border: 3px solid var(--navy-deep);
+  border-radius: 10px;
   cursor: pointer;
   color: #fff;
   font-weight: 800;
   font-size: 1rem;
   text-transform: uppercase;
   transition: all 0.2s ease;
-  box-shadow: 4px 4px 0 #000;
+  box-shadow: 4px 4px 0 var(--navy-deep);
   display: inline-block;
 }
 
 .admin-submit-btn:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
-  background: #a29bfe;
-  color: #000;
+  box-shadow: 6px 6px 0 var(--navy-deep);
 }
 
 .admin-submit-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 0 0 0 #000;
+  box-shadow: 0 0 0 var(--navy-deep);
 }
 
-/* Issues Cards */
 .issue-list {
   display: grid;
   gap: 15px;
@@ -144,49 +172,57 @@
 
 .issue-item {
   background: #fff;
-  border: 2px solid #000;
+  border: 2px solid var(--navy-deep);
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 4px 4px 0 #000;
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--teal-pale);
   transition: all 0.2s ease;
 }
 
 .issue-item:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
-  background: #f8fafc;
+  box-shadow: 6px 6px 0 var(--teal-accent);
+  background: rgba(242, 232, 213, 0.35);
 }
 
 .issue-item h3 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  color: #000;
+  color: var(--navy-deep);
   margin-bottom: 0.5rem;
 }
 
 .issue-item p {
   font-size: 0.95rem;
-  color: #475569;
+  color: var(--text-secondary);
   line-height: 1.5;
   font-weight: 500;
 }
 
-/* Event Preview */
+.issue-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--navy-deep);
+  color: var(--cream);
+  font-weight: 700;
+}
+
 .event-preview {
-  background: #fdf2f8; /* light pinkish */
+  background: rgba(153, 212, 219, 0.35);
   padding: 1.5rem;
   margin-top: 2rem;
-  border-radius: 8px;
-  color: #000;
-  border: 2px solid #000;
-  box-shadow: 4px 4px 0 #000;
+  border-radius: 10px;
+  color: var(--navy-deep);
+  border: 2px solid var(--navy-deep);
+  box-shadow: 4px 4px 0 var(--navy-deep);
   animation: fadeIn 0.3s ease;
 }
 
 .event-preview h3 {
   font-family: var(--font-display, 'Inter', sans-serif);
-  color: #d63031;
-  font-size: 1.5rem;
+  color: var(--navy-deep);
+  font-size: 1.35rem;
   font-weight: 800;
   margin-bottom: 1rem;
   border: none;
@@ -194,7 +230,7 @@
 }
 
 .event-preview p {
-  color: #1e293b;
+  color: var(--text-secondary);
   font-weight: 600;
   font-size: 0.95rem;
   margin: 0.5rem 0;
@@ -203,7 +239,6 @@
   gap: 0.5rem;
 }
 
-/* Requests Grid */
 .requests-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -213,23 +248,23 @@
 
 .request-card {
   background: #fff;
-  border: 2px solid #000;
-  border-radius: 8px;
+  border: 2px solid var(--navy-deep);
+  border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 4px 4px 0 #000;
+  box-shadow: 4px 4px 0 var(--teal-accent);
   transition: all 0.2s ease;
 }
 
 .request-card:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
+  box-shadow: 6px 6px 0 var(--navy-deep);
 }
 
 .request-card h3 {
   font-family: var(--font-display, 'Inter', sans-serif);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  color: #000;
+  color: var(--navy-deep);
   margin-bottom: 0.8rem;
   border: none;
   text-transform: none;
@@ -237,13 +272,13 @@
 
 .request-card p {
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--text-secondary);
   margin: 0.3rem 0;
   font-weight: 500;
 }
 
 .request-card p strong {
-  color: #000;
+  color: var(--navy-deep);
   font-weight: 800;
 }
 
@@ -256,15 +291,15 @@
 .request-card .actions button {
   flex: 1;
   padding: 0.6rem;
-  border: 2px solid #000;
+  border: 2px solid var(--navy-deep);
   background: #fff;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 800;
   text-transform: uppercase;
   transition: all 0.2s ease;
-  box-shadow: 3px 3px 0 #000;
+  box-shadow: 3px 3px 0 var(--navy-deep);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -272,45 +307,45 @@
 }
 
 .request-card .actions button.approve-btn {
-  background: #22c55e;
+  background: #16a34a;
   color: #fff;
 }
 
 .request-card .actions button.approve-btn:hover {
-  background: #16a34a;
+  background: #15803d;
   transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0 #000;
+  box-shadow: 4px 4px 0 var(--navy-deep);
 }
 
 .request-card .actions button.reject-btn {
-  background: #ef4444;
+  background: #dc2626;
   color: #fff;
 }
 
 .request-card .actions button.reject-btn:hover {
-  background: #dc2626;
+  background: #b91c1c;
   transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0 #000;
+  box-shadow: 4px 4px 0 var(--navy-deep);
 }
 
 .request-card .actions button:active {
   transform: translate(2px, 2px) !important;
-  box-shadow: 0 0 0 #000 !important;
+  box-shadow: 0 0 0 var(--navy-deep) !important;
 }
 
 .admin-pending-subtitle {
-  color: #475569;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
   .admin-dashboard {
-    padding: 2rem 1rem;
+    padding: 1.25rem 1rem 2rem;
   }
   .tab-content {
-    padding: 1.5rem;
+    padding: 1.35rem;
   }
 }

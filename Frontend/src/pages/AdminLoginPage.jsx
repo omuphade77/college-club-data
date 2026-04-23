@@ -30,7 +30,7 @@ export default function AdminLoginPage() {
 
   return (
     <div className="admin-login-page">
-      <Link to="/home" className="back-link">← Back</Link>
+      <Link to="/" className="back-link">← Back</Link>
 
       <div className="admin-box">
         <span className="shield-icon"><ShieldAlert size={48} className="admin-danger-icon" /></span>
