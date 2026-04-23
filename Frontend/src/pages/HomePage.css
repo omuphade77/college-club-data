@@ -12,21 +12,16 @@
   margin: 0 auto;
 }
 
-/* ── Banner Section (navy + cream + teal palette) ── */
+/* ── Banner: brand indigo #170C79 ── */
 .dashboard-banner {
-  background: linear-gradient(
-    135deg,
-    rgba(242, 232, 213, 0.98) 0%,
-    rgba(153, 212, 219, 0.45) 55%,
-    rgba(107, 188, 199, 0.35) 100%
-  );
-  border: 2px solid rgba(26, 26, 122, 0.12);
+  background: #170C79;
+  border: 2px solid rgba(0, 0, 0, 0.12);
   border-bottom: none;
   border-radius: 20px 20px 0 0;
   padding: 2.5rem 3rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 28px rgba(26, 26, 122, 0.08);
+  box-shadow: 0 10px 32px rgba(23, 12, 121, 0.35);
 }
 
 .dashboard-banner::before {
@@ -36,7 +31,7 @@
   right: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(26, 26, 122, 0.06) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 55%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -47,7 +42,7 @@
   right: 15%;
   width: 150px;
   height: 80px;
-  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M0,25 Q25,0 50,25 T100,25 L100,0 L0,0 Z" fill="rgba(26,26,122,0.06)"/></svg>') no-repeat right top;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg"><path d="M0,25 Q25,0 50,25 T100,25 L100,0 L0,0 Z" fill="rgba(255,255,255,0.08)"/></svg>') no-repeat right top;
   background-size: cover;
   pointer-events: none;
 }
@@ -61,13 +56,13 @@
   font-family: var(--font-display, 'Inter', sans-serif);
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--navy-deep, #1A1A7A);
+  color: #ffffff;
   margin-bottom: 0.5rem;
   letter-spacing: -0.5px;
 }
 
 .banner-content p {
-  color: rgba(26, 26, 122, 0.82);
+  color: rgba(242, 232, 213, 0.95);
   font-size: 1.05rem;
   font-weight: 500;
   max-width: 500px;

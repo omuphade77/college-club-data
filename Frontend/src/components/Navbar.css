@@ -29,6 +29,11 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  min-width: 0;
+}
+
+.nav-left .hamburger {
+  flex-shrink: 0;
 }
 
 .logo {
@@ -128,45 +133,55 @@
   background: var(--teal-pale);
 }
 
-/* ── Hamburger (student) ── */
+/* ── Hamburger (student) — high contrast so it stays visible on cream ── */
 .hamburger {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
   cursor: pointer;
-  padding: 8px;
-  border: none;
-  background: transparent;
-  border-radius: 8px;
-  transition: background var(--transition);
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  border: 2px solid rgba(23, 12, 121, 0.35);
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 10px;
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
   z-index: 200;
   position: relative;
+  box-shadow: 0 1px 3px rgba(23, 12, 121, 0.12);
 }
 
 .hamburger:hover {
-  background: rgba(107, 188, 199, 0.25);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(23, 12, 121, 0.55);
+}
+
+.hamburger:focus-visible {
+  outline: 2px solid var(--teal-accent, #6BBCC7);
+  outline-offset: 2px;
 }
 
 .hamburger span {
   display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--navy-deep);
+  width: 24px;
+  height: 3px;
+  background: #170C79;
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
 }
 
 .hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 .hamburger.open span:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
 .hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 @media (max-width: 900px) {
