@@ -1,5 +1,12 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+import axios from 'axios';
+import './MatchPage.css';
+>>>>>>> aa2a43092a40b16855527adf5c6997112a7f2158
+
+const API_BASE = 'https://college-club-data.onrender.com/api';
 
 const interestsList = [
   'Arts & Creativity',
@@ -32,8 +39,22 @@ const mapping = {
 export default function MatchPage() {
   const [selected, setSelected] = useState(new Set());
   const [results, setResults] = useState(null);
+  const [userSkills, setUserSkills] = useState([]);
   const resultRef = useRef(null);
   const navigate = useNavigate();
+
+  // Fetch logged-in user profile to get their skills
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    axios
+      .get(`${API_BASE}/auth/profile`, { headers: { Authorization: `Bearer ${token}` } })
+      .then(res => {
+        const skills = res.data?.skills;
+        if (Array.isArray(skills)) setUserSkills(skills);
+      })
+      .catch(() => {}); // fail silently — page still works without skills
+  }, []);
 
   const toggleInterest = (interest) => {
     setSelected(prev => {
@@ -68,6 +89,17 @@ export default function MatchPage() {
   const clearSelection = () => {
     setSelected(new Set());
     setResults(null);
+  };
+
+  // Select all skills from the user's profile that exist in interestsList
+  const useMySkills = () => {
+    const matched = userSkills.filter(s => interestsList.includes(s));
+    if (matched.length === 0) {
+      alert('No matching interests found in your profile. Please add skills first.');
+      return;
+    }
+    setSelected(new Set(matched));
+    setResults(null); // clear old results so user hits Find Committees again
   };
 
   return (
@@ -107,9 +139,18 @@ export default function MatchPage() {
             ))}
           </div>
 
+<<<<<<< HEAD
           <div className="flex gap-4 mt-10">
             <button className="px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white font-bold rounded-xl shadow-md transition-all hover:-translate-y-0.5" onClick={findMatch}>Find Committees</button>
             <button className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all" onClick={clearSelection}>Clear</button>
+=======
+          <div className="match-actions">
+            <button className="btn-primary" onClick={findMatch}>Find Committees</button>
+            <button className="btn-secondary" onClick={clearSelection}>Clear</button>
+            <button className="btn-my-skills" onClick={useMySkills} title="Select your profile skills">
+               My Skills
+            </button>
+>>>>>>> aa2a43092a40b16855527adf5c6997112a7f2158
           </div>
 
           {results && (
