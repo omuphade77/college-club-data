@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import "./Sidebar.css";
 
 const API_BASE = "https://college-club-data.onrender.com/api";
 
@@ -60,22 +61,16 @@ export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
   const [user, setUser] = useState(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const isActive = (path) => {
-    return location.pathname === path ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600" : "text-slate-600 hover:bg-slate-50 hover:text-blue-600";
-  };
+  const isActive = (path) =>
+    location.pathname === path ? "active" : "";
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        if (!token) {
-          navigate("/login");
-          return;
-        }
+        if (!token) { navigate("/login"); return; }
         const res = await axios.get(`${API_BASE}/auth/profile`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data);
       } catch (err) {
@@ -88,175 +83,119 @@ export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
 
   return (
     <>
-      <div className={`fixed top-0 left-0 w-64 h-full bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
-        <div className="flex items-center justify-between p-4 border-b border-gray-100">
-          <span className="text-xl font-bold text-slate-800">Menu</span>
-          <button className="text-slate-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50" onClick={onClose}>
-            <FontAwesomeIcon icon={faTimes} className="text-xl" />
+      {/* Sidebar panel */}
+      <div className={`sidebar ${isOpen ? "open" : ""}`}>
+
+        {/* Header */}
+        <div className="sidebar-header">
+          <span className="sidebar-title">Menu</span>
+          <button className="sidebar-close" onClick={onClose} aria-label="Close menu">
+            <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto py-4 h-[calc(100%-140px)]">
-          <ul className="space-y-1">
+        {/* Navigation */}
+        <nav className="sidebar-nav">
+          <ul>
             <li>
-              <Link to="/home" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/home")}`} onClick={onClose}>
-                <span className="w-5 h-5 flex items-center justify-center"><IconDashboard /></span>
-                <span className="font-medium">Dashboard</span>
+              <Link to="/home" className={isActive("/home")} onClick={onClose}>
+                <span className="nav-icon"><IconDashboard /></span>
+                Dashboard
               </Link>
             </li>
             <li>
-              <Link to="/events" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/events")}`} onClick={onClose}>
-                <span className="w-5 h-5 flex items-center justify-center"><IconCalendar /></span>
-                <span className="font-medium">Events</span>
+              <Link to="/events" className={isActive("/events")} onClick={onClose}>
+                <span className="nav-icon"><IconCalendar /></span>
+                Events
               </Link>
             </li>
             <li>
-              <Link to="/match" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/match")}`} onClick={onClose}>
-                <span className="w-5 h-5 flex items-center justify-center"><IconTarget /></span>
-                <span className="font-medium">Your Match</span>
+              <Link to="/match" className={isActive("/match")} onClick={onClose}>
+                <span className="nav-icon"><IconTarget /></span>
+                Your Match
               </Link>
             </li>
 
-            <li className="my-2 border-t border-gray-100"></li>
+            <li className="divider"></li>
 
             <li>
-              <button
-                className="w-full flex items-center gap-4 px-6 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
-                onClick={() => {
-                  onOpenIssue();
-                  onClose();
-                }}
-              >
-                <span className="w-5 h-5 flex items-center justify-center"><IconAlert /></span>
-                <span className="font-medium">Raise an Issue</span>
+              <button className="sidebar-btn" onClick={() => { onOpenIssue(); onClose(); }}>
+                <span className="nav-icon"><IconAlert /></span>
+                Raise an Issue
               </button>
             </li>
             <li>
-              <Link to="/add-role" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/add-role")}`} onClick={onClose}>
-                <span className="w-5 h-5 flex items-center justify-center"><IconRole /></span>
-                <span className="font-medium">Add your Role</span>
+              <Link to="/add-role" className={isActive("/add-role")} onClick={onClose}>
+                <span className="nav-icon"><IconRole /></span>
+                Add your Role
               </Link>
             </li>
             <li>
-              <a href="/admin-login" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 px-6 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors" onClick={onClose}>
-                <span className="w-5 h-5 flex items-center justify-center"><IconShield /></span>
-                <span className="font-medium">Admin Panel</span>
+              <a href="/admin-login" target="_blank" rel="noopener noreferrer" onClick={onClose}>
+                <span className="nav-icon"><IconShield /></span>
+                Admin Panel
               </a>
             </li>
             <li>
-              <Link to="/connect" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/connect")}`} onClick={onClose}>
-                <span className="w-5 h-5 flex items-center justify-center"><IconPhone /></span>
-                <span className="font-medium">Connect with us</span>
+              <Link to="/connect" className={isActive("/connect")} onClick={onClose}>
+                <span className="nav-icon"><IconPhone /></span>
+                Connect with us
               </Link>
             </li>
-<<<<<<< HEAD
-=======
 
-            {/* 🔥 PROFILE (ALWAYS VISIBLE) */}
+            {/* Profile — just above logout */}
             <li className="sidebar-bottom-item">
               {user ? (
                 <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }}
+                  style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer", padding: "0.85rem 1rem" }}
                   onClick={() => setIsProfileOpen(true)}
                   title="View profile"
                 >
-                  <img
-                    src={user.profile_image}
-                    width="35"
-                    height="35"
-                    style={{ borderRadius: "50%" }}
-                  />
+                  {user.profile_image ? (
+                    <img src={user.profile_image} width="35" height="35" style={{ borderRadius: "50%", objectFit: "cover" }} alt="avatar" />
+                  ) : (
+                    <div style={{ width: 35, height: 35, borderRadius: "50%", background: "#0f172a", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 16, flexShrink: 0 }}>
+                      {user.full_name?.charAt(0).toUpperCase()}
+                    </div>
+                  )}
                   <div>
-                    <div style={{ fontSize: "14px", fontWeight: "bold" }}>
-                      {user.full_name}
-                    </div>
-                    <div style={{ fontSize: "12px", opacity: 0.7 }}>
-                      {user.email}
-                    </div>
+                    <div style={{ fontSize: "14px", fontWeight: "bold", color: "#1e293b" }}>{user.full_name}</div>
+                    <div style={{ fontSize: "12px", opacity: 0.6, color: "#334155" }}>{user.email}</div>
                   </div>
                 </div>
               ) : (
-                <div style={{ fontSize: "12px", opacity: 0.7 }}>
-                  Loading profile...
-                </div>
+                <div style={{ fontSize: "12px", opacity: 0.6, padding: "0.85rem 1rem" }}>Loading profile...</div>
               )}
             </li>
 
-            {/* 🔥 LOGOUT */}
+            {/* Logout */}
             <li className="sidebar-bottom-item">
               <button
                 className="sidebar-btn"
-                onClick={() => {
-                  localStorage.removeItem("token");
-                  navigate("/login");
-                }}
+                onClick={() => { localStorage.removeItem("token"); navigate("/login"); }}
               >
                 <span className="nav-icon"><IconLogout /></span>
                 Logout
               </button>
             </li>
-
->>>>>>> aa2a43092a40b16855527adf5c6997112a7f2158
           </ul>
         </nav>
-
-        <div className="absolute bottom-0 w-full bg-slate-50 border-t border-gray-200">
-          <div className="p-4 flex items-center gap-3">
-            {user ? (
-              <>
-                <img
-                  src={user.profile_image}
-                  width="36"
-                  height="36"
-                  alt="Profile"
-                  className="rounded-full border border-gray-200 shadow-sm"
-                />
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-semibold text-slate-800 truncate">{user.full_name}</div>
-                  <div className="text-xs text-slate-500 truncate">{user.email}</div>
-                </div>
-              </>
-            ) : (
-              <div className="text-sm text-slate-500 p-2">Loading profile...</div>
-            )}
-            <button
-              className="ml-auto text-slate-400 hover:text-red-500 transition-colors p-2 rounded-md hover:bg-red-100"
-              title="Logout"
-              onClick={() => {
-                localStorage.removeItem("token");
-                navigate("/login");
-              }}
-            >
-              <IconLogout />
-            </button>
-          </div>
-        </div>
       </div>
 
-<<<<<<< HEAD
-      <div className={`fixed inset-0 bg-black transition-opacity duration-300 z-40 ${isOpen ? "opacity-50 pointer-events-auto" : "opacity-0 pointer-events-none"}`} onClick={onClose} />
-=======
+      {/* Backdrop overlay */}
       <div className={`overlay ${isOpen ? "open" : ""}`} onClick={onClose} />
 
-      {/* ── Profile Modal ── */}
+      {/* Profile Modal */}
       {isProfileOpen && user && (
         <div className="profile-modal-backdrop" onClick={() => setIsProfileOpen(false)}>
           <div className="profile-modal" onClick={(e) => e.stopPropagation()}>
 
-            <button
-              className="profile-modal-close"
-              onClick={() => setIsProfileOpen(false)}
-              aria-label="Close profile"
-            >✕</button>
+            <button className="profile-modal-close" onClick={() => setIsProfileOpen(false)} aria-label="Close profile">✕</button>
 
             {/* Avatar */}
             <div className="profile-modal-avatar-wrap">
               {user.profile_image ? (
-                <img
-                  src={user.profile_image}
-                  alt={user.full_name}
-                  className="profile-modal-avatar"
-                />
+                <img src={user.profile_image} alt={user.full_name} className="profile-modal-avatar" />
               ) : (
                 <div className="profile-modal-avatar profile-modal-avatar-default">
                   {user.full_name?.charAt(0).toUpperCase()}
@@ -284,7 +223,6 @@ export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
           </div>
         </div>
       )}
->>>>>>> aa2a43092a40b16855527adf5c6997112a7f2158
     </>
   );
 }

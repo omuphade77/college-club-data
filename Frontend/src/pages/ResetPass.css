@@ -1,0 +1,363 @@
+/* ── Reset Password Page (Neo-Brutalist Light Theme) ── */
+
+.reset-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: url('/images/quad.webp') center/cover no-repeat fixed;
+  color: var(--navy-deep, #1A1A7A);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  padding: 2rem;
+}
+
+.reset-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 26, 122, 0.74), rgba(107, 188, 199, 0.48));
+  z-index: 0;
+}
+
+/* Reset Container */
+.reset-container {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(242, 232, 213, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 2.5rem;
+  border: 1px solid rgba(107, 188, 199, 0.45);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(26, 26, 122, 0.22);
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 1;
+  position: relative;
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Header Section */
+.reset-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.reset-icon {
+  width: 64px;
+  height: 64px;
+  background: #55efc4; /* Refreshing mint green */
+  border: 3px solid #000;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: #000;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.reset-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #00b894;
+  margin-bottom: 0.5rem;
+}
+
+.reset-header h1 {
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.reset-subtitle {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Divider */
+.reset-divider {
+  width: 60px;
+  height: 4px;
+  background: #000;
+  margin: 1.5rem auto;
+  border-radius: 2px;
+}
+
+/* Form Styles */
+.reset-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.reset-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.reset-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: uppercase;
+}
+
+.reset-input-wrapper {
+  position: relative;
+}
+
+.reset-input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.reset-input {
+  width: 100%;
+  padding: 0.9rem 2.8rem;
+  background: #f8fafc;
+  border: 2px solid #000;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 600;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.reset-input::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.reset-input:focus {
+  background: #fff;
+  box-shadow: 4px 4px 0 #000;
+  transform: translate(-2px, -2px);
+}
+
+.reset-input:focus ~ .reset-input-icon {
+  color: #000;
+}
+
+.reset-toggle-btn {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.reset-toggle-btn:hover {
+  color: #1e293b;
+}
+
+/* Password Strength */
+.reset-strength {
+  margin-top: 0.3rem;
+}
+
+.reset-strength-bar {
+  display: flex;
+  gap: 6px;
+  height: 6px;
+  margin-bottom: 0.3rem;
+}
+
+.reset-strength-segment {
+  flex: 1;
+  background: #e2e8f0;
+  border-radius: 3px;
+  border: 1px solid #000;
+  transition: all 0.3s ease;
+}
+
+.reset-strength-text {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: block;
+  text-align: right;
+}
+
+/* Match Indicator */
+.reset-match-indicator {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.reset-match-yes {
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.reset-match-no {
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Submit Button */
+.reset-btn {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background: #55efc4;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #000;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+  background: #00b894;
+}
+
+.reset-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 #000;
+}
+
+.reset-btn:disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  box-shadow: 4px 4px 0 #94a3b8;
+  border-color: #94a3b8;
+  transform: none;
+}
+
+/* Alerts */
+.reset-alert {
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.reset-alert-error {
+  background: #fee2e2;
+  border: 2px solid #ef4444;
+  color: #b91c1c;
+  box-shadow: 3px 3px 0 #ef4444;
+}
+
+.reset-alert-success {
+  background: #dcfce7;
+  border: 2px solid #22c55e;
+  color: #15803d;
+  box-shadow: 3px 3px 0 #22c55e;
+}
+
+.reset-redirect-notice {
+  text-align: center;
+  padding: 1.5rem;
+  font-weight: 700;
+  color: #15803d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.reset-redirect-spinner {
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #15803d;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Footer */
+.reset-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed #cbd5e1;
+}
+
+.reset-footer a {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.reset-footer a:hover {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Spinner */
+.reset-btn-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reset-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 520px) {
+  .reset-container {
+    padding: 1.5rem;
+    box-shadow: 4px 4px 0 #1e293b;
+    border-width: 2px;
+  }
+}

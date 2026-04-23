@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css';
 
 export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard }) {
   const location = useLocation();
@@ -8,20 +9,20 @@ export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard 
 
   if (isAdminDashboard) {
     return (
-      <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-40 h-16 flex items-center">
-        <div className="w-full px-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <Link to={logoTo} className="flex items-center gap-2 font-bold text-xl text-slate-800">
-              <img src="/images/logo.png" alt="" className="h-8 w-8 object-contain" />
+      <nav className="navbar navbar--admin">
+        <div className="nav-container">
+          <div className="nav-left">
+            <Link to={logoTo} className="logo logo--admin">
+              <img src="/images/logo.png" alt="" className="nav-logo-image" />
               CommitteeHub
             </Link>
           </div>
 
-          <ul className="hidden md:flex items-center gap-6">
+          <ul className="nav-links nav-links--admin">
             <li>
               <Link
                 to="/admin-dashboard?tab=announcements-new"
-                className={`text-sm font-semibold transition-colors ${adminTab === 'announcements-new' ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'}`}
+                className={adminTab === 'announcements-new' ? 'active' : ''}
               >
                 Announcements
               </Link>
@@ -29,7 +30,7 @@ export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard 
             <li>
               <Link
                 to="/admin-dashboard?tab=events-new"
-                className={`text-sm font-semibold transition-colors ${adminTab === 'events-new' ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'}`}
+                className={adminTab === 'events-new' ? 'active' : ''}
               >
                 Events
               </Link>
@@ -37,7 +38,7 @@ export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard 
             <li>
               <Link
                 to="/admin-dashboard?tab=roles-pending"
-                className={`text-sm font-semibold transition-colors ${adminTab === 'roles-pending' ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'}`}
+                className={adminTab === 'roles-pending' ? 'active' : ''}
               >
                 Roles
               </Link>
@@ -45,7 +46,7 @@ export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard 
             <li>
               <Link
                 to="/admin-dashboard?tab=issues"
-                className={`text-sm font-semibold transition-colors ${adminTab === 'issues' ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'}`}
+                className={adminTab === 'issues' ? 'active' : ''}
               >
                 Issues
               </Link>
@@ -57,30 +58,30 @@ export default function Navbar({ onToggleSidebar, sidebarOpen, isAdminDashboard 
   }
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-40 h-16 flex items-center">
-      <div className="w-full px-4 flex items-center justify-between">
-        <div className="flex items-center gap-4">
+    <nav className="navbar">
+      <div className="nav-container">
+        <div className="nav-left">
           <button
-            className="flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 hover:bg-slate-100 rounded p-1 transition-colors"
+            className={`hamburger ${sidebarOpen ? 'open' : ''}`}
             onClick={onToggleSidebar}
             aria-label="Toggle menu"
             aria-expanded={sidebarOpen}
           >
-            <span className={`block w-6 h-0.5 bg-slate-800 transition-transform duration-300 ${sidebarOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-slate-800 transition-opacity duration-300 ${sidebarOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-            <span className={`block w-6 h-0.5 bg-slate-800 transition-transform duration-300 ${sidebarOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
-          <Link to={logoTo} className="flex items-center gap-2 font-bold text-xl text-slate-800">
-            <img src="/images/logo.png" alt="Logo" className="h-8 w-8 object-contain" />
+          <Link to={logoTo} className="logo">
+            <img src="/images/logo.png" alt="Logo" className="nav-logo-image" />
             CommitteeHub
           </Link>
         </div>
 
-        <ul className="hidden md:flex items-center gap-6">
-          <li><Link to="/home" className={`text-sm font-semibold transition-colors px-3 py-2 rounded-md ${location.pathname === '/home' ? 'text-blue-600 bg-blue-50' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}>HOME</Link></li>
-          <li><Link to="/announcements" className={`text-sm font-semibold transition-colors px-3 py-2 rounded-md ${location.pathname === '/announcements' ? 'text-blue-600 bg-blue-50' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}>ANNOUNCEMENTS</Link></li>
-          <li><Link to="/events" className={`text-sm font-semibold transition-colors px-3 py-2 rounded-md ${location.pathname === '/events' ? 'text-blue-600 bg-blue-50' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}>EVENTS</Link></li>
-          <li><Link to="/match" className={`text-sm font-semibold transition-colors px-3 py-2 rounded-md ${location.pathname === '/match' ? 'text-blue-600 bg-blue-50' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}>YOUR MATCH</Link></li>
+        <ul className="nav-links">
+          <li><Link to="/home" className={location.pathname === '/home' ? 'active' : ''}>Home</Link></li>
+          <li><Link to="/announcements" className={location.pathname === '/announcements' ? 'active' : ''}>Announcements</Link></li>
+          <li><Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>Events</Link></li>
+          <li><Link to="/match" className={location.pathname === '/match' ? 'active' : ''}>Your Match</Link></li>
         </ul>
       </div>
     </nav>

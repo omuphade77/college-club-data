@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { GraduationCap, Users, Calendar } from 'lucide-react';
 import { api } from '../api';
+import './HomePage.css';
 
 const committees = [
   {
@@ -53,94 +54,82 @@ const committees = [
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const [totalMembers, setTotalMembers] = useState(0);
-
+const [totalMembers, setTotalMembers] = useState(0);
   const openCommittee = (name) => {
     navigate(`/committee?committeeName=${encodeURIComponent(name)}`);
   };
 
   useEffect(() => {
-    const fetchMembers = async () => {
-      try {
-        const res = await api.getTotalMembers();
-        setTotalMembers(Number(res.totalMembers)); 
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchMembers();
-  }, []);
+  const fetchMembers = async () => {
+    try {
+      const res = await api.getTotalMembers();
+      setTotalMembers(Number(res.totalMembers)); 
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchMembers();
+}, []);
 
   return (
-    <div className="pt-20 pb-12 px-4 max-w-7xl mx-auto min-h-screen">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className="container home-page">
+      <div className="home-dashboard">
         
         {/* Banner Section */}
-        <div className="bg-gradient-to-r from-teal-500 to-blue-600 px-8 py-16 text-white relative overflow-hidden">
-          <div className="relative z-10 max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-sm">Welcome to CommitteeHub</h2>
-            <p className="text-lg md:text-xl opacity-90 drop-shadow-sm">Discover, explore, and join the best organizations on campus.</p>
+        <div className="dashboard-banner">
+          <div className="banner-content">
+            <h2>Welcome to CommitteeHub</h2>
+            <p>Discover, explore, and join the best organizations on campus.</p>
           </div>
-          {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-32 w-48 h-48 bg-teal-300 opacity-20 rounded-full blur-2xl transform translate-y-1/2"></div>
+          <div className="banner-decor"></div>
         </div>
 
         {/* Dashboard Content */}
-        <div className="p-8">
+        <div className="dashboard-content">
           
           {/* Stats Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 -mt-14 relative z-20 mb-12">
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex items-center gap-4 transition-transform hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                <GraduationCap size={24} />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-slate-800 leading-tight">{committees.length}</h3>
-                <p className="text-sm text-slate-500 font-medium">Active Committees</p>
+          <div className="stats-row">
+            <div className="stat-card">
+              <div className="stat-icon"><GraduationCap size={24} /></div>
+              <div className="stat-info">
+                <h3>{committees.length}</h3>
+                <p>Active Committees</p>
               </div>
             </div>
           
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex items-center gap-4 transition-transform hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
-                <Users size={24} />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-slate-800 leading-tight">{totalMembers}</h3>
-                <p className="text-sm text-slate-500 font-medium">Total Members</p>
+          <div className="stat-card">
+              <div className="stat-icon"><Users size={24} /></div>
+              <div className="stat-info">
+                <h3>{totalMembers}</h3>
+                <p>Total Members</p>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex items-center gap-4 transition-transform hover:-translate-y-1 cursor-pointer" onClick={() => navigate('/events')}>
-              <div className="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
-                <Calendar size={24} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-800 leading-tight">Upcoming</h3>
-                <p className="text-sm text-slate-500 font-medium">Campus Events</p>
+            <div className="stat-card" onClick={() => navigate('/events')}>
+              <div className="stat-icon"><Calendar size={24} /></div>
+              <div className="stat-info">
+                <h3>Upcoming</h3>
+                <p>Campus Events</p>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-slate-800">Popular Committees</h3>
-          </div>
+          <h3 className="section-heading">Popular Committees</h3>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {committees.map((c) => (
+          <div className="committees-grid">
+            {committees.map((c, i) => (
               <div
                 key={c.name}
-                className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-xl transition-all cursor-pointer flex flex-col h-full"
+                className="committee-card"
                 onClick={() => openCommittee(c.name)}
+                style={{ animationDelay: `${i * 0.05}s` }}
               >
-                <div className="h-48 overflow-hidden bg-gray-50 p-6 flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                  <img src={c.img} alt={c.name} className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500 z-0" />
+                <div className="image-wrapper">
+                  <img src={c.img} alt={c.name} />
                 </div>
-                <div className="p-5 flex flex-col flex-grow border-t border-gray-50">
-                  <h4 className="text-lg font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">{c.name}</h4>
-                  <p className="text-sm text-slate-500 leading-relaxed flex-grow">{c.desc}</p>
-                </div>
+                <h4 className="committee-name">{c.name}</h4>
+                <p className="committee-desc">{c.desc}</p>
               </div>
             ))}
           </div>
