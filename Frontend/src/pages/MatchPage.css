@@ -209,6 +209,28 @@
   color: #1e293b;
 }
 
+/* My Skills shortcut button */
+.btn-my-skills {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid #6c5ce7;
+  background: transparent;
+  color: #6c5ce7;
+  white-space: nowrap;
+}
+
+.btn-my-skills:hover {
+  background: #6c5ce7;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.25);
+  transform: translateY(-2px);
+}
+
 /* ── Results List ── */
 .results-section {
   animation: slideUp 0.4s ease forwards;

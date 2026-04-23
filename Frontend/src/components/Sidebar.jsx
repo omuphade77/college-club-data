@@ -61,6 +61,7 @@ export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const isActive = (path) => {
     return location.pathname === path ? "active" : "";
@@ -171,7 +172,11 @@ export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
             {/* 🔥 PROFILE (ALWAYS VISIBLE) */}
             <li className="sidebar-bottom-item">
               {user ? (
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }}
+                  onClick={() => setIsProfileOpen(true)}
+                  title="View profile"
+                >
                   <img
                     src={user.profile_image}
                     width="35"
@@ -213,6 +218,53 @@ export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
       </div>
 
       <div className={`overlay ${isOpen ? "open" : ""}`} onClick={onClose} />
+
+      {/* ── Profile Modal ── */}
+      {isProfileOpen && user && (
+        <div className="profile-modal-backdrop" onClick={() => setIsProfileOpen(false)}>
+          <div className="profile-modal" onClick={(e) => e.stopPropagation()}>
+
+            <button
+              className="profile-modal-close"
+              onClick={() => setIsProfileOpen(false)}
+              aria-label="Close profile"
+            >✕</button>
+
+            {/* Avatar */}
+            <div className="profile-modal-avatar-wrap">
+              {user.profile_image ? (
+                <img
+                  src={user.profile_image}
+                  alt={user.full_name}
+                  className="profile-modal-avatar"
+                />
+              ) : (
+                <div className="profile-modal-avatar profile-modal-avatar-default">
+                  {user.full_name?.charAt(0).toUpperCase()}
+                </div>
+              )}
+            </div>
+
+            <h2 className="profile-modal-name">{user.full_name}</h2>
+            <p className="profile-modal-email">{user.email}</p>
+
+            {/* Skills */}
+            <div className="profile-modal-skills-section">
+              <span className="profile-modal-skills-label">Skills</span>
+              {Array.isArray(user.skills) && user.skills.length > 0 ? (
+                <div className="profile-modal-skills">
+                  {user.skills.map((s, i) => (
+                    <span key={i} className="profile-modal-skill-tag">{s}</span>
+                  ))}
+                </div>
+              ) : (
+                <p className="profile-modal-no-skills">No skills added</p>
+              )}
+            </div>
+
+          </div>
+        </div>
+      )}
     </>
   );
 }
