@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './ConnectPage.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const committeeData = {
   enthusia: {
@@ -64,42 +66,66 @@ export default function ConnectPage() {
   const data = selected ? committeeData[selected] : null;
 
   return (
-    <div className="connect-page">
-      <div className="connect-container">
-        <h1>Connect With Us</h1>
-        <p className="connect-subtitle">Select a committee to view contact details</p>
+    <div className="min-h-screen pt-24 pb-12 px-4 flex items-center justify-center">
+      <div className="bg-white max-w-lg w-full rounded-2xl shadow-xl border border-gray-100 p-8">
+        <h1 className="text-3xl font-extrabold text-slate-800 mb-2 text-center">Connect With Us</h1>
+        <p className="text-slate-500 text-center mb-8">Select a committee to view contact details</p>
 
-        <select className="connect-select" value={selected} onChange={(e) => setSelected(e.target.value)}>
-          <option value="">Select Committee</option>
-          <option value="enthusia">Enthusia</option>
-          <option value="technovanza">Technovanza</option>
-          <option value="swachh">Swachh VJTI</option>
-          <option value="ecell">E-Cell</option>
-          <option value="digital">Digital VJTI</option>
-          <option value="rangawardhan">Rangawardhan</option>
-          <option value="pratibimb">Pratibimb</option>
-          <option value="dla">Digital Literary Activities</option>
-          <option value="coc">Community of Coders</option>
-        </select>
+        <div className="mb-8">
+          <select 
+            className="w-full bg-slate-50 border border-gray-200 text-slate-800 text-lg rounded-xl focus:ring-blue-500 focus:border-blue-500 block p-3.5 transition-colors cursor-pointer"
+            value={selected} 
+            onChange={(e) => setSelected(e.target.value)}
+          >
+            <option value="">Select Committee</option>
+            <option value="enthusia">Enthusia</option>
+            <option value="technovanza">Technovanza</option>
+            <option value="swachh">Swachh VJTI</option>
+            <option value="ecell">E-Cell</option>
+            <option value="digital">Digital VJTI</option>
+            <option value="rangawardhan">Rangawardhan</option>
+            <option value="pratibimb">Pratibimb</option>
+            <option value="dla">Digital Literary Activities</option>
+            <option value="coc">Community of Coders</option>
+          </select>
+        </div>
 
-        <div className="content-box">
+        <div className="bg-slate-50 rounded-xl p-6 min-h-[220px] flex flex-col justify-center border border-gray-100">
           {!data ? (
-            <p className="connect-placeholder">Select a committee to view details</p>
+            <p className="text-slate-400 text-center italic">Select a committee to view details</p>
           ) : (
-            <>
-              <h2>{data.label}</h2>
-              <div className="info">
-                <p><strong>Email:</strong> <a href={`mailto:${data.email}`}>{data.email}</a></p>
-                <p><strong>Phone:</strong> {data.phone}</p>
+            <div className="animate-fadeIn">
+              <h2 className="text-2xl font-bold text-slate-800 mb-6 pb-4 border-b border-gray-200">{data.label}</h2>
+              <div className="space-y-4 mb-6">
+                <p className="flex items-center gap-3 text-slate-700">
+                  <FontAwesomeIcon icon={faEnvelope} className="text-blue-500 w-5" />
+                  <a href={`mailto:${data.email}`} className="hover:text-blue-600 transition-colors">{data.email}</a>
+                </p>
+                <p className="flex items-center gap-3 text-slate-700">
+                  <FontAwesomeIcon icon={faPhone} className="text-blue-500 w-5" />
+                  <span>{data.phone}</span>
+                </p>
               </div>
-              <div className="social">
-                <a href={data.instagram} target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+              <div>
+                <a 
+                  href={data.instagram} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity shadow-md"
+                >
+                  <FontAwesomeIcon icon={faInstagram} className="text-xl" />
+                  <span>Instagram</span>
+                </a>
               </div>
-            </>
+            </div>
           )}
         </div>
 
-        <Link to="/home" className="connect-back-link">← Back to Home</Link>
+        <div className="mt-8 text-center">
+          <Link to="/home" className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center gap-2">
+            ← Back to Home
+          </Link>
+        </div>
       </div>
     </div>
   );

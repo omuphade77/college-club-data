@@ -18,7 +18,7 @@ import StudentRegister from './pages/StudentRegister';
 import ResetPassword from './pages/ResetPass';
 import ForgotPassword from './pages/ForgotPassword';
 import WelcomePage from './pages/WelcomePage';
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 function AppContent() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [issueModalOpen, setIssueModalOpen] = useState(false);

@@ -1,12 +1,10 @@
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./Sidebar.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const API_BASE = "https://college-club-data.onrender.com/api";
-
-// ✅ Icons (same as yours)
 
 const IconDashboard = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -59,160 +57,134 @@ const IconLogout = () => (
 export default function Sidebar({ isOpen, onClose, onOpenIssue }) {
   const location = useLocation();
   const navigate = useNavigate();
-
   const [user, setUser] = useState(null);
 
   const isActive = (path) => {
-    return location.pathname === path ? "active" : "";
+    return location.pathname === path ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600" : "text-slate-600 hover:bg-slate-50 hover:text-blue-600";
   };
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-
         if (!token) {
           navigate("/login");
           return;
         }
-
-        console.log("TOKEN:", token);
-
         const res = await axios.get(`${API_BASE}/auth/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-
-        console.log("PROFILE DATA:", res.data);
-
         setUser(res.data);
       } catch (err) {
-        console.error("PROFILE ERROR:", err.response || err);
-
         localStorage.removeItem("token");
         navigate("/login");
       }
     };
-
     fetchProfile();
   }, []);
 
   return (
     <>
-      <div className={`sidebar ${isOpen ? "open" : ""}`}>
-        <div className="sidebar-header">
-          <span className="sidebar-title">Menu</span>
-          <button className="sidebar-close" onClick={onClose}>
-            ✕
+      <div className={`fixed top-0 left-0 w-64 h-full bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+        <div className="flex items-center justify-between p-4 border-b border-gray-100">
+          <span className="text-xl font-bold text-slate-800">Menu</span>
+          <button className="text-slate-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50" onClick={onClose}>
+            <FontAwesomeIcon icon={faTimes} className="text-xl" />
           </button>
         </div>
 
-        <nav className="sidebar-nav">
-          <ul>
-
+        <nav className="flex-1 overflow-y-auto py-4 h-[calc(100%-140px)]">
+          <ul className="space-y-1">
             <li>
-              <Link to="/home" className={isActive("/home")} onClick={onClose}>
-                <span className="nav-icon"><IconDashboard /></span>
-                Dashboard
+              <Link to="/home" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/home")}`} onClick={onClose}>
+                <span className="w-5 h-5 flex items-center justify-center"><IconDashboard /></span>
+                <span className="font-medium">Dashboard</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/events" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/events")}`} onClick={onClose}>
+                <span className="w-5 h-5 flex items-center justify-center"><IconCalendar /></span>
+                <span className="font-medium">Events</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/match" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/match")}`} onClick={onClose}>
+                <span className="w-5 h-5 flex items-center justify-center"><IconTarget /></span>
+                <span className="font-medium">Your Match</span>
               </Link>
             </li>
 
-            <li>
-              <Link to="/events" className={isActive("/events")} onClick={onClose}>
-                <span className="nav-icon"><IconCalendar /></span>
-                Events
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/match" className={isActive("/match")} onClick={onClose}>
-                <span className="nav-icon"><IconTarget /></span>
-                Your Match
-              </Link>
-            </li>
-
-            <li className="divider"></li>
+            <li className="my-2 border-t border-gray-100"></li>
 
             <li>
               <button
-                className="sidebar-btn"
+                className="w-full flex items-center gap-4 px-6 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
                 onClick={() => {
                   onOpenIssue();
                   onClose();
                 }}
               >
-                <span className="nav-icon"><IconAlert /></span>
-                Raise an Issue
+                <span className="w-5 h-5 flex items-center justify-center"><IconAlert /></span>
+                <span className="font-medium">Raise an Issue</span>
               </button>
             </li>
-
             <li>
-              <Link to="/add-role" className={isActive("/add-role")} onClick={onClose}>
-                <span className="nav-icon"><IconRole /></span>
-                Add your Role
+              <Link to="/add-role" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/add-role")}`} onClick={onClose}>
+                <span className="w-5 h-5 flex items-center justify-center"><IconRole /></span>
+                <span className="font-medium">Add your Role</span>
               </Link>
             </li>
-
             <li>
-              <a href="/admin-login" target="_blank" rel="noopener noreferrer" onClick={onClose}>
-                <span className="nav-icon"><IconShield /></span>
-                Admin Panel
+              <a href="/admin-login" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 px-6 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors" onClick={onClose}>
+                <span className="w-5 h-5 flex items-center justify-center"><IconShield /></span>
+                <span className="font-medium">Admin Panel</span>
               </a>
             </li>
-
             <li>
-              <Link to="/connect" className={isActive("/connect")} onClick={onClose}>
-                <span className="nav-icon"><IconPhone /></span>
-                Connect with us
+              <Link to="/connect" className={`flex items-center gap-4 px-6 py-3 transition-colors ${isActive("/connect")}`} onClick={onClose}>
+                <span className="w-5 h-5 flex items-center justify-center"><IconPhone /></span>
+                <span className="font-medium">Connect with us</span>
               </Link>
             </li>
-
-            {/* 🔥 PROFILE (ALWAYS VISIBLE) */}
-            <li className="sidebar-bottom-item">
-              {user ? (
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <img
-                    src={user.profile_image}
-                    width="35"
-                    height="35"
-                    style={{ borderRadius: "50%" }}
-                  />
-                  <div>
-                    <div style={{ fontSize: "14px", fontWeight: "bold" }}>
-                      {user.full_name}
-                    </div>
-                    <div style={{ fontSize: "12px", opacity: 0.7 }}>
-                      {user.email}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div style={{ fontSize: "12px", opacity: 0.7 }}>
-                  Loading profile...
-                </div>
-              )}
-            </li>
-
-            {/* 🔥 LOGOUT */}
-            <li className="sidebar-bottom-item">
-              <button
-                className="sidebar-btn"
-                onClick={() => {
-                  localStorage.removeItem("token");
-                  navigate("/login");
-                }}
-              >
-                <span className="nav-icon"><IconLogout /></span>
-                Logout
-              </button>
-            </li>
-
           </ul>
         </nav>
+
+        <div className="absolute bottom-0 w-full bg-slate-50 border-t border-gray-200">
+          <div className="p-4 flex items-center gap-3">
+            {user ? (
+              <>
+                <img
+                  src={user.profile_image}
+                  width="36"
+                  height="36"
+                  alt="Profile"
+                  className="rounded-full border border-gray-200 shadow-sm"
+                />
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-semibold text-slate-800 truncate">{user.full_name}</div>
+                  <div className="text-xs text-slate-500 truncate">{user.email}</div>
+                </div>
+              </>
+            ) : (
+              <div className="text-sm text-slate-500 p-2">Loading profile...</div>
+            )}
+            <button
+              className="ml-auto text-slate-400 hover:text-red-500 transition-colors p-2 rounded-md hover:bg-red-100"
+              title="Logout"
+              onClick={() => {
+                localStorage.removeItem("token");
+                navigate("/login");
+              }}
+            >
+              <IconLogout />
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div className={`overlay ${isOpen ? "open" : ""}`} onClick={onClose} />
+      <div className={`fixed inset-0 bg-black transition-opacity duration-300 z-40 ${isOpen ? "opacity-50 pointer-events-auto" : "opacity-0 pointer-events-none"}`} onClick={onClose} />
     </>
   );
 }
