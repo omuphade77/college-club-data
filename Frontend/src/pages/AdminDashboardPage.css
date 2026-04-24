@@ -118,30 +118,27 @@
 }
 
 .admin-submit-btn {
-  margin-top: 10px;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--navy-deep), var(--teal-accent));
-  border: 3px solid var(--navy-deep);
+padding: 0.85rem 1.5rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 800;
   border-radius: 10px;
   cursor: pointer;
-  color: #fff;
-  font-weight: 800;
-  font-size: 1rem;
-  text-transform: uppercase;
   transition: all 0.2s ease;
-  box-shadow: 4px 4px 0 var(--navy-deep);
-  display: inline-block;
+  border: 2px solid var(--navy-deep, #1A1A7A);
+  background: var(--teal-accent, #6BBCC7);
+  color: var(--navy-deep, #1A1A7A);
+  white-space: nowrap;
+  box-shadow: 4px 4px 0 rgba(26, 26, 122, 1);
 }
 
-.admin-submit-btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--navy-deep);
+/* ensure text is visible */
+.admin-submit-btn span,
+.admin-submit-btn svg {
+  color: #ffffff !important;
 }
 
-.admin-submit-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0 0 0 var(--navy-deep);
-}
+
 
 .issue-list {
   display: grid;
