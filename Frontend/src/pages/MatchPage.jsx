@@ -20,7 +20,7 @@ const interestsList = [
 ];
 
 const mapping = {
-  'Technology': { committee: 'Technovanza /COC (Community of Coders)', desc: 'Innovation, coding and tech building' },
+  'Technology': { committee: 'Technovanza / COC (Community of Coders)', desc: 'Innovation, coding and tech building' },
   'Academic Excellence': { committee: 'COC (Community of Coders)', desc: 'Coding + academics' },
   'Sports': { committee: 'Enthusia', desc: 'Sports & fitness' },
   'Arts': { committee: 'Rangwardhan / Pratibimb', desc: 'Creative arts' },
