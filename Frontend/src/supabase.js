@@ -1,10 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
-
-export const supabase = createClient(
-  "",
-  ""
-);
-
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
