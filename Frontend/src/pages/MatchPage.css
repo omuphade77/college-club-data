@@ -15,11 +15,13 @@
 /* ── Banner Section ── */
 .dashboard-banner {
   background: var(--navy-deep, #1A1A7A);
-  border-radius: 20px 20px 0 0;
+  border: 3px solid var(--navy-deep, #1A1A7A);
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
   padding: 2.5rem 3rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.2);
+  box-shadow: 6px 6px 0 rgba(107, 188, 199, 1);
 }
 
 /* Abstract shapes for banner decor */
@@ -71,10 +73,11 @@
 
 /* ── Content Section ── */
 .dashboard-content {
-  background: #ffffff;
-  border-radius: 0 0 20px 20px;
+  background: var(--cream, #F2E8D5);
+  border: 3px solid var(--navy-deep, #1A1A7A);
+  border-radius: 0 0 16px 16px;
   padding: 2.5rem 3rem;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+  box-shadow: 6px 6px 0 rgba(107, 188, 199, 1);
 }
 
 .section-heading {
@@ -89,12 +92,14 @@
 }
 
 .badge {
-  background: #eef2ff;
-  color: #6366f1;
+  background: var(--teal-accent, #6BBCC7);
+  color: var(--navy-deep, #1A1A7A);
   font-size: 0.85rem;
   padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  font-weight: 700;
+  border-radius: 8px;
+  font-weight: 800;
+  border: 2px solid var(--navy-deep, #1A1A7A);
+  box-shadow: 2px 2px 0 rgba(26, 26, 122, 1);
 }
 
 /* ── Interests Grid ── */
@@ -107,7 +112,7 @@
 
 .interest-card {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 2px solid var(--navy-deep, #1A1A7A);
   border-radius: 12px;
   padding: 1rem;
   display: flex;
@@ -116,25 +121,26 @@
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
+  box-shadow: 3px 3px 0 rgba(107, 188, 199, 0.6);
 }
 
 .interest-card:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-  transform: translateY(-2px);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 rgba(107, 188, 199, 1);
 }
 
 .interest-card.selected {
-  border-color: #6c5ce7;
-  background: #f8f7ff;
-  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.08);
+  background: var(--teal-accent, #6BBCC7);
+  border-color: var(--navy-deep, #1A1A7A);
+  box-shadow: 4px 4px 0 rgba(26, 26, 122, 1);
 }
 
 .interest-check {
   width: 20px;
   height: 20px;
-  border: 1px solid #cbd5e1;
+  border: 2px solid var(--navy-deep, #1A1A7A);
   border-radius: 5px;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,8 +149,7 @@
 }
 
 .interest-card.selected .interest-check {
-  background: #6c5ce7;
-  border-color: #6c5ce7;
+  background: var(--navy-deep, #1A1A7A);
   color: white;
 }
 
@@ -155,16 +160,16 @@
 
 .interest-name {
   font-size: 0.95rem;
-  font-weight: 500;
-  color: #334155;
+  font-weight: 600;
+  color: var(--navy-deep, #1A1A7A);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .interest-card.selected .interest-name {
-  color: #1e293b;
-  font-weight: 600;
+  color: var(--navy-deep, #1A1A7A);
+  font-weight: 800;
 }
 
 /* ── Actions ── */
@@ -173,62 +178,78 @@
   gap: 1rem;
   margin-bottom: 3rem;
   padding-bottom: 2.5rem;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 2px solid rgba(26, 26, 122, 0.1);
 }
 
 .btn-primary, .btn-secondary {
-  padding: 0.75rem 1.75rem;
+  padding: 0.85rem 1.75rem;
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 800;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: none;
+  border: 2px solid var(--navy-deep, #1A1A7A);
 }
 
 .btn-primary {
-  background: #6c5ce7;
+  background: var(--navy-deep, #1A1A7A);
   color: white;
-  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.25);
+  box-shadow: 4px 4px 0 var(--teal-accent, #6BBCC7);
 }
 
 .btn-primary:hover {
-  background: #5b4dd6;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--teal-accent, #6BBCC7);
+}
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--teal-accent, #6BBCC7);
 }
 
 .btn-secondary {
-  background: #f1f5f9;
-  color: #475569;
+  background: #ffffff;
+  color: var(--navy-deep, #1A1A7A);
+  box-shadow: 4px 4px 0 rgba(26, 26, 122, 0.2);
 }
 
 .btn-secondary:hover {
-  background: #e2e8f0;
-  color: #1e293b;
+  background: var(--cream, #F2E8D5);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(26, 26, 122, 0.3);
+}
+
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(26, 26, 122, 0.2);
 }
 
 /* My Skills shortcut button */
 .btn-my-skills {
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 800;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 2px solid #6c5ce7;
-  background: transparent;
-  color: #6c5ce7;
+  border: 2px solid var(--navy-deep, #1A1A7A);
+  background: var(--teal-accent, #6BBCC7);
+  color: var(--navy-deep, #1A1A7A);
   white-space: nowrap;
+  box-shadow: 4px 4px 0 rgba(26, 26, 122, 1);
 }
 
 .btn-my-skills:hover {
-  background: #6c5ce7;
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.25);
-  transform: translateY(-2px);
+  background: #5ab1bc;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(26, 26, 122, 1);
+}
+
+.btn-my-skills:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(26, 26, 122, 1);
 }
 
 /* ── Results List ── */
@@ -252,33 +273,34 @@
   display: flex;
   align-items: center;
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 2px solid var(--navy-deep, #1A1A7A);
   border-radius: 12px;
   padding: 1rem 1.5rem;
   transition: all 0.2s ease;
   position: relative;
+  box-shadow: 4px 4px 0 rgba(107, 188, 199, 0.5);
 }
 
 .college-card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-  transform: translateY(-2px);
-  border-color: #e2e8f0;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(107, 188, 199, 1);
 }
 
 .card-logo-placeholder {
-  width: 48px;
-  height: 48px;
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
+  width: 52px;
+  height: 52px;
+  background: var(--teal-accent, #6BBCC7);
+  border: 2px solid var(--navy-deep, #1A1A7A);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #a29bfe;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy-deep, #1A1A7A);
   flex-shrink: 0;
   margin-right: 1.25rem;
+  box-shadow: 2px 2px 0 rgba(26, 26, 122, 1);
 }
 
 .card-details {
@@ -287,10 +309,10 @@
 
 .card-details h4 {
   font-family: var(--font-display, 'Inter', sans-serif);
-  font-size: 1.05rem;
-  color: #1e293b;
+  font-size: 1.1rem;
+  color: var(--navy-deep, #1A1A7A);
   margin-bottom: 0.25rem;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .committee-link {
@@ -300,29 +322,33 @@
 }
 
 .committee-link:hover {
-  color: #6c5ce7;
+  color: var(--teal-accent, #6BBCC7);
   text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 .card-location {
-  color: #64748b;
-  font-size: 0.85rem;
-  font-weight: 400;
+  color: var(--navy-deep, #1A1A7A);
+  opacity: 0.8;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .card-status {
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.35rem 0.8rem;
-  border-radius: 20px;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
   margin-left: 1rem;
+  border: 2px solid var(--navy-deep, #1A1A7A);
+  box-shadow: 2px 2px 0 rgba(26, 26, 122, 1);
 }
 
 .status-interested {
-  background: #eef2ff;
-  color: #4f46e5;
+  background: var(--cream, #F2E8D5);
+  color: var(--navy-deep, #1A1A7A);
 }
 
 /* ── Mobile Responsive ── */
