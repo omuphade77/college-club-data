@@ -113,7 +113,7 @@ export const api = {
   getTotalMembers: () =>
     fetch(`${API_BASE}/committees/total-members`, {
       headers: studentHeaders(),
-    }).then(r => r.json()),
+    }).then(r => r.json()), 
 };
 
 
