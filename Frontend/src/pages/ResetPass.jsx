@@ -180,7 +180,7 @@ export default function ResetPassword() {
                   {password === confirmPassword ? (
                     <span className="reset-match-yes"><FontAwesomeIcon icon={faCheck}/> Passwords match</span>
                   ) : (
-                    <span className="reset-match-no"><FontAwesomeIcon icon={faTimes}/> Passwords don&apos;t match</span>
+                    <span className="reset-match-no"><FontAwesomeIcon icon={faTimes}/> Passwords doesn't match</span>
                   )}
                 </div>
               )}
